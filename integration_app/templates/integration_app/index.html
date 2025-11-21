@@ -72,6 +72,92 @@
             </div>
         </div>
     </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            <h2 class="display-5 mb-4 text-center">{% trans "Kontakt" %}</h2>
+                            <hr class="mb-4">
+                            <p class="lead text-center">{% trans "Kontaktieren Sie uns" %}</p>
+                            <p class="text-center mb-4">{% trans "Wir freuen uns auf Ihre Nachricht!" %}</p>
+                            
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            
+                            <form method="post" action="{% url 'integration_app:contact' %}" id="contact-form-index" novalidate>
+                                {% csrf_token %}
+                                
+                                <div class="mb-3">
+                                    <label for="name-index" class="form-label">
+                                        {% trans "Name" %}
+                                    </label>
+                                    <input type="text" class="form-control" id="name-index" name="name">
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email-index" class="form-label">
+                                            {% trans "E-Mail" %}
+                                        </label>
+                                        <input type="email" class="form-control" id="email-index" name="email">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone-index" class="form-label">
+                                            {% trans "Telefon" %}
+                                        </label>
+                                        <input type="tel" class="form-control" id="phone-index" name="phone">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="text-muted small">
+                                        <span class="text-danger">*</span> {% trans "Bitte geben Sie mindestens eine Kontaktmöglichkeit an (E-Mail oder Telefon)." %}
+                                    </p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="message-index" class="form-label">
+                                        {% trans "Nachricht" %}
+                                    </label>
+                                    <textarea class="form-control" id="message-index" name="message" rows="6"></textarea>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="consent-index" name="consent" required>
+                                        <label class="form-check-label" for="consent-index">
+                                            {% trans "Ich bin damit einverstanden, dass diese Daten zum Zwecke der Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit widerrufen kann." %} <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <p class="text-muted small">
+                                        <span class="text-danger">*</span> {% trans "Bitte geben Sie mindestens eine Kontaktmöglichkeit an und stimmen Sie der Datenschutzerklärung zu." %}
+                                    </p>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        {% trans "Absenden" %}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <style>
@@ -90,5 +176,29 @@
         transform: scale(1.02);
     }
 </style>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form-index');
+    if (!contactForm) return;
+    
+    const emailInput = document.getElementById('email-index');
+    const phoneInput = document.getElementById('phone-index');
+    
+    contactForm.addEventListener('submit', function(e) {
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        
+        // En az birinin doldurulması gerekiyor
+        if (!email && !phone) {
+            e.preventDefault();
+            alert('{% trans "Bitte geben Sie mindestens eine Kontaktmöglichkeit an (E-Mail oder Telefon)." %}');
+            return false;
+        }
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}
 

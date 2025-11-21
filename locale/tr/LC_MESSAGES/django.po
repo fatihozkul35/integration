@@ -174,3 +174,108 @@ msgstr "Aile Birleşimi - Bilmeniz Gerekenler"
 msgid "Wichtige Informationen zum Familiennachzug nach Deutschland."
 msgstr "Almanya'ya aile birleşimi hakkında önemli bilgiler."
 
+msgid "Name"
+msgstr "İsim"
+
+msgid "Nachricht"
+msgstr "Mesaj"
+
+msgid "Ich bin damit einverstanden, dass diese Daten zum Zwecke der Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit widerrufen kann."
+msgstr "Bu verilerin iletişim kurma amacıyla saklanması ve işlenmesine onay veriyorum. Onayımı istediğim zaman geri çekebileceğimi biliyorum."
+
+msgid "Bitte füllen Sie alle erforderlichen Felder aus."
+msgstr "Lütfen tüm zorunlu alanları doldurun."
+
+msgid "Bitte geben Sie mindestens eine Kontaktmöglichkeit an und stimmen Sie der Datenschutzerklärung zu."
+msgstr "Lütfen en az bir iletişim bilgisi girin ve gizlilik politikasına onay verin."
+
+msgid "Name of the person contacting (optional)"
+msgstr "İletişime geçen kişinin adı (isteğe bağlı)"
+
+msgid "Message content (optional)"
+msgstr "Mesaj içeriği (isteğe bağlı)"
+
+msgid "Absenden"
+msgstr "Gönder"
+
+msgid "E-Mail"
+msgstr "E-Posta"
+
+msgid "Telefon"
+msgstr "Telefon"
+
+msgid "Bitte geben Sie mindestens eine Kontaktmöglichkeit an (E-Mail oder Telefon)."
+msgstr "Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon)."
+
+msgid "Name ist erforderlich."
+msgstr "İsim gereklidir."
+
+msgid "Nachricht ist erforderlich."
+msgstr "Mesaj gereklidir."
+
+msgid "Sie müssen der Datenschutzerklärung zustimmen."
+msgstr "Gizlilik politikasına onay vermelisiniz."
+
+msgid "Ihre Nachricht wurde erfolgreich gesendet!"
+msgstr "Mesajınız başarıyla gönderildi!"
+
+msgid "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+msgstr "Bir hata oluştu. Lütfen tekrar deneyin."
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "Name of the person contacting"
+msgstr "İletişime geçen kişinin adı"
+
+msgid "E-Mail"
+msgstr "E-Posta"
+
+msgid "Email address (optional)"
+msgstr "E-posta adresi (isteğe bağlı)"
+
+msgid "Telefon"
+msgstr "Telefon"
+
+msgid "Phone number (optional)"
+msgstr "Telefon numarası (isteğe bağlı)"
+
+msgid "Nachricht"
+msgstr "Mesaj"
+
+msgid "Message content"
+msgstr "Mesaj içeriği"
+
+msgid "Einwilligung"
+msgstr "Onay"
+
+msgid "Data processing consent"
+msgstr "Veri işleme onayı"
+
+msgid "Erstellt am"
+msgstr "Oluşturulma tarihi"
+
+msgid "Date and time when the message was created"
+msgstr "Mesajın oluşturulduğu tarih ve saat"
+
+msgid "Gelesen"
+msgstr "Okundu"
+
+msgid "Whether the message has been read"
+msgstr "Mesajın okunup okunmadığı"
+
+msgid "Kontaktnachricht"
+msgstr "İletişim Mesajı"
+
+msgid "Kontaktnachrichten"
+msgstr "İletişim Mesajları"
+
+msgid "Als gelesen markieren"
+msgstr "Okundu olarak işaretle"
+
+msgid "Kontaktinformationen"
+msgstr "İletişim Bilgileri"
+
+msgid "Status"
+msgstr "Durum"
+

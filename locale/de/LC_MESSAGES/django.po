@@ -157,3 +157,108 @@ msgstr "Familiennachzug - Was Sie wissen müssen"
 msgid "Wichtige Informationen zum Familiennachzug nach Deutschland."
 msgstr "Wichtige Informationen zum Familiennachzug nach Deutschland."
 
+msgid "Name"
+msgstr "Name"
+
+msgid "Nachricht"
+msgstr "Nachricht"
+
+msgid "Ich bin damit einverstanden, dass diese Daten zum Zwecke der Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit widerrufen kann."
+msgstr "Ich bin damit einverstanden, dass diese Daten zum Zwecke der Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit widerrufen kann."
+
+msgid "Bitte füllen Sie alle erforderlichen Felder aus."
+msgstr "Bitte füllen Sie alle erforderlichen Felder aus."
+
+msgid "Bitte geben Sie mindestens eine Kontaktmöglichkeit an und stimmen Sie der Datenschutzerklärung zu."
+msgstr "Bitte geben Sie mindestens eine Kontaktmöglichkeit an und stimmen Sie der Datenschutzerklärung zu."
+
+msgid "Name of the person contacting (optional)"
+msgstr "Name der kontaktierenden Person (optional)"
+
+msgid "Message content (optional)"
+msgstr "Nachrichteninhalt (optional)"
+
+msgid "Absenden"
+msgstr "Absenden"
+
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgid "Telefon"
+msgstr "Telefon"
+
+msgid "Bitte geben Sie mindestens eine Kontaktmöglichkeit an (E-Mail oder Telefon)."
+msgstr "Bitte geben Sie mindestens eine Kontaktmöglichkeit an (E-Mail oder Telefon)."
+
+msgid "Name ist erforderlich."
+msgstr "Name ist erforderlich."
+
+msgid "Nachricht ist erforderlich."
+msgstr "Nachricht ist erforderlich."
+
+msgid "Sie müssen der Datenschutzerklärung zustimmen."
+msgstr "Sie müssen der Datenschutzerklärung zustimmen."
+
+msgid "Ihre Nachricht wurde erfolgreich gesendet!"
+msgstr "Ihre Nachricht wurde erfolgreich gesendet!"
+
+msgid "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Name of the person contacting"
+msgstr "Name der kontaktierenden Person"
+
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgid "Email address (optional)"
+msgstr "E-Mail-Adresse (optional)"
+
+msgid "Telefon"
+msgstr "Telefon"
+
+msgid "Phone number (optional)"
+msgstr "Telefonnummer (optional)"
+
+msgid "Nachricht"
+msgstr "Nachricht"
+
+msgid "Message content"
+msgstr "Nachrichteninhalt"
+
+msgid "Einwilligung"
+msgstr "Einwilligung"
+
+msgid "Data processing consent"
+msgstr "Einwilligung zur Datenverarbeitung"
+
+msgid "Erstellt am"
+msgstr "Erstellt am"
+
+msgid "Date and time when the message was created"
+msgstr "Datum und Uhrzeit der Nachrichtenerstellung"
+
+msgid "Gelesen"
+msgstr "Gelesen"
+
+msgid "Whether the message has been read"
+msgstr "Ob die Nachricht gelesen wurde"
+
+msgid "Kontaktnachricht"
+msgstr "Kontaktnachricht"
+
+msgid "Kontaktnachrichten"
+msgstr "Kontaktnachrichten"
+
+msgid "Als gelesen markieren"
+msgstr "Als gelesen markieren"
+
+msgid "Kontaktinformationen"
+msgstr "Kontaktinformationen"
+
+msgid "Status"
+msgstr "Status"
+
