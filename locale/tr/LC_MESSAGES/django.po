@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-21 21:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Navbar
+msgid "Über uns"
+msgstr "Hakkımızda"
+
+msgid "FAQ"
+msgstr "SSS"
+
+msgid "Referenzen"
+msgstr "Referanslar"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Kontakt"
+msgstr "İletişim"
+
+msgid "MS International"
+msgstr "MS International"
+
+msgid "All rights reserved."
+msgstr "Tüm hakları saklıdır."
+
+# Index page
+msgid "Startseite"
+msgstr "Ana Sayfa"
+
+msgid "Willkommen bei MS International"
+msgstr "MS International'a Hoş Geldiniz"
+
+msgid "Wir sind ein führendes Unternehmen in der internationalen Geschäftswelt."
+msgstr "Uluslararası iş dünyasında önde gelen bir şirketiz."
+
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+
+msgid "Mehr erfahren"
+msgstr "Daha fazla bilgi"
+
+msgid "Unsere Expertise"
+msgstr "Uzmanlığımız"
+
+msgid "Mit jahrelanger Erfahrung bieten wir maßgeschneiderte Lösungen."
+msgstr "Yıllarca deneyimle özel çözümler sunuyoruz."
+
+msgid "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+msgstr "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+msgid "Kontakt aufnehmen"
+msgstr "İletişime geç"
+
+msgid "Innovation & Qualität"
+msgstr "İnovasyon ve Kalite"
+
+msgid "Wir setzen auf moderne Technologien und höchste Qualitätsstandards."
+msgstr "Modern teknolojilere ve en yüksek kalite standartlarına güveniyoruz."
+
+msgid "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+msgstr "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+
+msgid "Unsere Services"
+msgstr "Hizmetlerimiz"
+
+msgid "Globale Präsenz"
+msgstr "Küresel Varlık"
+
+msgid "Mit einem internationalen Netzwerk sind wir weltweit für Sie da."
+msgstr "Uluslararası ağımızla dünya çapında yanınızdayız."
+
+msgid "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
+msgstr "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
+
+msgid "Standorte"
+msgstr "Lokasyonlar"
+
+# About page
+msgid "Willkommen bei MS International!"
+msgstr "MS International'a Hoş Geldiniz!"
+
+msgid "Hier finden Sie Informationen über unser Unternehmen."
+msgstr "Şirketimiz hakkında bilgileri burada bulabilirsiniz."
+
+# Contact page
+msgid "Kontaktieren Sie uns"
+msgstr "Bizimle iletişime geçin"
+
+msgid "Wir freuen uns auf Ihre Nachricht!"
+msgstr "Mesajınızı bekliyoruz!"
+
+# FAQ page
+msgid "Häufig gestellte Fragen"
+msgstr "Sık Sorulan Sorular"
+
+msgid "Wie lange dauert ein Visumantrag?"
+msgstr "Vize başvurusu ne kadar sürer?"
+
+msgid "Die Bearbeitungsdauer variiert je nach Visumtyp und kann zwischen 2-12 Wochen liegen."
+msgstr "İşlem süresi vize tipine göre değişiklik gösterir ve 2-12 hafta arasında sürebilir."
+
+msgid "Welche Dokumente werden benötigt?"
+msgstr "Hangi belgeler gereklidir?"
+
+msgid "Die erforderlichen Dokumente variieren je nach Antragstyp. Bei der Erstberatung klären wir alle Details."
+msgstr "Gerekli belgeler başvuru tipine göre değişiklik gösterir. İlk danışmanlıkta tüm detayları netleştiriyoruz."
+
+msgid "Bieten Sie auch Online-Beratung an?"
+msgstr "Online danışmanlık da sunuyor musunuz?"
+
+msgid "Ja, wir bieten sowohl persönliche als auch Online-Beratungstermine an."
+msgstr "Evet, hem yüz yüze hem de online danışmanlık randevuları sunuyoruz."
+
+# References page
+msgid "Referenzen & Bewertungen"
+msgstr "Referanslar ve Değerlendirmeler"
+
+msgid "Was unsere Kunden über uns sagen"
+msgstr "Müşterilerimiz bizim hakkımızda ne diyor"
+
+msgid "Ausgezeichneter Service! Sehr professionell und hilfsbereit."
+msgstr "Mükemmel hizmet! Çok profesyonel ve yardımsever."
+
+msgid "Die Beratung war sehr detailliert und hat mir sehr geholfen."
+msgstr "Danışmanlık çok detaylıydı ve bana çok yardımcı oldu."
+
+msgid "Schnelle und zuverlässige Unterstützung bei meinem Visumantrag."
+msgstr "Vize başvurumda hızlı ve güvenilir destek."
+
+msgid "Sehr kompetente Beratung, kann ich nur weiterempfehlen!"
+msgstr "Çok yetkin danışmanlık, kesinlikle tavsiye ederim!"
+
+# Blog page
+msgid "Blog & Aktuelle Informationen"
+msgstr "Blog ve Güncel Bilgiler"
+
+msgid "Neueste Updates zu Visa und Aufenthalt in Deutschland"
+msgstr "Almanya'da vize ve ikamet konusunda en son güncellemeler"
+
+msgid "Neue Visumsbestimmungen 2025"
+msgstr "2025 Yeni Vize Düzenlemeleri"
+
+msgid "Aktuelle Änderungen in den deutschen Visumsbestimmungen."
+msgstr "Almanya vize düzenlemelerinde güncel değişiklikler."
+
+msgid "Mehr lesen"
+msgstr "Devamını oku"
+
+msgid "EU Blue Card Update"
+msgstr "EU Blue Card Güncellemesi"
+
+msgid "Neue Regelungen zur EU Blue Card für qualifizierte Fachkräfte."
+msgstr "Nitelikli çalışanlar için EU Blue Card konusunda yeni düzenlemeler."
+
+msgid "Familiennachzug - Was Sie wissen müssen"
+msgstr "Aile Birleşimi - Bilmeniz Gerekenler"
+
+msgid "Wichtige Informationen zum Familiennachzug nach Deutschland."
+msgstr "Almanya'ya aile birleşimi hakkında önemli bilgiler."
+

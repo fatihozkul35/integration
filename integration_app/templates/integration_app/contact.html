@@ -1,0 +1,22 @@
+{% extends 'integration_app/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Kontakt" %} - {% trans "MS International" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <h1 class="display-4 mb-4 text-center">{% trans "Kontakt" %}</h1>
+                    <hr class="mb-4">
+                    <p class="lead">{% trans "Kontaktieren Sie uns" %}</p>
+                    <p>{% trans "Wir freuen uns auf Ihre Nachricht!" %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

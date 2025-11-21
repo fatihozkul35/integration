@@ -16,6 +16,7 @@ help:
 	@echo "clean            - Clean __pycache__ and .pyc files"
 	@echo "venv             - Activate virtual environment (PowerShell)"
 	@echo "format           - Format code (if black/autopep8 available)"
+	@echo "compilemessages  - Compile translation files (.po to .mo)"
 
 # Install packages
 install:
@@ -67,4 +68,8 @@ venv:
 # Format code (if black available)
 format:
 	black . 2>/dev/null || autopep8 --in-place --recursive . || echo "black or autopep8 not found"
+
+# Compile translation files
+compilemessages:
+	python compile_translations.py
 

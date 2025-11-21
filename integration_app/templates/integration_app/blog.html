@@ -1,0 +1,60 @@
+{% extends 'integration_app/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Blog" %} - {% trans "MS International" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-4 mb-4">{% trans "Blog & Aktuelle Informationen" %}</h1>
+            <p class="lead">{% trans "Neueste Updates zu Visa und Aufenthalt in Deutschland" %}</p>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <img src="https://picsum.photos/400/250?random=5" class="card-img-top" alt="Blog Post">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans "Neue Visumsbestimmungen 2025" %}</h5>
+                    <p class="card-text">{% trans "Aktuelle Änderungen in den deutschen Visumsbestimmungen." %}</p>
+                    <a href="#" class="btn btn-primary">{% trans "Mehr lesen" %}</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>15. November 2025</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <img src="https://picsum.photos/400/250?random=6" class="card-img-top" alt="Blog Post">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans "EU Blue Card Update" %}</h5>
+                    <p class="card-text">{% trans "Neue Regelungen zur EU Blue Card für qualifizierte Fachkräfte." %}</p>
+                    <a href="#" class="btn btn-primary">{% trans "Mehr lesen" %}</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>10. November 2025</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow h-100">
+                <img src="https://picsum.photos/400/250?random=7" class="card-img-top" alt="Blog Post">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans "Familiennachzug - Was Sie wissen müssen" %}</h5>
+                    <p class="card-text">{% trans "Wichtige Informationen zum Familiennachzug nach Deutschland." %}</p>
+                    <a href="#" class="btn btn-primary">{% trans "Mehr lesen" %}</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>5. November 2025</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'integration_app/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "FAQ" %} - {% trans "MS International" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 mb-4">{% trans "Häufig gestellte Fragen" %}</h1>
+            </div>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            {% trans "Wie lange dauert ein Visumantrag?" %}
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {% trans "Die Bearbeitungsdauer variiert je nach Visumtyp und kann zwischen 2-12 Wochen liegen." %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            {% trans "Welche Dokumente werden benötigt?" %}
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {% trans "Die erforderlichen Dokumente variieren je nach Antragstyp. Bei der Erstberatung klären wir alle Details." %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            {% trans "Bieten Sie auch Online-Beratung an?" %}
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            {% trans "Ja, wir bieten sowohl persönliche als auch Online-Beratungstermine an." %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
