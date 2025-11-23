@@ -5,8 +5,8 @@
 
 {% block content %}
 <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
+    <div class="row justify-content-center pt-3">
+        <div class="col-lg-12">
             <div class="card shadow-lg border-0">
                 <div class="card-body p-5">
                     <h1 class="display-4 mb-4 text-center">{% trans "Über uns" %}</h1>
@@ -17,6 +17,38 @@
             </div>
         </div>
     </div>
+
+    <!-- Section 1: Image Left, Text Right -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://picsum.photos/600/400?random=1" alt="Section 1" class="img-fluid rounded shadow-lg">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h2 class="display-5 mb-4">{% trans "misyonumuz_title" %}</h2>
+                    <p class="lead mb-3">{% trans "misyonumuz_descr" %}</p>
+                    <a href="{% url 'integration_app:contact' %}" class="btn btn-primary btn-lg mt-3">{% trans "Basvuru yap" %}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Text Left, Image Right -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
+                    <h2 class="display-5 mb-4">{% trans "Seyahatinize hazır mısınız?" %}</h2>
+                    <p class="lead mb-3">{% trans "Profesyonel bir danışmanlık için bizimle iletişime geçin ve Almanya’ya gelmenize nasıl yardımcı olabileceğimizi öğrenin." %}</p>
+                    <a href="{% url 'integration_app:contact' %}" class="btn btn-outline-primary btn-lg mt-3">{% trans "Kontakt aufnehmen" %}</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://picsum.photos/600/400?random=2" alt="Section 2" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}
 
