@@ -1,0 +1,22 @@
+Neue Kontaktnachricht
+====================
+
+Sie haben eine neue Nachricht über das Kontaktformular erhalten.
+
+Kontaktinformationen:
+---------------------
+Name: {% if contact_name %}{{ contact_name }}{% else %}Nicht angegeben{% endif %}
+E-Mail: {% if contact_email %}{{ contact_email }}{% else %}Nicht angegeben{% endif %}
+Telefon: {% if contact_phone %}{{ contact_phone }}{% else %}Nicht angegeben{% endif %}
+Datum: {{ contact_date|date:"d.m.Y H:i" }}
+
+{% if contact_message %}
+Nachricht:
+----------
+{{ contact_message }}
+{% endif %}
+
+---
+Diese E-Mail wurde automatisch vom Kontaktformular generiert.
+Bitte antworten Sie direkt an: {% if contact_email %}{{ contact_email }}{% else %}die angegebene Telefonnummer{% endif %}
+

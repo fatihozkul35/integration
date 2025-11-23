@@ -17,6 +17,8 @@ help:
 	@echo "venv             - Activate virtual environment (PowerShell)"
 	@echo "format           - Format code (if black/autopep8 available)"
 	@echo "compilemessages  - Compile translation files (.po to .mo)"
+	@echo "testemail        - Test email sending with interactive script"
+	@echo "sendtestemail    - Send test email using Django command (usage: make sendtestemail EMAIL=test@example.com)"
 
 # Install packages
 install:
@@ -72,4 +74,16 @@ format:
 # Compile translation files
 compilemessages:
 	python compile_translations.py
+
+# Test email sending with interactive script
+testemail:
+	python test_email.py
+
+# Send test email using Django command
+sendtestemail:
+	@if [ -z "$(EMAIL)" ]; then \
+		echo "Usage: make sendtestemail EMAIL=test@example.com"; \
+	else \
+		python manage.py sendtestemail $(EMAIL); \
+	fi
 
