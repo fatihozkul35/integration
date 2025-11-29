@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,21 @@ SECRET_KEY = config('SECRET_KEY', default='')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',') if config('ALLOWED_HOSTS', default='') else []
+# PythonAnywhere detection - check if we're on PythonAnywhere
+# PythonAnywhere hosts are typically username.pythonanywhere.com
+ON_PYTHONANYWHERE = os.path.exists('/home') and 'pythonanywhere' in os.environ.get('HOME', '').lower()
+
+# ALLOWED_HOSTS configuration
+# For PythonAnywhere: Set your domain in environment variable or .env file
+# Example: ALLOWED_HOSTS=yourusername.pythonanywhere.com
+allowed_hosts_from_env = config('ALLOWED_HOSTS', default='').strip()
+if allowed_hosts_from_env:
+    # Split by comma and strip whitespace
+    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_from_env.split(',') if host.strip()]
+else:
+    # Default to empty list - user must configure ALLOWED_HOSTS
+    # On PythonAnywhere, you'll need to add your domain: username.pythonanywhere.com
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,7 +95,7 @@ WSGI_APPLICATION = 'integration_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),  # Convert to string for cross-platform compatibility
     }
 }
 
@@ -129,7 +144,23 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# On PythonAnywhere, this will be served from /static/ URL
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    # You can add additional static file directories here if needed
+    # BASE_DIR / 'static',
+]
+
+# Media files (User uploaded files)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(BASE_DIR / 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
