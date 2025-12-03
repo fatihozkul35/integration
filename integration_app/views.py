@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.utils.translation import gettext as _
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -57,11 +56,11 @@ def contact(request):
         errors = []
         
         if not consent:
-            errors.append(_('Sie müssen der Datenschutzerklärung zustimmen.'))
+            errors.append('Gizlilik politikasına onay vermelisiniz.')
         
         # En az bir iletişim bilgisi gerekli
         if not email and not phone:
-            errors.append(_('Bitte geben Sie mindestens eine Kontaktmöglichkeit an (E-Mail oder Telefon).'))
+            errors.append('Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon).')
         
         if errors:
             for error in errors:
@@ -86,11 +85,11 @@ def contact(request):
                     logger.error(f'E-posta gönderim hatası: {str(email_error)}', exc_info=True)
                     # Kullanıcıya hata göstermiyoruz ama logluyoruz
                 
-                messages.success(request, _('Ihre Nachricht wurde erfolgreich gesendet!'))
+                messages.success(request, 'Mesajınız başarıyla gönderildi!')
                 # Formu temizlemek için redirect
                 return redirect('integration_app:contact')
             except Exception as e:
-                messages.error(request, _('Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.'))
+                messages.error(request, 'Bir hata oluştu. Lütfen tekrar deneyin.')
     
     return render(request, 'integration_app/contact.html')
 
@@ -119,7 +118,7 @@ def send_contact_notification_email(contact_message):
     }
     
     # E-posta konusu
-    subject = f'Neue Kontaktnachricht von {context["contact_name"] or "Unbekannt"}'
+    subject = f'Yeni İletişim Mesajı - {context["contact_name"] or "İsimsiz"}'
     
     # Text ve HTML içerikleri oluştur
     text_content = render_to_string('integration_app/emails/contact_notification.txt', context)

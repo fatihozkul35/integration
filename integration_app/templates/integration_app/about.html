@@ -1,7 +1,6 @@
 {% extends 'integration_app/base.html' %}
-{% load i18n %}
 
-{% block title %}{% trans "Über uns" %} - {% trans "MS International" %}{% endblock %}
+{% block title %}Hakkımızda - MS International{% endblock %}
 
 {% block content %}
 <div class="container mt-5 mb-5">
@@ -9,10 +8,10 @@
         <div class="col-lg-12">
             <div class="card shadow-lg border-0">
                 <div class="card-body p-5">
-                    <h1 class="display-4 mb-4 text-center">{% trans "Über uns" %}</h1>
+                    <h1 class="display-4 mb-4 text-center">Hakkımızda</h1>
                     <hr class="mb-4">
-                    <p class="lead">{% trans "Willkommen bei MS International!" %}</p>
-                    <p>{% trans "Hier finden Sie Informationen über unser Unternehmen." %}</p>
+                    <p class="lead">MS International'a Hoş Geldiniz!</p>
+                    <p>MS International UG (haftungsbeschränkt), Almanya'nın Neuss kentinde kurulmuş bir Alman limited şirketi olup nitelikli göç ve istihdam danışmanlığı alanına odaklanmıştır. Şirket, Almanya'ya göç etmek isteyen kalifiye bireylere uçtan uca danışmanlık hizmetleri sunmayı hedeflemektedir. Bu kapsamda vize başvurularının yönetimi, mesleki denklik süreçlerinin takibi, uygun işverenlerle eşleştirme, Almanya'ya yerleşim desteği ve istihdam prosedürlerinin takibi gibi konularda müşterilerine rehberlik eder. Tüm bu hizmetler, Almanya yasalarına tam uyum gözetilerek, hızlı, güvenilir ve profesyonel bir biçimde sunulur. Böylece MS International UG, göçmen adaylarının karmaşık bürokratik süreçlerini kolaylaştırarak hem bireyler hem de işverenler için katma değer yaratmayı amaçlar.</p>
                 </div>
             </div>
         </div>
@@ -26,9 +25,9 @@
                     <img src="https://picsum.photos/600/400?random=1" alt="Section 1" class="img-fluid rounded shadow-lg">
                 </div>
                 <div class="col-lg-6 ps-lg-5">
-                    <h2 class="display-5 mb-4">{% trans "misyonumuz_title" %}</h2>
-                    <p class="lead mb-3">{% trans "misyonumuz_descr" %}</p>
-                    <a href="{% url 'integration_app:contact' %}" class="btn btn-primary btn-lg mt-3">{% trans "Basvuru yap" %}</a>
+                    <h2 class="display-5 mb-4">Misyonumuz</h2>
+                    <p class="lead mb-3">Göçmenlerin Almanya'ya giden yolculuklarında onlara destek olmak için bireysel danışmanlık hizmetleri sunuyoruz. Amacımız, her bireyin sürecine eşlik etmek ve tüm gerekliliklerin yerine getirildiğinden emin olmaktır.</p>
+                    <a href="{% url 'integration_app:contact' %}" class="btn btn-primary btn-lg mt-3">Başvuru yap</a>
                 </div>
             </div>
         </div>
@@ -39,9 +38,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
-                    <h2 class="display-5 mb-4">{% trans "Seyahatinize hazır mısınız?" %}</h2>
-                    <p class="lead mb-3">{% trans "Profesyonel bir danışmanlık için bizimle iletişime geçin ve Almanya’ya gelmenize nasıl yardımcı olabileceğimizi öğrenin." %}</p>
-                    <a href="{% url 'integration_app:contact' %}" class="btn btn-outline-primary btn-lg mt-3">{% trans "Kontakt aufnehmen" %}</a>
+                    <h2 class="display-5 mb-4">Seyahatinize hazır mısınız?</h2>
+                    <p class="lead mb-3">Profesyonel bir danışmanlık için bizimle iletişime geçin ve Almanya'ya gelmenize nasıl yardımcı olabileceğimizi öğrenin.</p>
+                    <a href="{% url 'integration_app:contact' %}" class="btn btn-outline-primary btn-lg mt-3">İletişime geç</a>
                 </div>
                 <div class="col-lg-6">
                     <img src="https://picsum.photos/600/400?random=2" alt="Section 2" class="img-fluid rounded shadow-lg">

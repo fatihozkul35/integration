@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.i18n import set_language
 from . import views
 
 app_name = 'integration_app'
@@ -14,6 +13,5 @@ urlpatterns = [
     path('referenzen/', views.references, name='references'),
     path('blog/', views.blog, name='blog'),
     path('kontakt/', views.contact, name='contact'),
-    path('set-language/', set_language, name='set_language'),
 ]
 
