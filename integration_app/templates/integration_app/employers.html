@@ -1,0 +1,254 @@
+{% extends 'integration_app/base.html' %}
+
+{% block title %}İşverenler İçin - MS International{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <!-- Başlık ve Giriş -->
+    <div class="row justify-content-center pt-3 mb-5">
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0 bg-primary text-white">
+                <div class="card-body p-5">
+                    <h1 class="display-4 mb-4 text-center">İşverenler İçin</h1>
+                    <hr class="mb-4" style="border-color: rgba(255,255,255,0.3);">
+                    <h2 class="h3 mb-3">İşverenlere Yönelik Hizmetlerimiz</h2>
+                    <p class="lead mb-0">Almanya'da nitelikli personel arayan işverenlere, Türkiye ve diğer ülkelerdeki aday havuzuna erişim sağlayan yapılandırılmış bir danışmanlık sunuyoruz. Hedefimiz, doğru adayı doğru pozisyonla buluştururken yasal çerçeveye tam uyumlu ve şeffaf bir süreç yürütmektir.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. Aday Seçimi ve Ön Değerlendirme -->
+    <section class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">1. Aday Seçimi ve Ön Değerlendirme</h2>
+                <p class="lead mb-4">Size en uygun adayları bulmak için kapsamlı bir ön değerlendirme süreci yürütüyoruz.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-search text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">Pozisyon Profili Tanımlama</h4>
+                                <p>Pozisyona uygun aday profili ve aranan niteliklerin tanımlanması</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-file-earmark-person text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">Ön Seçim ve Kontrol</h4>
+                                <p>Mevcut aday havuzundan ön seçim; CV ve referans kontrolü</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-camera-video text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">Ön Mülakat</h4>
+                                <p>Gerekirse online ön mülakat ve teknik/mesleki ön değerlendirme</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-clipboard-check text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">Teknik Değerlendirme</h4>
+                                <p>Mesleki yeterlilik ve teknik becerilerin değerlendirilmesi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Mülakat ve İş Teklifi Süreci -->
+    <section class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">2. Mülakat ve İş Teklifi Süreci</h2>
+                <p class="lead mb-4">Aday ve işveren arasında şeffaf ve profesyonel bir iletişim köprüsü kuruyoruz.</p>
+                
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Mülakat Planlaması:</strong> Online veya yüz yüze mülakatların planlanması, aday ve işveren arasında iletişim köprüsünün kurulması
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>İş Teklifi Koşulları:</strong> İş teklifi koşullarının şeffaf şekilde adayla paylaşılması
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Hukuki Uygunluk:</strong> İş sözleşmelerinin hukuken uygunluğu konusunda, gerektiğinde bağımsız hukukçularla işbirliği yapılır
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="alert alert-info mt-4 mb-0">
+                    <strong>Önemli:</strong> MS International UG kendi başına hukuki danışmanlık veya avukatlık faaliyeti yürütmez. Gerektiğinde bağımsız hukukçularla işbirliği yapılır.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Bürokrasi Desteği ve Hızlandırılmış Süreç -->
+    <section class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">3. Bürokrasi Desteği ve Hızlandırılmış Süreç (§81a)</h2>
+                <p class="lead mb-4">Hızlandırılmış Nitelikli İş Gücü Prosedürü ile süreçleri hızlandırıyoruz.</p>
+                
+                <p>Uygun görülen durumlarda, işveren ve adayın birlikte Hızlandırılmış Nitelikli İş Gücü Prosedürü (§81a AufenthG) imkânlarını değerlendirmesine destek oluruz.</p>
+                
+                <div class="row g-4 mt-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="bi bi-calendar-check text-primary" style="font-size: 3rem;"></i>
+                                <h4 class="h5 mt-3 mb-2">Randevu Organizasyonu</h4>
+                                <p class="card-text">Gerekli tüm randevuların organize edilmesi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="bi bi-file-earmark-text text-primary" style="font-size: 3rem;"></i>
+                                <h4 class="h5 mt-3 mb-2">Evrak Akışı</h4>
+                                <p class="card-text">Evrak akışının planlanması ve takibi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="bi bi-chat-dots text-primary" style="font-size: 3rem;"></i>
+                                <h4 class="h5 mt-3 mb-2">İletişim Köprüsü</h4>
+                                <p class="card-text">Taraflar arasındaki iletişimin kolaylaştırılması</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Personel Kiralama YAPMADAN Güvenli Aracılık -->
+    <section class="mb-5">
+        <div class="card shadow-lg border-0 bg-light">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">4. Personel Kiralama (Leiharbeit) YAPMADAN Güvenli Aracılık</h2>
+                <p class="lead mb-4">Doğrudan iş ilişkisi kurulmasını sağlıyoruz.</p>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <p>MS International UG, <strong>Arbeitnehmerüberlassungsgesetz (AÜG)</strong> kapsamında personel kiralama lisansı gerektiren faaliyetler yürütmez. Çalışanları kendi üzerine alıp başka işverenlere kiralamak yerine, yalnızca danışmanlık ve aracılık yoluyla işveren-aday eşleşmesi yapar.</p>
+                        <p class="mb-0"><strong>Böylece iş ilişkisi doğrudan işveren ile çalışan arasında kurulur.</strong></p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <i class="bi bi-shield-check text-primary" style="font-size: 5rem;"></i>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning mt-4 mb-0">
+                    <h5 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Önemli Not</h5>
+                    <p class="mb-0">MS International UG personel kiralama (Leiharbeit/Zeitarbeit) yapmaz; yalnızca danışmanlık ve aracılık hizmeti sunar. Bu sayede iş ilişkisi doğrudan işveren ve çalışan arasında kurulur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantajlar Özeti -->
+    <section class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4 text-center">Neden MS International UG ile Çalışmalısınız?</h2>
+                <div class="row g-4 mt-3">
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <i class="bi bi-check2-circle text-success me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h4 class="h5 mb-2">Geniş Aday Havuzu</h4>
+                                <p>Türkiye ve diğer ülkelerdeki nitelikli aday havuzuna erişim</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <i class="bi bi-check2-circle text-success me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h4 class="h5 mb-2">Yasal Uyum</h4>
+                                <p>Tüm süreçler yasal çerçeveye tam uyumlu yürütülür</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <i class="bi bi-check2-circle text-success me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h4 class="h5 mb-2">Şeffaf Süreç</h4>
+                                <p>Her aşamada açık iletişim ve şeffaf süreç yönetimi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <i class="bi bi-check2-circle text-success me-3" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h4 class="h5 mb-2">Hızlandırılmış Süreç</h4>
+                                <p>§81a kapsamında hızlandırılmış prosedür desteği</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim CTA -->
+    <section class="text-center">
+        <div class="card shadow-lg border-0 bg-primary text-white">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-3">Nitelikli Personel İhtiyacınız İçin Bizimle İletişime Geçin</h2>
+                <p class="lead mb-4">Size en uygun adayları bulmak ve süreci başlatmak için hazırız.</p>
+                <a href="{% url 'integration_app:contact' %}" class="btn btn-light btn-lg">İletişime Geçin</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .bi {
+        font-size: 1.1rem;
+    }
+    section {
+        scroll-margin-top: 100px;
+    }
+</style>
+{% endblock %}
+

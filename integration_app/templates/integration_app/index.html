@@ -4,76 +4,72 @@
 
 {% block content %}
 <div class="container-fluid px-0">
-    <!-- Section 1: Image Left, Text Right -->
+    <!-- Section 1: Almanya'da Çalışmak – Nitelikli Göç Yolları -->
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://picsum.photos/600/400?random=1" alt="Section 1" class="img-fluid rounded shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop" alt="Almanya'da Çalışmak" class="img-fluid rounded shadow-lg">
                 </div>
                 <div class="col-lg-6 ps-lg-5">
-                    <h2 class="display-5 mb-4">MS International'a Hoş Geldiniz</h2>
-                    <p class="lead mb-3">Uluslararası iş dünyasında önde gelen bir şirketiz.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                    <a href="{% url 'integration_app:about' %}" class="btn btn-primary btn-lg mt-3">Daha fazla bilgi</a>
+                    <h2 class="display-5 mb-4">Almanya'da Çalışmak – Nitelikli Göç Yolları</h2>
+                    <p class="lead mb-3">Almanya, Yeni Nitelikli İş Gücü Göç Yasası ile hem üniversite mezunları hem de mesleki eğitim almış ve deneyimli adaylar için çok sayıda yasal göç yolu sunuyor. MS International UG, profilinize göre hangi vize ve oturum türünün sizin için en uygun olduğuna birlikte karar vermenize yardımcı olur; süreci baştan sona profesyonelce koordine eder.</p>
+                    <a href="{% url 'integration_app:visa_routes' %}" class="btn btn-primary btn-lg mt-3">Detaylı bilgi →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Text Left, Image Right -->
+    <!-- Section 2: Diploma & Meslek Denkliği -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
-                    <h2 class="display-5 mb-4">Uzmanlığımız</h2>
-                    <p class="lead mb-3">Yıllarca deneyimle özel çözümler sunuyoruz.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a href="{% url 'integration_app:contact' %}" class="btn btn-outline-primary btn-lg mt-3">İletişime geç</a>
+                    <h2 class="display-5 mb-4">Diploma & Meslek Denkliği</h2>
+                    <p class="lead mb-3">Yurt dışında alınan diplomaların Almanya'da tanınması pek çok meslek için zorunlu bir adımdır. MS International UG, doğru denklik kurumunun bulunması, başvuru dosyasının hazırlanması, tercüme ve noter onayı gibi adımları sizin adınıza organize eder, süreci şeffaf biçimde takip eder.</p>
+                    <a href="{% url 'integration_app:services' %}#denklik" class="btn btn-outline-primary btn-lg mt-3">Detaylı bilgi →</a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://picsum.photos/600/400?random=2" alt="Section 2" class="img-fluid rounded shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop" alt="Diploma Denkliği" class="img-fluid rounded shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Image Left, Text Right -->
+    <!-- Section 3: Vize ve Oturum Süreç Desteği -->
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://picsum.photos/600/400?random=3" alt="Section 3" class="img-fluid rounded shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop" alt="Vize Süreçleri" class="img-fluid rounded shadow-lg">
                 </div>
                 <div class="col-lg-6 ps-lg-5">
-                    <h2 class="display-5 mb-4">İnovasyon ve Kalite</h2>
-                    <p class="lead mb-3">Modern teknolojilere ve en yüksek kalite standartlarına güveniyoruz.</p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    <button class="btn btn-primary btn-lg mt-3">Hizmetlerimiz</button>
+                    <h2 class="display-5 mb-4">Vize ve Oturum Süreç Desteği</h2>
+                    <p class="lead mb-3">Doğru vize türünü seçmek, eksiksiz evrak hazırlamak ve randevu süreçlerini yönetmek çoğu aday için yorucu olabilir. Biz; uygun vize kategorisinin belirlenmesinden konsolosluk randevusuna, mülakat hazırlığından dosya takibine kadar tüm adımları tek elden koordine ediyoruz. Resmî karar yetkisi her zaman makamlarındır, biz sürecin doğru ve düzenli ilerlemesini sağlarız.</p>
+                    <a href="{% url 'integration_app:services' %}#vize" class="btn btn-primary btn-lg mt-3">Detaylı bilgi →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: Text Left, Image Right -->
+    <!-- Section 4: Almanya'ya Yerleşim ve Entegrasyon -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
-                    <h2 class="display-5 mb-4">Küresel Varlık</h2>
-                    <p class="lead mb-3">Uluslararası ağımızla dünya çapında yanınızdayız.</p>
-                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
-                    <button class="btn btn-outline-primary btn-lg mt-3">Lokasyonlar</button>
+                    <h2 class="display-5 mb-4">Almanya'ya Yerleşim ve Entegrasyon</h2>
+                    <p class="lead mb-3">Almanya'ya sadece "gelmek" değil, yeni bir hayat kurmak önemlidir. Konaklama bulunması, adres kaydı (Anmeldung), banka hesabı, sağlık sigortası, çocukların okul kaydı, Kindergeld gibi sosyal haklar ve günlük yaşam adımlarında yanınızdayız. Amacımız, ilk günden itibaren güvende ve organize hissetmeniz.</p>
+                    <a href="{% url 'integration_app:services' %}#yerlesim" class="btn btn-outline-primary btn-lg mt-3">Detaylı bilgi →</a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://picsum.photos/600/400?random=4" alt="Section 4" class="img-fluid rounded shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop" alt="Yerleşim ve Entegrasyon" class="img-fluid rounded shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section class="py-5">
+    <section class="py-5" id="contact-form-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -93,41 +89,94 @@
                                 {% endfor %}
                             {% endif %}
                             
-                            <form method="post" action="{% url 'integration_app:contact' %}" id="contact-form-index" novalidate>
+                            <form method="post" action="{% url 'integration_app:index' %}" id="contact-form-index" novalidate>
                                 {% csrf_token %}
                                 
+                                <h4 class="h5 mb-3 mt-4">Kişisel Bilgiler</h4>
                                 <div class="mb-3">
                                     <label for="name-index" class="form-label">
-                                        İsim
+                                        Ad Soyad
                                     </label>
                                     <input type="text" class="form-control" id="name-index" name="name">
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="email-index" class="form-label">
-                                            E-Posta
+                                        <label for="age-index" class="form-label">
+                                            Yaş <span class="text-danger">*</span>
                                         </label>
-                                        <input type="email" class="form-control" id="email-index" name="email">
+                                        <input type="number" class="form-control" id="age-index" name="age" min="18" max="100" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="marital_status-index" class="form-label">
+                                            Medeni Durum <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select" id="marital_status-index" name="marital_status" required>
+                                            <option value="">Seçiniz</option>
+                                            <option value="bekar">Bekar</option>
+                                            <option value="evli">Evli</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="children_count-index" class="form-label">
+                                            Çocuk Sayısı <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="number" class="form-control" id="children_count-index" name="children_count" min="0" max="10" value="0" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="driving_license-index" class="form-label">
+                                            Sürücü Belgesi Sınıfı <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="driving_license-index" name="driving_license" placeholder="Örn: B, C, D" required>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="h5 mb-3 mt-4">Mesleki Bilgiler</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="profession-index" class="form-label">
+                                            Meslek <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="profession-index" name="profession" placeholder="Örn: Mühendis, Doktor, Öğretmen" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="graduation-index" class="form-label">
+                                            Mezuniyet <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="graduation-index" name="graduation" placeholder="Örn: Üniversite, Meslek Lisesi" required>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="h5 mb-3 mt-4">İletişim Bilgileri</h4>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email-index" class="form-label">
+                                            E-Posta <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="email" class="form-control" id="email-index" name="email" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="phone-index" class="form-label">
-                                            Telefon
+                                            İrtibat Numarası
                                         </label>
-                                        <input type="tel" class="form-control" id="phone-index" name="phone">
+                                        <input type="tel" class="form-control" id="phone-index" name="phone" placeholder="+90 5XX XXX XX XX">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <p class="text-muted small">
-                                        <span class="text-danger">*</span> Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon).
+                                        <span class="text-danger">*</span> E-Posta zorunludur. İrtibat numarası isteğe bağlıdır.
                                     </p>
                                 </div>
                                 
+                                <h4 class="h5 mb-3 mt-4">Mesaj</h4>
                                 <div class="mb-3">
                                     <label for="message-index" class="form-label">
-                                        Mesaj
+                                        Mesajınız
                                     </label>
-                                    <textarea class="form-control" id="message-index" name="message" rows="6"></textarea>
+                                    <textarea class="form-control" id="message-index" name="message" rows="6" placeholder="Sorularınızı veya talebinizi buraya yazabilirsiniz..."></textarea>
                                 </div>
                                 
                                 <div class="mb-3">
@@ -141,7 +190,7 @@
                                 
                                 <div class="mb-3">
                                     <p class="text-muted small">
-                                        <span class="text-danger">*</span> Lütfen en az bir iletişim bilgisi girin ve gizlilik politikasına onay verin.
+                                        <span class="text-danger">*</span> İşaretli alanlar zorunludur. Lütfen tüm zorunlu alanları doldurun ve gizlilik politikasına onay verin.
                                     </p>
                                 </div>
                                 
@@ -179,25 +228,106 @@
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // URL'de anchor varsa o bölüme scroll yap
+    if (window.location.hash === '#contact-form-section') {
+        setTimeout(function() {
+            const section = document.getElementById('contact-form-section');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Navbar yüksekliği için offset
+                window.scrollBy(0, -100);
+            }
+        }, 100);
+    }
+    
     const contactForm = document.getElementById('contact-form-index');
     if (!contactForm) return;
     
-    const emailInput = document.getElementById('email-index');
-    const phoneInput = document.getElementById('phone-index');
+    // Tüm required alanları bul
+    const requiredFields = contactForm.querySelectorAll('[required]');
+    
+    // Input değiştiğinde hata durumunu temizle
+    requiredFields.forEach(function(field) {
+        field.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                this.classList.remove('is-invalid');
+                this.style.borderColor = '';
+            }
+        });
+        
+        // Select için change event
+        if (field.tagName === 'SELECT') {
+            field.addEventListener('change', function() {
+                if (this.value !== '') {
+                    this.classList.remove('is-invalid');
+                    this.style.borderColor = '';
+                }
+            });
+        }
+    });
     
     contactForm.addEventListener('submit', function(e) {
-        const email = emailInput.value.trim();
-        const phone = phoneInput.value.trim();
+        let isValid = true;
+        let firstInvalidField = null;
         
-        // En az birinin doldurulması gerekiyor
-        if (!email && !phone) {
+        // Tüm required alanları kontrol et
+        requiredFields.forEach(function(field) {
+            const value = field.value.trim();
+            let isEmpty = false;
+            
+            // Select için özel kontrol
+            if (field.tagName === 'SELECT') {
+                isEmpty = value === '';
+            } else {
+                isEmpty = value === '';
+            }
+            
+            if (isEmpty) {
+                isValid = false;
+                // Kırmızı border ekle
+                field.classList.add('is-invalid');
+                field.style.borderColor = '#dc3545';
+                field.style.borderWidth = '2px';
+                
+                // İlk boş alanı kaydet
+                if (!firstInvalidField) {
+                    firstInvalidField = field;
+                }
+            } else {
+                // Geçerli ise border'ı temizle
+                field.classList.remove('is-invalid');
+                field.style.borderColor = '';
+                field.style.borderWidth = '';
+            }
+        });
+        
+        // Eğer geçersiz alanlar varsa
+        if (!isValid) {
             e.preventDefault();
-            alert('Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon).');
+            
+            // İlk boş alana focus yap
+            if (firstInvalidField) {
+                firstInvalidField.focus();
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
             return false;
         }
     });
 });
 </script>
+
+<style>
+    .is-invalid {
+        border-color: #dc3545 !important;
+        border-width: 2px !important;
+    }
+    
+    .is-invalid:focus {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+    }
+</style>
 {% endblock %}
 {% endblock %}
 

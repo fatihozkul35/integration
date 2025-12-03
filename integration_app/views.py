@@ -13,6 +13,11 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     """Home page view that renders index.html"""
+    # Ana sayfadaki form POST request'i ise contact view'ını çağır
+    if request.method == 'POST':
+        # Contact view'ını çağır ama referer'ı index olarak ayarla
+        request.META['HTTP_REFERER'] = request.build_absolute_uri('/')
+        return contact(request)
     return render(request, 'integration_app/index.html')
 
 def services(request):
@@ -26,6 +31,18 @@ def about(request):
 def process(request):
     """Process / How it works page view"""
     return render(request, 'integration_app/process.html')
+
+def visa_routes(request):
+    """Visa routes / Qualified Migration Law page view"""
+    return render(request, 'integration_app/visa_routes.html')
+
+def employers(request):
+    """For employers page view"""
+    return render(request, 'integration_app/employers.html')
+
+def legal_info(request):
+    """Legal information page view"""
+    return render(request, 'integration_app/legal_info.html')
 
 def pricing(request):
     """Pricing page view"""
@@ -47,6 +64,12 @@ def contact(request):
     """Contact page view"""
     if request.method == 'POST':
         name = request.POST.get('name', '').strip()
+        age = request.POST.get('age', '').strip()
+        marital_status = request.POST.get('marital_status', '').strip()
+        children_count = request.POST.get('children_count', '0').strip()
+        driving_license = request.POST.get('driving_license', '').strip()
+        profession = request.POST.get('profession', '').strip()
+        graduation = request.POST.get('graduation', '').strip()
         email = request.POST.get('email', '').strip()
         phone = request.POST.get('phone', '').strip()
         message = request.POST.get('message', '').strip()
@@ -58,21 +81,59 @@ def contact(request):
         if not consent:
             errors.append('Gizlilik politikasına onay vermelisiniz.')
         
-        # En az bir iletişim bilgisi gerekli
-        if not email and not phone:
-            errors.append('Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon).')
+        # Zorunlu alanlar
+        if not age:
+            errors.append('Yaş bilgisi zorunludur.')
+        if not marital_status:
+            errors.append('Medeni durum seçimi zorunludur.')
+        if not driving_license:
+            errors.append('Sürücü belgesi sınıfı zorunludur.')
+        if not profession:
+            errors.append('Meslek bilgisi zorunludur.')
+        if not graduation:
+            errors.append('Mezuniyet bilgisi zorunludur.')
+        if not email:
+            errors.append('E-Posta adresi zorunludur.')
         
         if errors:
             for error in errors:
                 messages.error(request, error)
+            # Hata varsa referer'a göre yönlendir
+            referer = request.META.get('HTTP_REFERER', '')
+            # Ana sayfadan geliyorsa ana sayfaya dön
+            if referer and (referer.endswith('/') or '/index' in referer or 'index' in referer.lower()):
+                return redirect('integration_app:index#contact-form-section')
+            else:
+                return render(request, 'integration_app/contact.html')
         else:
             # Veritabanına kaydet
             try:
+                # Yaş ve çocuk sayısı için integer dönüşümü
+                age_int = None
+                if age:
+                    try:
+                        age_int = int(age)
+                    except ValueError:
+                        age_int = None
+                
+                children_count_int = 0
+                if children_count:
+                    try:
+                        children_count_int = int(children_count)
+                    except ValueError:
+                        children_count_int = 0
+                
                 contact_message = ContactMessage.objects.create(
-                    name=name,
+                    name=name if name else None,
+                    age=age_int,
+                    marital_status=marital_status if marital_status else '',
+                    children_count=children_count_int,
+                    driving_license=driving_license if driving_license else '',
+                    profession=profession if profession else '',
+                    graduation=graduation if graduation else '',
                     email=email if email else None,
                     phone=phone if phone else None,
-                    message=message,
+                    message=message if message else '',
                     consent=True if consent else False
                 )
                 
@@ -86,8 +147,14 @@ def contact(request):
                     # Kullanıcıya hata göstermiyoruz ama logluyoruz
                 
                 messages.success(request, 'Mesajınız başarıyla gönderildi!')
-                # Formu temizlemek için redirect
-                return redirect('integration_app:contact')
+                # Formu temizlemek için redirect - referer'a göre yönlendir
+                referer = request.META.get('HTTP_REFERER', '')
+                # Ana sayfadan geliyorsa ana sayfaya dön (form bölümüne anchor ile)
+                # Referer kontrolü: ana sayfa URL'i genellikle '/' ile biter veya 'index' içerir
+                if referer and (referer.endswith('/') or '/index' in referer or 'index' in referer.lower() or not '/kontakt' in referer.lower() and not '/contact' in referer.lower()):
+                    return redirect('integration_app:index#contact-form-section')
+                else:
+                    return redirect('integration_app:contact')
             except Exception as e:
                 messages.error(request, 'Bir hata oluştu. Lütfen tekrar deneyin.')
     

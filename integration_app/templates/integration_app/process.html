@@ -1,45 +1,190 @@
 {% extends 'integration_app/base.html' %}
 
-{% block title %}Ablauf - MS International{% endblock %}
+{% block title %}Süreç Nasıl İşler? - MS International{% endblock %}
 
 {% block content %}
 <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="text-center mb-5">
-                <h1 class="display-4 mb-4">Wie funktioniert es?</h1>
-                <p class="lead">Unser einfacher und transparenter Prozess</p>
-            </div>
-            
-            <div class="card shadow-lg border-0 mb-4">
-                <div class="card-body p-4">
-                    <h3>Schritt 1: Erstberatung</h3>
-                    <p>Kostenlose Erstberatung zur Klärung Ihrer Situation.</p>
-                </div>
-            </div>
-            
-            <div class="card shadow-lg border-0 mb-4">
-                <div class="card-body p-4">
-                    <h3>Schritt 2: Dokumentenprüfung</h3>
-                    <p>Umfassende Prüfung aller erforderlichen Dokumente.</p>
-                </div>
-            </div>
-            
-            <div class="card shadow-lg border-0 mb-4">
-                <div class="card-body p-4">
-                    <h3>Schritt 3: Antragstellung</h3>
-                    <p>Professionelle Unterstützung bei der Antragstellung.</p>
-                </div>
-            </div>
-            
-            <div class="card shadow-lg border-0">
-                <div class="card-body p-4">
-                    <h3>Schritt 4: Begleitung</h3>
-                    <p>Kontinuierliche Betreuung bis zur Genehmigung.</p>
-                </div>
+    <!-- Başlık -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="text-center">
+                <h1 class="display-4 mb-4">Süreç Nasıl İşler?</h1>
+                <p class="lead">Almanya'ya göç yolculuğunuzda size rehberlik eden adım adım sürecimiz</p>
             </div>
         </div>
     </div>
+
+    <!-- Adım 1: Ön Görüşme ve Profil Analizi -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-lg border-0 h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                                1
+                            </div>
+                            <h2 class="display-5 mb-0">Ön Görüşme ve Profil Analizi</h2>
+                        </div>
+                        <p class="lead mb-3">Sürecin ilk adımı, sizinle detaylı bir ön görüşme yapmaktır.</p>
+                        <p>Ön görüşmede; eğitim geçmişiniz, mesleki deneyiminiz, dil seviyeniz ve hedefleriniz detaylı şekilde analiz edilir. Bu aşamada, hangi vize yollarının gerçekçi olduğu ve hangi belgelerin toplanması gerektiği netleştirilir.</p>
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Eğitim geçmişi analizi</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mesleki deneyim değerlendirmesi</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Dil seviyesi tespiti</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Hedef ve beklentilerin belirlenmesi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop" alt="Ön Görüşme" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Adım 2: Uygun Göç Yolu ve Vize Seçenekleri -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                <div class="card shadow-lg border-0 h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                                2
+                            </div>
+                            <h2 class="display-5 mb-0">Uygun Göç Yolu ve Vize Seçenekleri</h2>
+                        </div>
+                        <p class="lead mb-3">Profil analizinden sonra, size en uygun göç yolunu belirliyoruz.</p>
+                        <p>Profil analizinden sonra, Nitelikli Göç Yasası kapsamındaki uygun oturum türleri ve bunların artı-eksi yönleri açıklanır. AB Mavi Kart, nitelikli meslek vizesi, mesleki deneyim vizesi, Chancenkarte gibi seçenekler, sizin kariyer planınızla uyumu açısından değerlendirilir.</p>
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Uygun vize türlerinin belirlenmesi</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Artı ve eksi yönlerin değerlendirilmesi</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Kariyer planınızla uyum analizi</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>En uygun seçeneğin belirlenmesi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop" alt="Vize Seçenekleri" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Adım 3: Evrak Hazırlığı ve Denklik Başvurusu -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-lg border-0 h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                                3
+                            </div>
+                            <h2 class="display-5 mb-0">Evrak Hazırlığı ve Denklik Başvurusu</h2>
+                        </div>
+                        <p class="lead mb-3">Gerekli tüm belgeleri organize ediyoruz.</p>
+                        <p>Gerekli görüldüğünde diploma / meslek denkliği süreci başlatılır; doğru kurum tespit edilir, evrak listesi çıkarılır ve tercüme-noter adımları organize edilir. Aynı zamanda vize başvurusu için gerekli tüm belgeler (iş teklifi, CV, motivasyon yazısı vb.) kontrol edilip tamamlanır.</p>
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Denklik kurumu tespiti</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Evrak listesi hazırlığı</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Tercüme ve noter işlemleri</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>CV ve motivasyon yazısı hazırlığı</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop" alt="Evrak Hazırlığı" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Adım 4: Vize Başvurusu ve Randevu Organizasyonu -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                <div class="card shadow-lg border-0 h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                                4
+                            </div>
+                            <h2 class="display-5 mb-0">Vize Başvurusu ve Randevu Organizasyonu</h2>
+                        </div>
+                        <p class="lead mb-3">Başvuru sürecini profesyonelce yönetiyoruz.</p>
+                        <p>Online formlar doldurulur, konsolosluk randevusu planlanır ve başvuru dosyası başvuru gününe hazır hale getirilir. Mülakat öncesinde, sık sorulan sorular ve dikkat edilmesi gereken noktalar üzerinden prova yapılır. Resmî makamlar başvuruyu inceledikten sonra kararı kendileri verir; danışmanlık süreci, başvurunun düzenli, eksiksiz ve zamanında iletilmesini sağlar.</p>
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Online formların doldurulması</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Konsolosluk randevusu planlaması</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mülakat provası ve hazırlık</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Başvuru dosyasının kontrolü</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop" alt="Vize Başvurusu" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Adım 5: Almanya'ya Geliş ve İlk Adımlar -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card shadow-lg border-0 h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                                5
+                            </div>
+                            <h2 class="display-5 mb-0">Almanya'ya Geliş ve İlk Adımlar</h2>
+                        </div>
+                        <p class="lead mb-3">Vize onayı sonrası yanınızdayız.</p>
+                        <p>Vize onayı sonrası; Almanya'ya inişten itibaren konaklama, adres kaydı, banka hesabı, vergi numarası, sağlık sigortası ve iş başlangıç süreçleri için yol haritası sunulur. Aile bireyleri, çocukların okul/anaokulu süreçleri ve Kindergeld gibi sosyal haklar hakkında da bilgilendirme yapılır.</p>
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Konaklama desteği</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Adres kaydı (Anmeldung)</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Banka hesabı ve vergi numarası</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Sağlık sigortası seçimi</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Okul kayıtları ve sosyal haklar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop" alt="Yerleşim" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim CTA -->
+    <section class="text-center mt-5">
+        <div class="card shadow-lg border-0 bg-primary text-white">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-3">Sürecinizi Birlikte Başlatalım</h2>
+                <p class="lead mb-4">Ön görüşme için bizimle iletişime geçin ve size özel yol haritanızı birlikte çıkaralım.</p>
+                <a href="{% url 'integration_app:contact' %}" class="btn btn-light btn-lg">İletişime Geçin</a>
+            </div>
+        </div>
+    </section>
 </div>
+
+<style>
+    .bi {
+        font-size: 1.1rem;
+    }
+    section {
+        scroll-margin-top: 100px;
+    }
+    img {
+        transition: transform 0.3s ease;
+    }
+    img:hover {
+        transform: scale(1.02);
+    }
+</style>
 {% endblock %}
 

@@ -4,14 +4,79 @@
 
 {% block content %}
 <div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-lg border-0">
+    <!-- Başlık ve Açıklama -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="text-center">
+                <h1 class="display-4 mb-4">İletişim</h1>
+                <p class="lead">Sorularınız, işbirliği teklifleri veya danışmanlık talebiniz için bizimle doğrudan iletişime geçebilirsiniz. Tüm başvurular gizlilik esasına göre değerlendirilir; size en kısa sürede geri dönüş sağlanır.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- İletişim Bilgileri -->
+        <div class="col-lg-5">
+            <div class="card shadow-lg border-0 h-100">
                 <div class="card-body p-5">
-                    <h1 class="display-4 mb-4 text-center">İletişim</h1>
-                    <hr class="mb-4">
-                    <p class="lead">Bizimle iletişime geçin</p>
-                    <p class="mb-4">Mesajınızı bekliyoruz!</p>
+                    <h2 class="h3 mb-4">İletişim Bilgileri</h2>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5 mb-3"><i class="bi bi-building text-primary me-2"></i>Şirket Bilgileri</h3>
+                        <p class="mb-1"><strong>Şirket İsmi:</strong></p>
+                        <p class="mb-3">MS International UG (haftungsbeschränkt)</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5 mb-3"><i class="bi bi-telephone text-primary me-2"></i>Telefon</h3>
+                        <p class="mb-1"><strong>Telefon / WhatsApp:</strong></p>
+                        <p class="mb-0">
+                            <a href="tel:+4915259276039" class="text-decoration-none">+49 1525 9276039</a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="https://wa.me/4915259276039" target="_blank" class="btn btn-success btn-sm mt-2">
+                                <i class="bi bi-whatsapp me-1"></i>WhatsApp ile İletişim
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5 mb-3"><i class="bi bi-envelope text-primary me-2"></i>E-posta</h3>
+                        <p class="mb-1"><strong>E-posta:</strong></p>
+                        <p class="mb-0">
+                            <a href="mailto:info@international-ms.de" class="text-decoration-none">info@international-ms.de</a>
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5 mb-3"><i class="bi bi-geo-alt text-primary me-2"></i>Adres</h3>
+                        <p class="mb-1"><strong>Adres:</strong></p>
+                        <p class="mb-0">
+                            Furtherhofstraße 43<br>
+                            41462 Neuss – Almanya
+                        </p>
+                        <a href="https://maps.google.com/?q=Furtherhofstraße+43,+41462+Neuss" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
+                            <i class="bi bi-map me-1"></i>Haritada Göster
+                        </a>
+                    </div>
+                    
+                    <div class="mb-0">
+                        <h3 class="h5 mb-3"><i class="bi bi-clock text-primary me-2"></i>Randevu Saatleri</h3>
+                        <p class="mb-1"><strong>Açık Randevu Saatleri:</strong></p>
+                        <p class="mb-2"><strong>Hafta içi:</strong> 09:00 – 19:00 (yalnızca randevu ile)</p>
+                        <div class="alert alert-info mb-0">
+                            <small><i class="bi bi-info-circle me-1"></i>Online görüşme ve telefon randevuları için lütfen önce e-posta veya WhatsApp üzerinden talepte bulunun.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- İletişim Formu -->
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 h-100">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4">Bize Mesaj Gönderin</h2>
                     
                     {% if messages %}
                         {% for message in messages %}
@@ -25,38 +90,91 @@
                     <form method="post" action="{% url 'integration_app:contact' %}" id="contact-form" novalidate>
                         {% csrf_token %}
                         
+                        <h4 class="h5 mb-3 mt-4">Kişisel Bilgiler</h4>
                         <div class="mb-3">
                             <label for="name" class="form-label">
-                                İsim
+                                Ad Soyad
                             </label>
                             <input type="text" class="form-control" id="name" name="name">
                         </div>
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">
-                                    E-Posta
+                                <label for="age" class="form-label">
+                                    Yaş <span class="text-danger">*</span>
                                 </label>
-                                <input type="email" class="form-control" id="email" name="email">
+                                <input type="number" class="form-control" id="age" name="age" min="18" max="100" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="marital_status" class="form-label">
+                                    Medeni Durum <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="marital_status" name="marital_status" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="bekar">Bekar</option>
+                                    <option value="evli">Evli</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="children_count" class="form-label">
+                                    Çocuk Sayısı <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" id="children_count" name="children_count" min="0" max="10" value="0" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="driving_license" class="form-label">
+                                    Sürücü Belgesi Sınıfı <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="driving_license" name="driving_license" placeholder="Örn: B, C, D" required>
+                            </div>
+                        </div>
+                        
+                        <h4 class="h5 mb-3 mt-4">Mesleki Bilgiler</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="profession" class="form-label">
+                                    Meslek <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="profession" name="profession" placeholder="Örn: Mühendis, Doktor, Öğretmen" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="graduation" class="form-label">
+                                    Mezuniyet <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="graduation" name="graduation" placeholder="Örn: Üniversite, Meslek Lisesi" required>
+                            </div>
+                        </div>
+                        
+                        <h4 class="h5 mb-3 mt-4">İletişim Bilgileri</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">
+                                    E-Posta <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="form-label">
-                                    Telefon
+                                    İrtibat Numarası
                                 </label>
-                                <input type="tel" class="form-control" id="phone" name="phone">
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="+90 5XX XXX XX XX">
                             </div>
                         </div>
                         <div class="mb-3">
                             <p class="text-muted small">
-                                <span class="text-danger">*</span> Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon).
+                                <span class="text-danger">*</span> E-Posta zorunludur. İrtibat numarası isteğe bağlıdır.
                             </p>
                         </div>
                         
+                        <h4 class="h5 mb-3 mt-4">Mesaj</h4>
                         <div class="mb-3">
                             <label for="message" class="form-label">
-                                Mesaj
+                                Mesajınız
                             </label>
-                            <textarea class="form-control" id="message" name="message" rows="6"></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="6" placeholder="Sorularınızı veya talebinizi buraya yazabilirsiniz..."></textarea>
                         </div>
                         
                         <div class="mb-3">
@@ -70,7 +188,7 @@
                         
                         <div class="mb-3">
                             <p class="text-muted small">
-                                <span class="text-danger">*</span> Lütfen en az bir iletişim bilgisi girin ve gizlilik politikasına onay verin.
+                                <span class="text-danger">*</span> İşaretli alanlar zorunludur. Lütfen tüm zorunlu alanları doldurun ve gizlilik politikasına onay verin.
                             </p>
                         </div>
                         
@@ -94,21 +212,90 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
     
-    const emailInput = document.getElementById('email');
-    const phoneInput = document.getElementById('phone');
+    // Tüm required alanları bul
+    const requiredFields = contactForm.querySelectorAll('[required]');
+    
+    // Input değiştiğinde hata durumunu temizle
+    requiredFields.forEach(function(field) {
+        field.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                this.classList.remove('is-invalid');
+                this.style.borderColor = '';
+            }
+        });
+        
+        // Select için change event
+        if (field.tagName === 'SELECT') {
+            field.addEventListener('change', function() {
+                if (this.value !== '') {
+                    this.classList.remove('is-invalid');
+                    this.style.borderColor = '';
+                }
+            });
+        }
+    });
     
     contactForm.addEventListener('submit', function(e) {
-        const email = emailInput.value.trim();
-        const phone = phoneInput.value.trim();
+        let isValid = true;
+        let firstInvalidField = null;
         
-        // En az birinin doldurulması gerekiyor
-        if (!email && !phone) {
+        // Tüm required alanları kontrol et
+        requiredFields.forEach(function(field) {
+            const value = field.value.trim();
+            let isEmpty = false;
+            
+            // Select için özel kontrol
+            if (field.tagName === 'SELECT') {
+                isEmpty = value === '';
+            } else {
+                isEmpty = value === '';
+            }
+            
+            if (isEmpty) {
+                isValid = false;
+                // Kırmızı border ekle
+                field.classList.add('is-invalid');
+                field.style.borderColor = '#dc3545';
+                field.style.borderWidth = '2px';
+                
+                // İlk boş alanı kaydet
+                if (!firstInvalidField) {
+                    firstInvalidField = field;
+                }
+            } else {
+                // Geçerli ise border'ı temizle
+                field.classList.remove('is-invalid');
+                field.style.borderColor = '';
+                field.style.borderWidth = '';
+            }
+        });
+        
+        // Eğer geçersiz alanlar varsa
+        if (!isValid) {
             e.preventDefault();
-            alert('Lütfen en az bir iletişim bilgisi girin (E-Posta veya Telefon).');
+            
+            // İlk boş alana focus yap
+            if (firstInvalidField) {
+                firstInvalidField.focus();
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
             return false;
         }
     });
 });
 </script>
+
+<style>
+    .is-invalid {
+        border-color: #dc3545 !important;
+        border-width: 2px !important;
+    }
+    
+    .is-invalid:focus {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+    }
+</style>
 {% endblock %}
 
