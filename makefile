@@ -64,11 +64,25 @@ build:
 	@echo "****************************************************************"
 	@echo "Building for production deployment..."
 	@echo "Activating virtual environment and running deployment tasks..."
-		source venv/bin/activate
-	@echo "Migrating migrations files..."
-		python manage.py migrate;
-	@echo "Collecting staticfiles..."
-		python manage.py collectstatic --noinput;
+	@if [ -f venv/bin/python ]; then \
+		echo "Using Linux/Mac venv..."; \
+		echo "Migrating migrations files..."; \
+		venv/bin/python manage.py migrate; \
+		echo "Collecting staticfiles..."; \
+		venv/bin/python manage.py collectstatic --noinput; \
+	elif [ -f venv/Scripts/python.exe ]; then \
+		echo "Using Windows venv..."; \
+		echo "Migrating migrations files..."; \
+		venv/Scripts/python.exe manage.py migrate; \
+		echo "Collecting staticfiles..."; \
+		venv/Scripts/python.exe manage.py collectstatic --noinput; \
+	else \
+		echo "No venv found, using system Python..."; \
+		echo "Migrating migrations files..."; \
+		python manage.py migrate; \
+		echo "Collecting staticfiles..."; \
+		python manage.py collectstatic --noinput; \
+	fi
 	@echo "Build completed successfully!"
 	@echo "Next steps:"
 	@echo "  1. Reload your web app"
