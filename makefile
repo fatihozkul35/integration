@@ -1,4 +1,4 @@
-.PHONY: help install run migrate makemigrations shell test clean superuser collectstatic
+.PHONY: help install run migrate makemigrations shell test clean superuser collectstatic build
 
 # Default target
 help:
@@ -13,6 +13,7 @@ help:
 	@echo "test             - Run tests"
 	@echo "superuser        - Create superuser"
 	@echo "collectstatic    - Collect static files"
+	@echo "build            - Run post-deployment commands (collectstatic, etc.)"
 	@echo "clean            - Clean __pycache__ and .pyc files"
 	@echo "venv             - Activate virtual environment (PowerShell)"
 	@echo "format           - Format code (if black/autopep8 available)"
@@ -56,6 +57,22 @@ superuser:
 collectstatic:
 	python manage.py collectstatic --noinput
 
+# Build - Post-deployment commands
+# This command runs all necessary commands after deployment (e.g., on PythonAnywhere)
+# Detects and uses venv Python if available, otherwise uses system Python
+build:
+	@echo "****************************************************************"
+	@echo "Building for production deployment..."
+	@echo "Activating virtual environment and running deployment tasks..."
+		source venv/bin/activate
+	@echo "Migrating migrations files..."
+		python manage.py migrate;
+	@echo "Collecting staticfiles..."
+		python manage.py collectstatic --noinput;
+	@echo "Build completed successfully!"
+	@echo "Next steps:"
+	@echo "  1. Reload your web app"
+	@echo "****************************************************************"
 # Clean cache files
 clean:
 	find . -type d -name __pycache__ -exec rm -r {} + 2>/dev/null || true
