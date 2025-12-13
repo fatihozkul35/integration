@@ -4,6 +4,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.utils import timezone
+from django.contrib.auth.decorators import user_passes_test
+from django.urls import get_resolver
 import logging
 from .models import ContactMessage
 
@@ -205,3 +207,90 @@ def send_contact_notification_email(contact_message):
     except Exception as e:
         logger.error(f'E-posta gönderim hatası: {str(e)}', exc_info=True)
         raise
+
+
+def is_staff_user(user):
+    """Check if user is staff/admin"""
+    return user.is_authenticated and user.is_staff
+
+
+@user_passes_test(is_staff_user, login_url='/admin/login/')
+def urls_list(request):
+    """List all URLs in the project - Admin only"""
+    from django.urls.resolvers import URLPattern, URLResolver
+    
+    resolver = get_resolver()
+    urls = []
+    seen_urls = set()  # To avoid duplicates
+    
+    def extract_urls(url_patterns, prefix='', namespace=''):
+        """Recursively extract all URL patterns"""
+        for pattern in url_patterns:
+            if isinstance(pattern, URLResolver):
+                # This is an include() pattern
+                pattern_str = str(pattern.pattern) if hasattr(pattern, 'pattern') and pattern.pattern else ''
+                new_prefix = prefix + pattern_str
+                
+                # Handle namespace
+                new_namespace = namespace
+                if hasattr(pattern, 'namespace') and pattern.namespace:
+                    new_namespace = f"{namespace}:{pattern.namespace}" if namespace else pattern.namespace
+                elif hasattr(pattern, 'app_name') and pattern.app_name:
+                    new_namespace = f"{namespace}:{pattern.app_name}" if namespace else pattern.app_name
+                
+                # Recursively process nested patterns
+                if hasattr(pattern, 'url_patterns'):
+                    extract_urls(pattern.url_patterns, new_prefix, new_namespace)
+            elif isinstance(pattern, URLPattern):
+                # This is a regular path pattern
+                pattern_str = str(pattern.pattern) if hasattr(pattern, 'pattern') and pattern.pattern else ''
+                url_path = prefix + pattern_str
+                url_name = pattern.name if hasattr(pattern, 'name') and pattern.name else ''
+                
+                # Build full name with namespace
+                if namespace and url_name:
+                    full_name = f"{namespace}:{url_name}"
+                else:
+                    full_name = url_name if url_name else ''
+                
+                # Build full URL - clean up the path
+                if url_path:
+                    # Remove regex markers and clean up
+                    url_path = url_path.replace('^', '').replace('$', '')
+                    # Remove leading/trailing slashes and add properly
+                    url_path = url_path.strip('/')
+                    full_url = f"/{url_path}" if url_path else "/"
+                else:
+                    full_url = "/"
+                
+                # Avoid duplicates
+                url_key = (full_url, full_name)
+                if url_key not in seen_urls:
+                    seen_urls.add(url_key)
+                    urls.append({
+                        'url': full_url,
+                        'name': full_name,
+                        'pattern': pattern_str,
+                    })
+    
+    extract_urls(resolver.url_patterns)
+    
+    # Filter out admin URLs, media URLs, and urls_list page itself
+    urls = [
+        url_item for url_item in urls 
+        if not url_item['url'].startswith('/admin') 
+        and not url_item['name'].startswith('admin:')
+        and 'admin' not in url_item['name'].lower()
+        and not url_item['url'].startswith('/media')
+        and url_item['url'] != '/urls/'
+        and url_item['name'] != 'integration_app:urls_list'
+    ]
+    
+    # Sort URLs by path
+    urls.sort(key=lambda x: x['url'])
+    
+    context = {
+        'urls': urls,
+    }
+    
+    return render(request, 'integration_app/urls_list.html', context)

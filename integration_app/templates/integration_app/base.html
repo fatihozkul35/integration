@@ -263,6 +263,25 @@
         {% block content %}{% endblock %}
     </main>
 
+    <!-- İletişim Formu Bölümü (Ana Sayfa ve İletişim Sayfası Hariç Tüm Sayfalarda) -->
+    {% block contact_form_section %}
+    {% if request.resolver_match.url_name != 'contact' and request.resolver_match.url_name != 'index' %}
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            {% include 'integration_app/components/contact_form.html' with form_title="Bize Mesaj Gönderin" hide_title=False %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% endblock %}
+
     <!-- Footer -->
     <footer class="footer-modern mt-5">
         <div class="container">
@@ -346,6 +365,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
     {% block extra_js %}{% endblock %}
+    
+    <!-- İletişim Formu JavaScript ve CSS (Ana Sayfa ve İletişim Sayfası Hariç Tüm Sayfalarda) -->
+    {% block contact_form_js %}
+    {% endblock %}
 </body>
 </html>
 
