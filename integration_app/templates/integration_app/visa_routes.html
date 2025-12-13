@@ -19,7 +19,7 @@
     </div>
 
     <!-- 1. AB Mavi Kart -->
-    <section class="mb-5">
+    <section id="mavi-kart" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">1. AB Mavi Kart (Blue Card EU – §18g)</h2>
@@ -41,7 +41,7 @@
     </section>
 
     <!-- 2. Nitelikli Meslek Vizesi -->
-    <section class="mb-5">
+    <section id="mesleki-egitim-uzmanlar" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">2. Nitelikli Meslek Vizesi (Mesleki Eğitimle – §18a)</h2>
@@ -60,7 +60,7 @@
     </section>
 
     <!-- 3. Mesleki Deneyim Vizesi -->
-    <section class="mb-5">
+    <section id="mesleki-deneyim" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">3. Mesleki Deneyim Vizesi (Berufserfahrene – §19c Abs.2)</h2>
@@ -79,7 +79,7 @@
     </section>
 
     <!-- 4. Chancenkarte -->
-    <section class="mb-5">
+    <section id="chancenkarte" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">4. Chancenkarte – İş Arama Amaçlı Puan Sistemi (§20a)</h2>
@@ -98,7 +98,7 @@
     </section>
 
     <!-- 5. Mesleki Tanıma / Denklik Vizesi -->
-    <section class="mb-5">
+    <section id="mesleki-tanima" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">5. Mesleki Tanıma / Denklik Vizesi (§16d)</h2>
@@ -116,7 +116,7 @@
     </section>
 
     <!-- 6. Mesleki Eğitim Vizesi -->
-    <section class="mb-5">
+    <section id="mesleki-egitim-vizesi" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">6. Mesleki Eğitim Vizesi (§16a)</h2>
@@ -134,7 +134,7 @@
     </section>
 
     <!-- 7. Üniversite Eğitimi Vizesi -->
-    <section class="mb-5">
+    <section id="universite-egitimi" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">7. Üniversite Eğitimi Vizesi (§16b)</h2>
@@ -214,6 +214,28 @@
     section {
         scroll-margin-top: 100px;
     }
+    html {
+        scroll-behavior: smooth;
+    }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // URL'de hash varsa o bölüme scroll yap
+        if (window.location.hash) {
+            setTimeout(function() {
+                const targetId = window.location.hash;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar-modern')?.offsetHeight || 0;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 60;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    });
+</script>
 {% endblock %}
 

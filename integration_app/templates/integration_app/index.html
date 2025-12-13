@@ -33,9 +33,22 @@
         // Smooth scroll için tüm anchor linklerini yakala
         document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Eğer link farklı bir sayfaya gidiyorsa (URL içinde path varsa), normal link gibi çalış
+                if (href.includes('/vize-yollari/') || href.includes('/hakkimizda/') || href.includes('/hizmetler/') || 
+                    href.includes('/kontakt/') || href.includes('/hukuki-bilgilendirme/') || href.includes('/surec-nasil-isler/') ||
+                    href.includes('/isverenler-icin/') || href.includes('/almanyada-yasamin-rehberi/') || 
+                    href.includes('/faq/') || href.includes('/referenzen/') || href.includes('/blog/')) {
+                    // Farklı sayfaya gidiyor, normal link gibi çalış (preventDefault yapma)
+                    // Hash scroll işlemi hedef sayfada yapılacak
+                    return;
+                }
+                
+                // Aynı sayfada, smooth scroll yap
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                const targetId = href.split('#')[1] ? '#' + href.split('#')[1] : null;
+                const targetElement = targetId ? document.querySelector(targetId) : null;
                 
                 if (targetElement) {
                     // Navbar yüksekliğini hesaba katmak için offset (fixed navbar için ekstra 40px)
@@ -47,11 +60,11 @@
                         behavior: 'smooth'
                     });
                     
-                    // Accordion'u kapat (eğer açıksa)
-                    const accordionButton = document.querySelector('#headingOne button');
-                    if (accordionButton && !accordionButton.classList.contains('collapsed')) {
-                        accordionButton.click();
-                    }
+                    // Accordion'u kapat (eğer açıksa) - tüm accordion'lar için
+                    const accordionButtons = document.querySelectorAll('.accordion-button:not(.collapsed)');
+                    accordionButtons.forEach(button => {
+                        button.click();
+                    });
                 }
             });
         });
@@ -110,14 +123,13 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#sidebarAccordion">
                                 <div class="accordion-body">
                                     <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>18g Mavi Kart</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>18a Mesleki Egitim almis uzmanlar</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>18b Akademik egitim almis uzmanlar</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>19c Abs.2 Mesleki Deneyim - (Profesyonel Sürücüler)</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>20a Chancenkarte</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>16d Mesleki tanima/denklik</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>16a Mesleki Eğitim Vizesi</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>16b Üniversite Eğitimi Vizesi</li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mavi-kart" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>18g Mavi Kart</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-egitim-uzmanlar" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>18a Mesleki Egitim almis uzmanlar</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-deneyim" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>19c Abs.2 Mesleki Deneyim - (Profesyonel Sürücüler)</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#chancenkarte" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>20a Chancenkarte</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-tanima" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>16d Mesleki tanima/denklik</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-egitim-vizesi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>16a Mesleki Eğitim Vizesi</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#universite-egitimi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>16b Üniversite Eğitimi Vizesi</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -133,12 +145,12 @@
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#sidebarAccordion">
                                 <div class="accordion-body">
                                     <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Almanya'da Çalışma</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>-Günlük Yasam ve Uyum Rehberi</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>-Sağlık ve Sosyal Haklar</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Eğitim ve Dil Olanakları</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Türk ehliyetinin Almanya'da Kullanimi ve Dönüşümü</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Finans ve Vergilendirme</li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:life_guide' %}#almanyada-calisma" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Almanya'da Çalışma</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:life_guide' %}#gunluk-yasam-uyum" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Günlük Yaşam ve Uyum Rehberi</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:life_guide' %}#saglik-sosyal-haklar" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Sağlık ve Sosyal Haklar</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:life_guide' %}#egitim-dil-olanaklari" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Eğitim ve Dil Olanakları</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:life_guide' %}#ehliyet-donusum" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Türk ehliyetinin Almanya'da Kullanımı ve Dönüşümü</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:life_guide' %}#finans-vergilendirme" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Finans ve Vergilendirme</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -154,31 +166,15 @@
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#sidebarAccordion">
                                 <div class="accordion-body">
                                     <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Aday Seçimi ve Ön Değerlendirme</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Mülakat ve İş Teklifi Süreci</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Bürokrasi Desteği</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>MS International UG Avantajlari</li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:employers' %}#aday-secimi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Aday Seçimi ve Ön Değerlendirme</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:employers' %}#mulakat-is-teklifi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Mülakat ve İş Teklifi Süreci</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:employers' %}#burokrasi-destegi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Bürokrasi Desteği</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:employers' %}#avantajlar" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>MS International UG Avantajlari</span></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Neden bizimle calismalisiniz -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Neden bizimle calismalisiniz
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#sidebarAccordion">
-                                <div class="accordion-body">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Alt basliklar???</li>
-                                        <li class="mb-2"><i class="bi bi-chevron-right text-primary me-2"></i>Alt basliklar???</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 

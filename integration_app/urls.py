@@ -15,5 +15,6 @@ urlpatterns = [
     path('faq/', views.faq, name='faq'),
     path('referenzen/', views.references, name='references'),
     path('blog/', views.blog, name='blog'),
+    path('almanyada-yasamin-rehberi/', views.life_guide, name='life_guide'),
     path('urls/', views.urls_list, name='urls_list'),
 ]

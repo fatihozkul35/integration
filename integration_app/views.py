@@ -62,6 +62,10 @@ def blog(request):
     """Blog page view"""
     return render(request, 'integration_app/blog.html')
 
+def life_guide(request):
+    """Almanya'da Yaşamın Rehberi page view"""
+    return render(request, 'integration_app/life_guide.html')
+
 def contact(request):
     """Contact page view"""
     if request.method == 'POST':

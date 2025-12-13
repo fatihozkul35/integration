@@ -1,0 +1,339 @@
+{% extends 'integration_app/base.html' %}
+
+{% block title %}Almanya'da Yaşamın Rehberi - MS International{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <!-- Başlık ve Giriş -->
+    <div class="row justify-content-center pt-3 mb-5">
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0 bg-primary text-white">
+                <div class="card-body p-5">
+                    <h1 class="display-4 mb-4 text-center">Almanya'da Yaşamın Rehberi</h1>
+                    <hr class="mb-4" style="border-color: rgba(255,255,255,0.3);">
+                    <h2 class="h3 mb-3">Almanya'ya Yerleşim Sonrası Rehber</h2>
+                    <p class="lead mb-0">Almanya'ya göç ettikten sonra günlük yaşam, çalışma, sağlık, eğitim ve diğer önemli konularda bilmeniz gerekenler hakkında kapsamlı bir rehber.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. Almanya'da Çalışma -->
+    <section id="almanyada-calisma" class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">1. Almanya'da Çalışma</h2>
+                <p class="lead mb-4">Almanya'da çalışma hayatı ve iş kültürü hakkında önemli bilgiler.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-briefcase text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">İş Kültürü</h4>
+                                <p>Almanya'da iş hayatında zamanlama, profesyonellik ve doğrudan iletişim önemlidir. Çalışma saatleri genellikle 08:00-17:00 arasındadır.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-calendar-check text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">İş Sözleşmeleri</h4>
+                                <p>İş sözleşmeleri genellikle yazılıdır ve detaylıdır. Maaş, çalışma saatleri, tatil hakları gibi konular sözleşmede belirtilir.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-people text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">İş Yerinde İletişim</h4>
+                                <p>Almanca dil bilgisi iş yerinde başarı için kritik öneme sahiptir. Mesleğe göre B1-B2 seviyesi genellikle beklenir.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-shield-check text-primary" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h4 class="h5 mb-2">İşçi Hakları</h4>
+                                <p>Almanya'da güçlü işçi hakları ve korumaları vardır. Sendika üyeliği yaygındır ve çalışanların hakları yasalarla korunur.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Günlük Yaşam ve Uyum Rehberi -->
+    <section id="gunluk-yasam-uyum" class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">2. Günlük Yaşam ve Uyum Rehberi</h2>
+                <p class="lead mb-4">Almanya'da günlük yaşam ve kültürel uyum için önemli ipuçları.</p>
+                
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Adres Kaydı (Anmeldung):</strong> Almanya'ya geldikten sonra ilk 14 gün içinde ikamet ettiğiniz adresi kayıt altına aldırmanız zorunludur. Bu işlem için Bürgeramt'a (Belediye) randevu almanız gerekir.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Banka Hesabı:</strong> Almanya'da çalışmak ve maaş almak için bir banka hesabı açmanız gerekecektir. Çoğu banka için adres kaydı belgesi (Anmeldung) gereklidir.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Vergi Numarası (Steuer-ID):</strong> İşe başlamadan önce Finanzamt'tan vergi numaranızı almanız gerekir. Bu numara maaş bordronuzda kullanılır.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Kültürel Uyum:</strong> Almanya'da zamanlama, randevulara uyum ve doğrudan iletişim değerlidir. Toplu taşıma sistemleri gelişmiştir ve çevre bilinci yüksektir.
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Sağlık ve Sosyal Haklar -->
+    <section id="saglik-sosyal-haklar" class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">3. Sağlık ve Sosyal Haklar</h2>
+                <p class="lead mb-4">Almanya'daki sağlık sistemi ve sosyal haklar hakkında bilgiler.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-heart-pulse text-primary me-2"></i>Sağlık Sigortası</h4>
+                                <p class="card-text">Almanya'da çalışan herkesin sağlık sigortası olması zorunludur. Gesetzliche Krankenversicherung (GKV) ve Private Krankenversicherung (PKV) olmak üzere iki ana sistem vardır.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-cash-coin text-primary me-2"></i>Kindergeld</h4>
+                                <p class="card-text">18 yaş altı çocukları olan aileler için aylık çocuk parası (Kindergeld) alınabilir. Başvuru Familienkasse'ye yapılır.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-house-heart text-primary me-2"></i>Wohngeld (Konut Yardımı)</h4>
+                                <p class="card-text">Düşük gelirli aileler için konut yardımı (Wohngeld) alınabilir. Başvuru belediyeye yapılır.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-briefcase-medical text-primary me-2"></i>İşsizlik Parası</h4>
+                                <p class="card-text">İşsiz kalan ve belirli şartları sağlayan kişiler Arbeitslosengeld I veya II alabilir. Başvuru Agentur für Arbeit'a yapılır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Eğitim ve Dil Olanakları -->
+    <section id="egitim-dil-olanaklari" class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">4. Eğitim ve Dil Olanakları</h2>
+                <p class="lead mb-4">Almanya'da eğitim ve dil öğrenme fırsatları.</p>
+                
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Dil Kursları:</strong> Almanca öğrenmek için Volkshochschule (VHS), Goethe-Institut veya özel dil okullarından kurs alabilirsiniz. Entegrasyon kursları (Integrationskurs) devlet tarafından desteklenir.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Çocukların Eğitimi:</strong> Almanya'da 6-18 yaş arası eğitim zorunludur. Okul sistemi eyaletlere göre değişir. Çocuklarınızı okula kaydettirmeniz gerekir.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Mesleki Eğitim:</strong> Almanya'da dual sistem (Ausbildung) ile mesleki eğitim alınabilir. Bu sistem teorik ve pratik eğitimi birleştirir.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check-circle-fill text-primary me-3 mt-1" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <strong>Üniversite Eğitimi:</strong> Almanya'da üniversiteler genellikle ücretsizdir (sadece dönem harçı ödenir). Yabancı öğrenciler için çeşitli programlar mevcuttur.
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Türk Ehliyetinin Almanya'da Kullanımı ve Dönüşümü -->
+    <section id="ehliyet-donusum" class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">5. Türk Ehliyetinin Almanya'da Kullanımı ve Dönüşümü</h2>
+                <p class="lead mb-4">Türkiye'den aldığınız ehliyetin Almanya'da kullanımı ve dönüşüm süreci.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h4 class="h5 mb-3"><i class="bi bi-car-front text-primary me-2"></i>Geçici Kullanım</h4>
+                        <p>Almanya'ya ilk geldiğinizde, Türk ehliyetinizi 6 ay süreyle geçici olarak kullanabilirsiniz. Bu süre içinde Almanya ehliyetine dönüştürmeniz gerekir.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h5 mb-3"><i class="bi bi-file-earmark-check text-primary me-2"></i>Dönüşüm İşlemi</h4>
+                        <p>Ehliyet dönüşümü için Führerscheinstelle (Ehliyet Dairesi) başvurmanız gerekir. Gerekli belgeler: Türk ehliyeti, çevirisi, fotoğraf, sağlık raporu ve adres kaydı belgesi.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h5 mb-3"><i class="bi bi-translate text-primary me-2"></i>Çeviri</h4>
+                        <p>Ehliyetinizin Almanca çevirisi gereklidir. Bu çeviriyi onaylı çevirmenlerden veya ADAC gibi kuruluşlardan alabilirsiniz.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h5 mb-3"><i class="bi bi-clipboard-check text-primary me-2"></i>Sınav Gerekliliği</h4>
+                        <p>Bazı durumlarda teorik veya pratik sınav gerekebilir. Bu, ehliyet sınıfınıza ve Almanya'ya geliş tarihinize bağlıdır.</p>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-4 mb-0">
+                    <strong>Önemli:</strong> Ehliyet dönüşüm işlemini 6 ay içinde tamamlamazsanız, Türk ehliyetinizle araç kullanamazsınız. Yeni bir ehliyet almak için tam sürücü kursu almanız gerekir.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Finans ve Vergilendirme -->
+    <section id="finans-vergilendirme" class="mb-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-4">6. Finans ve Vergilendirme</h2>
+                <p class="lead mb-4">Almanya'da finansal konular ve vergilendirme sistemi.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-bank text-primary me-2"></i>Banka Sistemi</h4>
+                                <p class="card-text">Almanya'da Sparkasse, Volksbank, Deutsche Bank gibi birçok banka seçeneği vardır. Online bankacılık yaygındır ve çoğu işlem dijital olarak yapılabilir.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-calculator text-primary me-2"></i>Gelir Vergisi</h4>
+                                <p class="card-text">Almanya'da gelir vergisi kademeli bir sistemle alınır. Vergi oranı gelir seviyesine göre değişir. Yıllık gelir beyanı (Steuererklärung) yapılabilir.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-receipt text-primary me-2"></i>KDV (Mehrwertsteuer)</h4>
+                                <p class="card-text">Almanya'da KDV oranı genellikle %19'dur. Gıda ve temel ihtiyaçlar için %7 indirimli oran uygulanır.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h4 class="card-title h5"><i class="bi bi-piggy-bank text-primary me-2"></i>Emeklilik Sistemi</h4>
+                                <p class="card-text">Almanya'da çalışanlar otomatik olarak emeklilik sigortasına (Rentenversicherung) dahil edilir. Emeklilik yaşı ve miktarı çalışma süresine ve ödemelere bağlıdır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning mt-4 mb-0">
+                    <h5 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Önemli Not</h5>
+                    <p class="mb-0">Vergi konularında profesyonel bir mali müşavirden (Steuerberater) destek almanız önerilir. Özellikle ilk yıllarda vergi beyannamesi hazırlama konusunda yardım almak faydalıdır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim CTA -->
+    <section class="text-center">
+        <div class="card shadow-lg border-0 bg-primary text-white">
+            <div class="card-body p-5">
+                <h2 class="display-5 mb-3">Almanya'da Yaşam Hakkında Daha Fazla Bilgi İçin</h2>
+                <p class="lead mb-4">Sorularınız için bizimle iletişime geçin, size yardımcı olmaktan mutluluk duyarız.</p>
+                <a href="{% url 'integration_app:contact' %}" class="btn btn-light btn-lg">İletişime Geçin</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .bi {
+        font-size: 1.1rem;
+    }
+    section {
+        scroll-margin-top: 100px;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // URL'de hash varsa o bölüme scroll yap
+        if (window.location.hash) {
+            setTimeout(function() {
+                const targetId = window.location.hash;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar-modern')?.offsetHeight || 0;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 60;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    });
+</script>
+{% endblock %}
+

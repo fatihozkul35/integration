@@ -19,7 +19,7 @@
     </div>
 
     <!-- 1. Aday Seçimi ve Ön Değerlendirme -->
-    <section class="mb-5">
+    <section id="aday-secimi" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">1. Aday Seçimi ve Ön Değerlendirme</h2>
@@ -76,7 +76,7 @@
     </section>
 
     <!-- 2. Mülakat ve İş Teklifi Süreci -->
-    <section class="mb-5">
+    <section id="mulakat-is-teklifi" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">2. Mülakat ve İş Teklifi Süreci</h2>
@@ -117,7 +117,7 @@
     </section>
 
     <!-- 3. Bürokrasi Desteği ve Hızlandırılmış Süreç -->
-    <section class="mb-5">
+    <section id="burokrasi-destegi" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4">3. Bürokrasi Desteği ve Hızlandırılmış Süreç (§81a)</h2>
@@ -184,7 +184,7 @@
     </section>
 
     <!-- Avantajlar Özeti -->
-    <section class="mb-5">
+    <section id="avantajlar" class="mb-5">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
                 <h2 class="display-5 mb-4 text-center">Neden MS International UG ile Çalışmalısınız?</h2>
@@ -249,6 +249,28 @@
     section {
         scroll-margin-top: 100px;
     }
+    html {
+        scroll-behavior: smooth;
+    }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // URL'de hash varsa o bölüme scroll yap
+        if (window.location.hash) {
+            setTimeout(function() {
+                const targetId = window.location.hash;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar-modern')?.offsetHeight || 0;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 60;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+    });
+</script>
 {% endblock %}
 
