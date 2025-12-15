@@ -106,6 +106,7 @@
                                         <li class="mb-2"><a href="#on-gorusme" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Ön Görüşme ve Profil Analizi</span></a></li>
                                         <li class="mb-2"><a href="#vize-secenekleri" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Uygun Göç Yolu ve Vize Seçenekleri</span></a></li>
                                         <li class="mb-2"><a href="#evrak-hazirligi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Evrak Hazırlığı ve Denklik Başvurusu</span></a></li>
+                                        <li class="mb-2"><a href="#is-sozlesmesi-temini" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>İş Sözleşmesi Temini ve İşveren–İşçi Eşleştirme</span></a></li>
                                         <li class="mb-2"><a href="#vize-basvurusu" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Vize Başvurusu ve Randevu Organizasyonu</span></a></li>
                                         <li class="mb-2"><a href="#almanya-gelis" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>Almanya'ya Geliş ve İlk Adımlar</span></a></li>
                                     </ul>
@@ -123,13 +124,14 @@
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#sidebarAccordion">
                                 <div class="accordion-body">
                                     <ul class="list-unstyled mb-0">
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mavi-kart" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>18g Mavi Kart</span></a></li>
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-egitim-uzmanlar" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>18a Mesleki Egitim almis uzmanlar</span></a></li>
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-deneyim" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>19c Abs.2 Mesleki Deneyim - (Profesyonel Sürücüler)</span></a></li>
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#chancenkarte" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>20a Chancenkarte</span></a></li>
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-tanima" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>16d Mesleki tanima/denklik</span></a></li>
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-egitim-vizesi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>16a Mesleki Eğitim Vizesi</span></a></li>
-                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#universite-egitimi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>16b Üniversite Eğitimi Vizesi</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mavi-kart" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 18g AufenthG – AB Mavi Kart (Blaue Karte EU)</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-egitim-uzmanlar" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 18a AufenthG – Mesleki Eğitim Almış Uzmanlar</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#akademik-uzmanlar" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 18b AufenthG – Akademik Eğitim Almış Uzmanlar</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-deneyim" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 19c Abs.2 AufenthG – Mesleki Deneyim Yolu (Özellikle Sürücüler)</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#chancenkarte" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 20a AufenthG – Chancenkarte (Fırsat Kartı)</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-tanima" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 16d AufenthG – Mesleki Tanıma / Denklik Odaklı Oturum</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#mesleki-egitim-vizesi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 16a AufenthG – Mesleki Eğitim Vizesi</span></a></li>
+                                        <li class="mb-2"><a href="{% url 'integration_app:visa_routes' %}#universite-egitimi" class="text-decoration-none text-dark smooth-scroll d-flex align-items-center"><i class="bi bi-chevron-right text-primary me-2"></i><span>§ 16b AufenthG – Üniversite Eğitimi Vizesi</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -232,158 +234,588 @@
                     <h1 class="display-4 mb-4">Süreç Nasıl İşler?</h1>
                     <p class="lead">Almanya'ya göç yolculuğunuzda size rehberlik eden adım adım sürecimiz</p>
                 </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-10">
+                        <p class="text-center">MS International UG, Almanya'ya göç ve yerleşim sürecinizi; ön görüşme ve profil analizi, uygun göç yolu seçimi, evrak ve denklik hazırlığı, vize başvurusu ve randevu organizasyonu ile Almanya'ya geliş ve ilk adımlar olarak beş aşamada planlar. Tüm süreç, özellikle Aufenthaltsgesetz (AufenthG) ve Fachkräfteeinwanderungsgesetz çerçevesine uygun şekilde, danışmanlık ve koordinasyon mantığıyla yürütülür; karar mercii her zaman Alman makamlarıdır.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Adım 1: Ön Görüşme ve Profil Analizi -->
         <section id="on-gorusme" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="card shadow-lg border-0 h-100">
-                        <div class="card-body p-5">
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
-                                    1
-                                </div>
-                                <h2 class="display-5 mb-0">Ön Görüşme ve Profil Analizi</h2>
-                            </div>
-                            <p class="lead mb-3">Sürecin ilk adımı, sizinle detaylı bir ön görüşme yapmaktır.</p>
-                            <p>Ön görüşmede; eğitim geçmişiniz, mesleki deneyiminiz, dil seviyeniz ve hedefleriniz detaylı şekilde analiz edilir. Bu aşamada, hangi vize yollarının gerçekçi olduğu ve hangi belgelerin toplanması gerektiği netleştirilir.</p>
-                            <ul class="list-unstyled mt-4">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Eğitim geçmişi analizi</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mesleki deneyim değerlendirmesi</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Dil seviyesi tespiti</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Hedef ve beklentilerin belirlenmesi</li>
-                            </ul>
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 overflow-hidden">
+
+                    <!-- GÖRSEL -->
+                    <img
+                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop"
+                        alt="Ön Görüşme"
+                        class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
+                        style="max-width: 420px;"
+                    >
+
+                    <!-- BAŞLIK -->
+                    <div class="d-flex align-items-center mb-4">
+                        <div
+                            class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                            1
                         </div>
+                        <h2 class="display-5 mb-0">Ön Görüşme ve Profil Analizi</h2>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop" alt="Ön Görüşme" class="img-fluid rounded shadow-lg">
+
+                    <p class="lead mb-3">
+                        Sürecin ilk adımı, yapılandırılmış bir ön görüşme ve profil analizidir.
+                    </p>
+
+                    <p class="mb-3">Bu görüşmede:</p>
+
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Eğitim durumunuz (mesleki eğitim, üniversite, düzenlenmiş meslekler),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Mesleki deneyiminiz (yıl, pozisyon, sektör),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Dil seviyeniz (özellikle Almanca ve gerekirse İngilizce),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Almanya'daki hedefiniz (çalışma, mesleki eğitim, üniversite, denklik, Chancenkarte vb.),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Aile durumu ve olası aile birleşimi ihtiyacı,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Almanya'da kısa, orta ve uzun vadeli planlarınız
+                        </li>
+                    </ul>
+
+                    <p class="mb-3">sistematik biçimde kayıt altına alınır.</p>
+
+                    <p class="mb-3"><strong>Bu aşamada amacımız:</strong></p>
+
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Hangi oturum türlerinin hukuken masada olabileceğini
+                            (örneğin §§ 16a, 16b, 16d, 18a, 18b, 18g, 19c Abs.2, 20a AufenthG) görmek,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Dil, denklik, mesleki eğitim veya ek sertifika gibi
+                            tamamlanması gereken eksikleri ortaya koymak,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Sizin için gerçekçi ve hukuki çerçeveye uygun bir yol haritası oluşturmak.
+                        </li>
+                    </ul>
+
+                    <p class="mb-0">
+                        <small class="text-muted">
+                            MS International UG, Rechtsdienstleistungsgesetz (RDG) uyarınca izin verilen
+                            çerçevede göç ve süreç danışmanlığı sunar; bireysel davalar, itirazlar veya
+                            mahkeme temsili gibi avukatlık faaliyetlerini üstlenmez.
+                        </small>
+                    </p>
+
                 </div>
             </div>
         </section>
 
+
         <!-- Adım 2: Uygun Göç Yolu ve Vize Seçenekleri -->
         <section id="vize-secenekleri" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-                    <div class="card shadow-lg border-0 h-100">
-                        <div class="card-body p-5">
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
-                                    2
-                                </div>
-                                <h2 class="display-5 mb-0">Uygun Göç Yolu ve Vize Seçenekleri</h2>
-                            </div>
-                            <p class="lead mb-3">Profil analizinden sonra, size en uygun göç yolunu belirliyoruz.</p>
-                            <p>Profil analizinden sonra, Nitelikli Göç Yasası kapsamındaki uygun oturum türleri ve bunların artı-eksi yönleri açıklanır. AB Mavi Kart, nitelikli meslek vizesi, mesleki deneyim vizesi, Chancenkarte gibi seçenekler, sizin kariyer planınızla uyumu açısından değerlendirilir.</p>
-                            <ul class="list-unstyled mt-4">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Uygun vize türlerinin belirlenmesi</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Artı ve eksi yönlerin değerlendirilmesi</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Kariyer planınızla uyum analizi</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>En uygun seçeneğin belirlenmesi</li>
-                            </ul>
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 overflow-hidden">
+
+                    <!-- GÖRSEL -->
+                    <img
+                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                        alt="Vize Seçenekleri"
+                        class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
+                        style="max-width: 420px;"
+                    >
+
+                    <!-- BAŞLIK -->
+                    <div class="d-flex align-items-center mb-4">
+                        <div
+                            class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                            2
                         </div>
+                        <h2 class="display-5 mb-0">Uygun Göç Yolu ve Vize Seçenekleri</h2>
                     </div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop" alt="Vize Seçenekleri" class="img-fluid rounded shadow-lg">
+
+                    <p class="lead mb-3">
+                        Profiliniz netleştikten sonra, sizin durumunuza uygun olabilecek oturum ve vize türlerini birlikte değerlendiririz.
+                    </p>
+
+                    <p class="mb-3">Almanya'daki nitelikli göçün temel dayanakları:</p>
+
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 18g AufenthG</strong> – AB Mavi Kart (Blaue Karte EU),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 18a AufenthG</strong> – Mesleki eğitim almış uzmanlar,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 18b AufenthG</strong> – Akademik eğitim almış uzmanlar,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 19c Abs.2 AufenthG</strong> – Mesleki deneyim temelli oturum (özellikle sürücüler vb.),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 20a AufenthG</strong> – Chancenkarte (puan sistemli iş arama oturumu),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 16d AufenthG</strong> – Denklik / uyum tedbirleri odaklı oturum,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 16a AufenthG</strong> – Mesleki eğitim vizesi,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>§ 16b AufenthG</strong> – Üniversite eğitimi vizesi.
+                        </li>
+                    </ul>
+
+                    <p class="mb-3"><strong>Bu aşamada:</strong></p>
+
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Her bir yolun kanuni şartlarını,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            2026 yılı için geçerli maaş, puan ve süre kriterlerini,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Dil, denklik, deneyim gibi kişisel kriterlerle ilişkisinin ne olduğunu anlatırız.
+                        </li>
+                    </ul>
+
+                    <p class="mb-0">
+                        <small class="text-muted">
+                            Seçim, ortak değerlendirmeyle yapılır; nihai hukuki değerlendirme ve karar yetkisi ise her zaman Alman dış temsilcilikleri ve yabancılar dairelerindedir.
+                        </small>
+                    </p>
+
                 </div>
             </div>
         </section>
 
         <!-- Adım 3: Evrak Hazırlığı ve Denklik Başvurusu -->
         <section id="evrak-hazirligi" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="card shadow-lg border-0 h-100">
-                        <div class="card-body p-5">
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
-                                    3
-                                </div>
-                                <h2 class="display-5 mb-0">Evrak Hazırlığı ve Denklik Başvurusu</h2>
-                            </div>
-                            <p class="lead mb-3">Gerekli tüm belgeleri organize ediyoruz.</p>
-                            <p>Gerekli görüldüğünde diploma / meslek denkliği süreci başlatılır; doğru kurum tespit edilir, evrak listesi çıkarılır ve tercüme-noter adımları organize edilir. Aynı zamanda vize başvurusu için gerekli tüm belgeler (iş teklifi, CV, motivasyon yazısı vb.) kontrol edilip tamamlanır.</p>
-                            <ul class="list-unstyled mt-4">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Denklik kurumu tespiti</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Evrak listesi hazırlığı</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Tercüme ve noter işlemleri</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>CV ve motivasyon yazısı hazırlığı</li>
-                            </ul>
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 overflow-hidden">
+
+                    <!-- GÖRSEL -->
+                    <img
+                        src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop"
+                        alt="Evrak Hazırlığı"
+                        class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
+                        style="max-width: 420px;"
+                    >
+
+                    <!-- BAŞLIK -->
+                    <div class="d-flex align-items-center mb-4">
+                        <div
+                            class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                            3
                         </div>
+                        <h2 class="display-5 mb-0">Evrak Hazırlığı ve Denklik Başvurusu</h2>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop" alt="Evrak Hazırlığı" class="img-fluid rounded shadow-lg">
+
+                    <p class="lead mb-3">
+                        Başarılı bir başvurunun temel şartı, eksiksiz ve tutarlı bir evrak dosyasıdır.
+                    </p>
+
+                    <p class="mb-3"><strong>Bu aşamada:</strong></p>
+
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Kimlik ve medeni hâl belgeleri (pasaport, nüfus kayıt örnekleri, evlilik/boşanma belgeleri),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Eğitim belgeleri (diploma, transkript, mesleki eğitim sertifikaları),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Mesleki deneyim belgeleri (SGK dökümü, hizmet dökümü, referans mektupları, iş sözleşmeleri),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Dil sertifikaları (Goethe, telc, ÖSD, IELTS, TOEFL vb.),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Meslek odası veya lisans belgeleri (sağlık, teknik, düzenlenmiş meslekler)
+                        </li>
+                    </ul>
+
+                    <p class="mb-3">için ayrıntılı bir kontrol listesi çıkarırız.</p>
+
+                    <p class="mb-3"><strong>Mesleki denklik (Anerkennung) süreçlerinde:</strong></p>
+
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Hangi kurumun yetkili olduğunu (örneğin IHK FOSA, ZAB, meslek odaları) tespit eder,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Denklik başvuru formunun mantığını ve istenen ek belgeleri açıklarız,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-primary me-2"></i>
+                            Denklik sonucuna göre tam denklik, kısmi denklik, uyum tedbiri gibi ihtimalleri anlatır, bu sonuçların özellikle § 16d, § 18a, § 18b, § 18g oturumlarına nasıl yansıdığını açıklığa kavuştururuz.
+                        </li>
+                    </ul>
+
+                    <p class="mb-0">
+                        <small class="text-muted">
+                            Başvurular her zaman kendi adınıza yapılır; biz süreci teknik ve organizasyonel anlamda hazırlar, kontrol eder ve takip ederiz.
+                        </small>
+                    </p>
+
                 </div>
             </div>
         </section>
 
-        <!-- Adım 4: Vize Başvurusu ve Randevu Organizasyonu -->
+        <!-- Adım 4: İş Sözleşmesi Temini ve İşveren–İşçi Eşleştirme -->
+        <section id="is-sozlesmesi-temini" class="mb-5">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 overflow-hidden">
+
+                    <!-- GÖRSEL -->
+                    <img
+                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                        alt="İş Sözleşmesi"
+                        class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
+                        style="max-width: 420px;"
+                    >
+
+                    <!-- BAŞLIK -->
+                    <div class="d-flex align-items-center mb-4">
+                        <div
+                            class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                            4
+                        </div>
+                        <h2 class="display-5 mb-0">İş Sözleşmesi Temini ve İşveren–İşçi Eşleştirme</h2>
+                    </div>
+
+                    <p class="lead mb-3">
+                        Denklik ve evrak hazırlığı tamamlandıktan sonra, Almanya'ya göç sürecinde en kritik aşamalardan biri de uygun iş sözleşmesinin (Arbeitsvertrag) sağlanmasıdır.
+                    </p>
+
+                    <p class="mb-3">
+                        Çünkü neredeyse tüm nitelikli göç yollarında (§§ 18a, 18b, 18g, 19c Abs.2, 20a AufenthG) oturum izninin merkezinde, somut bir iş teklifi veya gerçekçi bir istihdam perspektifi bulunur.
+                    </p>
+
+                    <p class="mb-3"><strong>MS International UG bu aşamada:</strong></p>
+
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Adayın profiline uygun işverenleri bulma ve işveren ile aday arasında iletişim köprüsü kurma,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            İşverenin ilan ve ihtiyaçlarını, adayın CV'si ve denklik durumuyla karşılaştırarak ön eşleştirme yapma,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Hem işveren hem aday açısından, göç hukuku (AufenthG) çerçevesinde mantıklı ve sürdürülebilir bir iş modeli oluşturma konularında danışmanlık ve eşleştirme hizmeti sunar.
+                        </li>
+                    </ul>
+                    
+                    <h5 class="mb-3 mt-4">1. MS International UG'nin Rolü – İşveren Değil, Danışman</h5>
+                    <p class="mb-3">Burada çok önemli hukuki sınır şudur:</p>
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            MS International UG, iş sözleşmesinin tarafı veya işveren sıfatıyla hareket etmez.
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            Şirket, Arbeitnehmerüberlassungsgesetz (AÜG) kapsamında personel kiralama (Leiharbeit/Zeitarbeit) yapmaz; yani çalışanı kendi bordrosuna alıp işverene "ödünç" vermez.
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            Çalışan ile işveren arasındaki Arbeitsvertrag doğrudan bu iki taraf arasında imzalanır; MS International UG sadece bu süreci hazırlayan ve kolaylaştıran danışman ve aracı rolündedir.
+                        </li>
+                    </ul>
+                    <p class="mb-4">
+                        <small class="text-muted">
+                            Bu sayede hem AÜG lisansı gerektiren faaliyetlerden uzak durulmuş olur, hem de işveren ile çalışan arasındaki hukuki ilişki net ve şeffaf kalır.
+                        </small>
+                    </p>
+                    
+                    <h5 class="mb-3 mt-4">2. İş Sözleşmesinin Oturum Hukuku ile Uyumu</h5>
+                    <p class="mb-3">Özellikle nitelikli göç yollarında, iş sözleşmesinin içeriği oturum izni açısından belirleyici rol oynar:</p>
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <strong>§ 18g AufenthG – AB Mavi Kart</strong><br>
+                            <small class="text-muted">Üniversite diploması ile uyumlu nitelikli pozisyon,</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>§ 18a AufenthG – Mesleki eğitimli uzman</strong><br>
+                            <small class="text-muted">Almanya'da tanınan mesleki eğitimle uyumlu iş, geçimi güvence altına alan ücret (Lebensunterhaltssicherung), genellikle en az B1 düzeyi Almanca beklentisi.</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>§ 18b AufenthG – Akademik uzman</strong><br>
+                            <small class="text-muted">Üniversite diplomasi ile uyumlu nitelikli iş, Mavi Kart maaş eşiğine ulaşmayan ama düzenli ve yeterli gelir düzeyi.</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>§ 19c Abs.2 AufenthG – Mesleki deneyim yolu</strong><br>
+                            <small class="text-muted">Özellikle profesyonel sürücüler ve bazı teknik mesleklerde, uzun yıllara dayalı ve belgelendirilebilir mesleki tecrübeye uygun iş sözleşmesi, gerekli mesleki ehliyet ve sertifikaları yansıtan görev tanımı.</small>
+                        </li>
+                    </ul>
+                    <p class="mb-3">MS International UG, iş sözleşmesini hukuki açıdan onaylayan merci değildir; ancak sözleşmedeki:</p>
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-1">
+                            <i class="bi bi-arrow-right text-primary me-2"></i>
+                            Görev tanımı,
+                        </li>
+                        <li class="mb-1">
+                            <i class="bi bi-arrow-right text-primary me-2"></i>
+                            Çalışma süresi (haftalık saat),
+                        </li>
+                        <li class="mb-1">
+                            <i class="bi bi-arrow-right text-primary me-2"></i>
+                            Brüt ücret, ek ödemeler ve yan haklar,
+                        </li>
+                        <li class="mb-1">
+                            <i class="bi bi-arrow-right text-primary me-2"></i>
+                            Deneme süresi (Probezeit) ve fesih şartları
+                        </li>
+                    </ul>
+                    <p class="mb-4">gibi unsurların, seçilen oturum türünün asgari yasal şartlarıyla uyumlu olup olmadığını açıklamaya yardımcı olur.</p>
+                    
+                    <h5 class="mb-3 mt-4">3. İşveren – Aday Eşleştirme Sürecinin Aşamaları</h5>
+                    <p class="mb-3">Bu başlık altında MS International UG'nin işleyişi özetle şöyledir:</p>
+                    <ol class="mb-3">
+                        <li class="mb-2">
+                            <strong>İhtiyaç Analizi (İşveren Tarafı)</strong><br>
+                            <small class="text-muted">Pozisyon, görev tanımı, vardiya düzeni, çalışma yeri, ücret bandı (Mavi Kart eşiği, nitelikli uzman maaş mantığı), dil seviyesi ve entegrasyon beklentileri netleştirilir.</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>Aday Profili ile Eşleştirme</strong><br>
+                            <small class="text-muted">Adayın denklik sonucu, mesleki tecrübesi ve dil durumu değerlendirilir, işverenin beklediği profil ile adayın gerçek profili karşılaştırılır, gerekirse farklı pozisyon veya farklı eyalet/sektör önerileri sunulur.</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>İlk Temas ve Mülakat Organizasyonu</strong><br>
+                            <small class="text-muted">İşveren ve aday arasında çevrimiçi veya yüz yüze mülakatlar planlanır, CV, referans ve dil sertifikaları işverene sistematik şekilde sunulur, mülakat sonrası her iki tarafın geri bildirimi alınır ve süreç şeffaf tutulur.</small>
+                        </li>
+                        <li class="mb-2">
+                            <strong>İş Teklifi Taslağı ve Sözleşme Hazırlığı</strong><br>
+                            <small class="text-muted">İşverenin, hukuken geçerli bir iş teklifi ve sözleşme taslağı oluşturması için gerekli uygulama bilgileri paylaşılır (örneğin asgari ücret, yıllık izin hakları, deneme süresi gibi genel çerçeve), adaya, teklif edilen şartların Almanya'daki standartlarla karşılaştırmasını yapabilmesi için açıklayıcı bilgi verilir, sonrasında nihai iş sözleşmesi doğrudan işveren ve aday tarafından imzalanır.</small>
+                        </li>
+                    </ol>
+                    <p class="mb-4">
+                        <small class="text-muted">
+                            Bu süreçte MS International UG, AGG (Genel Eşit Muamele Yasası) çerçevesine uygun hareket edilmesini; cinsiyet, yaş, etnik köken, inanç, engellilik gibi kriterlere dayalı ayrımcılıktan kaçınılmasını vurgular ve işverenleri bu konuda bilgilendirir.
+                        </small>
+                    </p>
+                    
+                    <h5 class="mb-3 mt-4">4. Hukuki Sınırlar ve Sorumluluk</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            MS International UG, işveren sıfatıyla hareket etmez, bordro veya sigorta yükümlülüğü üstlenmez.
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            AÜG kapsamında işçi kiralama (Leiharbeit) yapmaz; bu nedenle Arbeitnehmerüberlassungserlaubnis gerektiren bir faaliyet yürütmez.
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            İş sözleşmesi, iş hukuku uyuşmazlıkları veya tazminat talepleri gibi konularda işçi ve işverenin tarafı değildir; böyle durumlarda her iki tarafın da bağımsız bir avukatla çalışması gerekir.
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-dash-circle text-primary me-2"></i>
+                            Şirketin rolü; nitelikli göç sürecinde doğru iş–profil eşleştirmesini sağlamak, süreci şeffaf yürütmek ve oturum hukuku ile uyumlu bir çerçeve oluşturmakla sınırlıdır.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Adım 5: Vize Başvurusu ve Randevu Organizasyonu -->
         <section id="vize-basvurusu" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-                    <div class="card shadow-lg border-0 h-100">
-                        <div class="card-body p-5">
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
-                                    4
-                                </div>
-                                <h2 class="display-5 mb-0">Vize Başvurusu ve Randevu Organizasyonu</h2>
-                            </div>
-                            <p class="lead mb-3">Başvuru sürecini profesyonelce yönetiyoruz.</p>
-                            <p>Online formlar doldurulur, konsolosluk randevusu planlanır ve başvuru dosyası başvuru gününe hazır hale getirilir. Mülakat öncesinde, sık sorulan sorular ve dikkat edilmesi gereken noktalar üzerinden prova yapılır. Resmî makamlar başvuruyu inceledikten sonra kararı kendileri verir; danışmanlık süreci, başvurunun düzenli, eksiksiz ve zamanında iletilmesini sağlar.</p>
-                            <ul class="list-unstyled mt-4">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Online formların doldurulması</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Konsolosluk randevusu planlaması</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Mülakat provası ve hazırlık</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Başvuru dosyasının kontrolü</li>
-                            </ul>
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 overflow-hidden">
+
+                    <!-- GÖRSEL -->
+                    <img
+                        src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop"
+                        alt="Vize Başvurusu"
+                        class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
+                        style="max-width: 420px;"
+                    >
+
+                    <!-- BAŞLIK -->
+                    <div class="d-flex align-items-center mb-4">
+                        <div
+                            class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                            5
                         </div>
+                        <h2 class="display-5 mb-0">Vize Başvurusu ve Randevu Organizasyonu</h2>
                     </div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop" alt="Vize Başvurusu" class="img-fluid rounded shadow-lg">
+
+                    <p class="lead mb-3">
+                        Vize başvuruları, ikamet ettiğiniz ülkeye göre Alman Büyükelçiliği/Konsolosluğu ve onların yetkilendirdiği hizmet sağlayıcılar üzerinden yapılır.
+                    </p>
+
+                    <p class="mb-3">
+                        Hukuki çerçeve, Aufenthaltsgesetz ve vize düzenlemeleri ile çizilmiştir; nitelikli işçi dosyalarında çoğu zaman Bundesagentur für Arbeit da sürece dâhil olur.
+                    </p>
+
+                    <p class="mb-3"><strong>MS International UG bu aşamada:</strong></p>
+
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Hangi temsilcilikte ve hangi kategoriyle başvuru yapılacağını netleştirir,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Online randevu sisteminin doğru kullanılmasını açıklar,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Vize formu, ek bilgi formları ve taahhütnamelerin nasıl doldurulacağını örneklerle anlatır,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            Randevu gününe kadar hazırlanacak fiziksel dosyayı sistematik olarak kontrol eder.
+                        </li>
+                    </ul>
+
+                    <p class="mb-3">
+                        Nitelikli işçiler için öngörülen hızlandırılmış prosedür (Beschleunigtes Fachkräfteverfahren – § 81a AufenthG) gündeme geldiğinde, işveren ve ilgili Ausländerbehörde ile bu sürecin nasıl işleyeceğini anlatır, termin planlamasında yardımcı oluruz.
+                    </p>
+
+                    <p class="mb-0">
+                        <small class="text-muted">
+                            Başvuru formlarını sizin yerinize imzalamayız, karar mercii olan makamlara karşı hukuki temsil üstlenmeyiz; bu nokta RDG'ye uygunluğun temelidir.
+                        </small>
+                    </p>
+
                 </div>
             </div>
         </section>
 
-        <!-- Adım 5: Almanya'ya Geliş ve İlk Adımlar -->
+        <!-- Adım 6: Almanya'ya Geliş ve İlk Adımlar -->
         <section id="almanya-gelis" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="card shadow-lg border-0 h-100">
-                        <div class="card-body p-5">
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
-                                    5
-                                </div>
-                                <h2 class="display-5 mb-0">Almanya'ya Geliş ve İlk Adımlar</h2>
-                            </div>
-                            <p class="lead mb-3">Vize onayı sonrası yanınızdayız.</p>
-                            <p>Vize onayı sonrası; Almanya'ya inişten itibaren konaklama, adres kaydı, banka hesabı, vergi numarası, sağlık sigortası ve iş başlangıç süreçleri için yol haritası sunulur. Aile bireyleri, çocukların okul/anaokulu süreçleri ve Kindergeld gibi sosyal haklar hakkında da bilgilendirme yapılır.</p>
-                            <ul class="list-unstyled mt-4">
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Konaklama desteği</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Adres kaydı (Anmeldung)</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Banka hesabı ve vergi numarası</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Sağlık sigortası seçimi</li>
-                                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i>Okul kayıtları ve sosyal haklar</li>
-                            </ul>
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5 overflow-hidden">
+
+                    <!-- GÖRSEL -->
+                    <img
+                        src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop"
+                        alt="Yerleşim"
+                        class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
+                        style="max-width: 420px;"
+                    >
+
+                    <!-- BAŞLIK -->
+                    <div class="d-flex align-items-center mb-4">
+                        <div
+                            class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">
+                            6
+                        </div>
+                        <h2 class="display-5 mb-0">Almanya'ya Geliş ve İlk Adımlar</h2>
+                    </div>
+
+                    <p class="lead mb-3">
+                        Vizeniz onaylandıktan sonra ve Almanya'ya giriş yaptıktan sonra, özellikle ilk birkaç hafta içinde tamamlanması gereken önemli adımlar vardır:
+                    </p>
+
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>Adres kaydı (Anmeldung)</strong> – Yaşadığınız belediyede ikamet kaydı yaptırmak,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>Vergi numarası (Steuer-ID)</strong> ve sosyal güvenlik kayıtlarının tamamlanması,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>Sağlık sigortası seçimi ve kaydı</strong> (SGB V uyarınca sağlık sigortası Almanya'da kalıcı oturum için fiilen zorunlu bir unsurdur),
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>Banka hesabı açılması</strong>, varsa bloke hesabın çözülmesi,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>Çocuklar için okul/kreş başvuruları</strong>,
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                            <strong>İşe başlayacaksanız</strong> ilk iş günü öncesi işyeri kuralları, iş güvenliği ve entegrasyon konularının netleştirilmesi.
+                        </li>
+                    </ul>
+
+                    <p class="mb-3">
+                        Ayrıca, Türkiye'den alınmış sürücü belgesiyle Almanya'da en fazla 6 ay araç kullanabildiğinizi; bu süreden sonra Almanya'da araç kullanmaya devam etmek için ehliyetin Almanya ehliyetine Umschreibung ile çevrilmesi gerektiğini de bu aşamada planlarız.
+                    </p>
+
+                    <p class="mb-0">
+                        <small class="text-muted">
+                            MS International UG, bu işlemlerin hangi sırayla ve hangi belgelerle yapılacağını adım adım anlatır, termin ve form doldurma konusunda rehberlik sağlar; resmi sözleşme ve beyanları ise her zaman siz imzalarsınız.
+                        </small>
+                    </p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Hukuki Açıklama -->
+        <section class="mb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-lg border-0 bg-light">
+                        <div class="card-body p-4">
+                            <h4 class="mb-3">Hukuki Açıklama</h4>
+                            <p class="mb-0"><small class="text-muted">Bu sayfa, Almanya'ya göç ve yerleşim sürecinin tipik adımlarını; özellikle Aufenthaltsgesetz (AufenthG), Fachkräfteeinwanderungsgesetz, RDG ve SGB hükümlerine uygun bir çerçevede özetlemektedir. MS International UG, göç ve denklik süreçlerinde danışmanlık ve koordinasyon hizmeti sunar; vize, oturum ve denklik kararları yalnızca yetkili Alman makamları tarafından verilir. Bu metin, bireysel hukuki danışmanlık, avukatlık veya dava/itiraz takibi yerine geçmez. Özel hukuki sorularınız için Almanya'da yetkili bir avukata başvurmanız gerekir.</small></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop" alt="Yerleşim" class="img-fluid rounded shadow-lg">
                 </div>
             </div>
         </section>
 
         <!-- İletişim CTA -->
-        <section class="text-center mt-5">
-            <div class="card shadow-lg border-0 bg-primary text-white">
+        <section class="text-center">
+            <div class="card shadow-lg border-0 bg-primary text-white w-100">
                 <div class="card-body p-5">
                     <h2 class="display-5 mb-3">Sürecinizi Birlikte Başlatalım</h2>
                     <p class="lead mb-4">Ön görüşme için bizimle iletişime geçin ve size özel yol haritanızı birlikte çıkaralım.</p>
@@ -393,74 +825,11 @@
         </section>
     </div>
     
-    <!-- Section 1: Almanya'da Çalışmak – Nitelikli Göç Yolları -->
-    <!-- <section class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop" alt="Almanya'da Çalışmak" class="img-fluid rounded shadow-lg">
-                </div>
-                <div class="col-lg-6 ps-lg-5">
-                    <h2 class="display-5 mb-4">Almanya'da Çalışmak – Nitelikli Göç Yolları</h2>
-                    <p class="lead mb-3">Almanya, Yeni Nitelikli İş Gücü Göç Yasası ile hem üniversite mezunları hem de mesleki eğitim almış ve deneyimli adaylar için çok sayıda yasal göç yolu sunuyor. MS International UG, profilinize göre hangi vize ve oturum türünün sizin için en uygun olduğuna birlikte karar vermenize yardımcı olur; süreci baştan sona profesyonelce koordine eder.</p>
-                    <a href="{% url 'integration_app:visa_routes' %}" class="btn btn-primary btn-lg mt-3">Detaylı bilgi</a>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Section 2: Diploma & Meslek Denkliği -->
-    <!-- <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
-                    <h2 class="display-5 mb-4">Diploma & Meslek Denkliği</h2>
-                    <p class="lead mb-3">Yurt dışında alınan diplomaların Almanya'da tanınması pek çok meslek için zorunlu bir adımdır. MS International UG, doğru denklik kurumunun bulunması, başvuru dosyasının hazırlanması, tercüme ve noter onayı gibi adımları sizin adınıza organize eder, süreci şeffaf biçimde takip eder.</p>
-                    <a href="{% url 'integration_app:services' %}#denklik" class="btn btn-outline-primary btn-lg mt-3">Detaylı bilgi</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop" alt="Diploma Denkliği" class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Section 3: Vize ve Oturum Süreç Desteği -->
-    <!-- <section class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop" alt="Vize Süreçleri" class="img-fluid rounded shadow-lg">
-                </div>
-                <div class="col-lg-6 ps-lg-5">
-                    <h2 class="display-5 mb-4">Vize ve Oturum Süreç Desteği</h2>
-                    <p class="lead mb-3">Doğru vize türünü seçmek, eksiksiz evrak hazırlamak ve randevu süreçlerini yönetmek çoğu aday için yorucu olabilir. Biz; uygun vize kategorisinin belirlenmesinden konsolosluk randevusuna, mülakat hazırlığından dosya takibine kadar tüm adımları tek elden koordine ediyoruz. Resmî karar yetkisi her zaman makamlarındır, biz sürecin doğru ve düzenli ilerlemesini sağlarız.</p>
-                    <a href="{% url 'integration_app:services' %}#vize" class="btn btn-primary btn-lg mt-3">Detaylı bilgi</a>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Section 4: Almanya'ya Yerleşim ve Entegrasyon -->
-    <!-- <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
-                    <h2 class="display-5 mb-4">Almanya'ya Yerleşim ve Entegrasyon</h2>
-                    <p class="lead mb-3">Almanya'ya sadece "gelmek" değil, yeni bir hayat kurmak önemlidir. Konaklama bulunması, adres kaydı (Anmeldung), banka hesabı, sağlık sigortası, çocukların okul kaydı, Kindergeld gibi sosyal haklar ve günlük yaşam adımlarında yanınızdayız. Amacımız, ilk günden itibaren güvende ve organize hissetmeniz.</p>
-                    <a href="{% url 'integration_app:services' %}#yerlesim" class="btn btn-outline-primary btn-lg mt-3">Detaylı bilgi</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop" alt="Yerleşim ve Entegrasyon" class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section> -->
 </div>
 
 <style>
     section:not(:first-of-type) {
-        min-height: 500px;
+        /* min-height: 500px; */
         display: flex;
         align-items: center;
     }
