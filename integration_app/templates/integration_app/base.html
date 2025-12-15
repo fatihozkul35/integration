@@ -266,7 +266,7 @@
     <!-- İletişim Formu Bölümü (Ana Sayfa ve İletişim Sayfası Hariç Tüm Sayfalarda) -->
     {% block contact_form_section %}
     {% if request.resolver_match.url_name != 'contact' and request.resolver_match.url_name != 'index' %}
-    <section class="py-5 bg-light">
+    <section id="contact-form-section" class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-xl-8">

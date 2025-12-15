@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vielen Dank für Ihre Nachricht</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #28a745;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            margin: -30px -30px 20px -30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .message-box {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+        }
+        .info-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+        .info-row {
+            margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: bold;
+            color: #495057;
+            display: inline-block;
+            min-width: 120px;
+        }
+        .value {
+            color: #212529;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+            font-size: 12px;
+            color: #6c757d;
+            text-align: center;
+        }
+        .empty-value {
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✓ Vielen Dank für Ihre Nachricht</h1>
+        </div>
+        
+        <div class="content">
+            <p>Hallo {% if contact_name %}<strong>{{ contact_name }}</strong>{% else %}Sehr geehrte Damen und Herren{% endif %},</p>
+            
+            <p>vielen Dank, dass Sie sich über unser Kontaktformular an uns gewandt haben. Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.</p>
+            
+            {% if contact_message %}
+            <div class="message-box">
+                <strong>Ihre Nachricht:</strong>
+                <div style="white-space: pre-wrap; margin-top: 10px;">{{ contact_message }}</div>
+            </div>
+            {% endif %}
+            
+            <div class="info-section">
+                <strong>Kontaktinformationen:</strong>
+                <div class="info-row">
+                    <span class="label">Name:</span>
+                    <span class="value">{% if contact_name %}{{ contact_name }}{% else %}<span class="empty-value">Nicht angegeben</span>{% endif %}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">E-Mail:</span>
+                    <span class="value">{% if contact_email %}{{ contact_email }}{% else %}<span class="empty-value">Nicht angegeben</span>{% endif %}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Telefon:</span>
+                    <span class="value">{% if contact_phone %}{{ contact_phone }}{% else %}<span class="empty-value">Nicht angegeben</span>{% endif %}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Datum:</span>
+                    <span class="value">{{ contact_date|date:"d.m.Y H:i" }}</span>
+                </div>
+            </div>
+            
+            <p>Wir werden Ihre Anfrage schnellstmöglich bearbeiten und uns bei Ihnen melden.</p>
+            
+            <p>Mit freundlichen Grüßen<br>Ihr Team</p>
+        </div>
+        
+        <div class="footer">
+            <p>Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht direkt auf diese E-Mail.</p>
+        </div>
+    </div>
+</body>
+</html>
+

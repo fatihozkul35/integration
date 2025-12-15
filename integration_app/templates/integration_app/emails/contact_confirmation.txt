@@ -1,0 +1,26 @@
+Vielen Dank für Ihre Nachricht
+==============================
+
+Hallo {% if contact_name %}{{ contact_name }}{% else %}Sehr geehrte Damen und Herren{% endif %},
+
+vielen Dank, dass Sie sich über unser Kontaktformular an uns gewandt haben. Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.
+
+Ihre Nachricht:
+---------------
+{% if contact_message %}{{ contact_message }}{% else %}Keine Nachricht angegeben{% endif %}
+
+Kontaktinformationen:
+----------------------
+Name: {% if contact_name %}{{ contact_name }}{% else %}Nicht angegeben{% endif %}
+E-Mail: {% if contact_email %}{{ contact_email }}{% else %}Nicht angegeben{% endif %}
+Telefon: {% if contact_phone %}{{ contact_phone }}{% else %}Nicht angegeben{% endif %}
+Datum: {{ contact_date|date:"d.m.Y H:i" }}
+
+Wir werden Ihre Anfrage schnellstmöglich bearbeiten und uns bei Ihnen melden.
+
+Mit freundlichen Grüßen
+Ihr Team
+
+---
+Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht direkt auf diese E-Mail.
+

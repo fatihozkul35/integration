@@ -5,7 +5,9 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.decorators import user_passes_test
-from django.urls import get_resolver
+from django.urls import get_resolver, reverse
+from django.http import HttpResponseRedirect
+from urllib.parse import urlparse
 import logging
 from .models import ContactMessage
 
@@ -13,12 +15,70 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+def get_redirect_url_with_anchor(request, anchor='#contact-form-section'):
+    """
+    Referer URL'den sayfa yolunu çıkarır ve anchor ile birlikte redirect URL'i döndürür.
+    Eğer referer yoksa veya geçersizse, contact sayfasına yönlendirir.
+    """
+    referer = request.META.get('HTTP_REFERER', '')
+    
+    if not referer:
+        # Referer yoksa contact sayfasına yönlendir
+        return reverse('integration_app:contact')
+    
+    # Referer URL'ini parse et
+    parsed = urlparse(referer)
+    path = parsed.path
+    
+    # Path'ten anchor'ı temizle (varsa)
+    if '#' in path:
+        path = path.split('#')[0]
+    
+    # Path'i temizle (başında ve sonunda / varsa)
+    path = path.strip('/')
+    
+    # Path'i URL name'e map et
+    url_mapping = {
+        '': 'integration_app:index',
+        'hakkimizda': 'integration_app:about',
+        'hizmetler': 'integration_app:services',
+        'kontakt': 'integration_app:contact',
+        'contact': 'integration_app:contact',
+        'hukuki-bilgilendirme': 'integration_app:legal_info',
+        'vize-yollari': 'integration_app:visa_routes',
+        'surec-nasil-isler': 'integration_app:process',
+        'isverenler-icin': 'integration_app:employers',
+        'faq': 'integration_app:faq',
+        'referenzen': 'integration_app:references',
+        'blog': 'integration_app:blog',
+        'almanyada-yasamin-rehberi': 'integration_app:life_guide',
+    }
+    
+    # Path'i kontrol et ve URL name'i bul
+    url_name = None
+    if path in url_mapping:
+        url_name = url_mapping[path]
+    elif path == '' or path == 'index':
+        url_name = 'integration_app:index'
+    else:
+        # Bilinmeyen path için contact sayfasına yönlendir
+        url_name = 'integration_app:contact'
+    
+    # URL'i oluştur ve anchor ekle
+    try:
+        url = reverse(url_name)
+        # Contact sayfasından geliyorsa anchor ekleme
+        if url_name == 'integration_app:contact':
+            return url
+        return f"{url}{anchor}"
+    except:
+        # Hata durumunda contact sayfasına yönlendir
+        return reverse('integration_app:contact')
+
 def index(request):
     """Home page view that renders index.html"""
     # Ana sayfadaki form POST request'i ise contact view'ını çağır
     if request.method == 'POST':
-        # Contact view'ını çağır ama referer'ı index olarak ayarla
-        request.META['HTTP_REFERER'] = request.build_absolute_uri('/')
         return contact(request)
     return render(request, 'integration_app/index.html')
 
@@ -104,13 +164,9 @@ def contact(request):
         if errors:
             for error in errors:
                 messages.error(request, error)
-            # Hata varsa referer'a göre yönlendir
-            referer = request.META.get('HTTP_REFERER', '')
-            # Ana sayfadan geliyorsa ana sayfaya dön
-            if referer and (referer.endswith('/') or '/index' in referer or 'index' in referer.lower()):
-                return redirect('integration_app:index#contact-form-section')
-            else:
-                return render(request, 'integration_app/contact.html')
+            # Hata varsa referer sayfasına geri dön
+            redirect_url = get_redirect_url_with_anchor(request)
+            return HttpResponseRedirect(redirect_url)
         else:
             # Veritabanına kaydet
             try:
@@ -153,14 +209,9 @@ def contact(request):
                     # Kullanıcıya hata göstermiyoruz ama logluyoruz
                 
                 messages.success(request, 'Mesajınız başarıyla gönderildi!')
-                # Formu temizlemek için redirect - referer'a göre yönlendir
-                referer = request.META.get('HTTP_REFERER', '')
-                # Ana sayfadan geliyorsa ana sayfaya dön (form bölümüne anchor ile)
-                # Referer kontrolü: ana sayfa URL'i genellikle '/' ile biter veya 'index' içerir
-                if referer and (referer.endswith('/') or '/index' in referer or 'index' in referer.lower() or not '/kontakt' in referer.lower() and not '/contact' in referer.lower()):
-                    return redirect('integration_app:index#contact-form-section')
-                else:
-                    return redirect('integration_app:contact')
+                # Formu temizlemek için redirect - referer sayfasına geri dön
+                redirect_url = get_redirect_url_with_anchor(request)
+                return HttpResponseRedirect(redirect_url)
             except Exception as e:
                 messages.error(request, 'Bir hata oluştu. Lütfen tekrar deneyin.')
     
@@ -169,18 +220,11 @@ def contact(request):
 
 def send_contact_notification_email(contact_message):
     """
-    Contact formu gönderildiğinde admin'e bildirim e-postası gönderir
+    Contact formu gönderildiğinde:
+    1. Kullanıcıya teşekkür e-postası gönderir
+    2. Admin'e bildirim e-postası gönderir
+    Spam önleme için uygun e-posta başlıkları eklenir
     """
-    # Admin e-posta adreslerini al
-    admin_emails = [admin[1] for admin in settings.ADMINS if admin[1]]
-    
-    if not admin_emails:
-        logger.warning('Admin e-posta adresi bulunamadı. E-posta gönderilemedi.')
-        return
-    
-    # E-posta ayarlarını logla (debug için)
-    logger.info(f'E-posta gönderiliyor - FROM: {settings.DEFAULT_FROM_EMAIL}, TO: {admin_emails}')
-    
     # E-posta içeriği için context
     context = {
         'contact_name': contact_message.name or '',
@@ -190,26 +234,76 @@ def send_contact_notification_email(contact_message):
         'contact_date': contact_message.created_at or timezone.now(),
     }
     
-    # E-posta konusu
-    subject = f'Yeni İletişim Mesajı - {context["contact_name"] or "İsimsiz"}'
+    # E-posta başlıkları - Spam önleme ve deliverability için önemli
+    headers = {
+        'X-Mailer': 'Django Contact Form',
+        'X-Priority': '1',
+        'Importance': 'high',
+    }
     
-    # Text ve HTML içerikleri oluştur
-    text_content = render_to_string('integration_app/emails/contact_notification.txt', context)
-    html_content = render_to_string('integration_app/emails/contact_notification.html', context)
+    # 1. KULLANICIYA TEŞEKKÜR E-POSTASI GÖNDER
+    # SEND_USER_CONFIRMATION_EMAIL ayarı False ise kullanıcıya e-posta gönderme
+    if context['contact_email'] and getattr(settings, 'SEND_USER_CONFIRMATION_EMAIL', True):
+        try:
+            # Kullanıcıya teşekkür e-postası
+            user_subject = 'Vielen Dank für Ihre Nachricht'
+            user_text_content = render_to_string('integration_app/emails/contact_confirmation.txt', context)
+            user_html_content = render_to_string('integration_app/emails/contact_confirmation.html', context)
+            
+            user_email = EmailMultiAlternatives(
+                subject=user_subject,
+                body=user_text_content,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[context['contact_email']],
+                headers=headers,
+            )
+            user_email.attach_alternative(user_html_content, "text/html")
+            user_result = user_email.send()
+            logger.info(f'Kullanıcıya teşekkür e-postası gönderildi. TO: {context["contact_email"]}, Sonuç: {user_result}')
+        except Exception as e:
+            error_message = str(e)
+            # ElasticEmail test hesabı limiti kontrolü
+            if '421' in error_message and 'testing purposes' in error_message.lower():
+                logger.warning(
+                    f'ElasticEmail test hesabı limiti: Kullanıcıya e-posta gönderilemedi. '
+                    f'TO: {context["contact_email"]}. '
+                    f'Not: Test hesabı sadece kayıt e-postasına gönderebilir. '
+                    f'Production için ElasticEmail planı gerekli.'
+                )
+            else:
+                logger.error(f'Kullanıcıya e-posta gönderim hatası: {error_message}', exc_info=True)
+            # Kullanıcıya e-posta gönderilemese bile admin'e göndermeye devam et
     
-    # E-posta oluştur ve gönder
+    # 2. ADMIN'E BİLDİRİM E-POSTASI GÖNDER
+    admin_emails = [admin[1] for admin in settings.ADMINS if admin[1]]
+    
+    if not admin_emails:
+        logger.warning('Admin e-posta adresi bulunamadı. Admin e-postası gönderilemedi.')
+        return
+    
     try:
-        email = EmailMultiAlternatives(
-            subject=subject,
-            body=text_content,
+        # Admin'e bildirim e-postası
+        admin_subject = f'Neue Kontaktnachricht - {context["contact_name"] or "Unbekannt"}'
+        admin_text_content = render_to_string('integration_app/emails/contact_notification.txt', context)
+        admin_html_content = render_to_string('integration_app/emails/contact_notification.html', context)
+        
+        # Reply-To: İletişim formundan gelen e-posta adresi (varsa)
+        # Bu sayede admin direkt kullanıcıya cevap verebilir
+        reply_to = [context['contact_email']] if context['contact_email'] else None
+        
+        admin_email = EmailMultiAlternatives(
+            subject=admin_subject,
+            body=admin_text_content,
             from_email=settings.DEFAULT_FROM_EMAIL,
             to=admin_emails,
+            reply_to=reply_to,
+            headers=headers,
         )
-        email.attach_alternative(html_content, "text/html")
-        result = email.send()
-        logger.info(f'E-posta gönderildi. Sonuç: {result}')
+        admin_email.attach_alternative(admin_html_content, "text/html")
+        admin_result = admin_email.send()
+        logger.info(f'Admin e-postası gönderildi. TO: {admin_emails}, Sonuç: {admin_result}')
     except Exception as e:
-        logger.error(f'E-posta gönderim hatası: {str(e)}', exc_info=True)
+        logger.error(f'Admin e-posta gönderim hatası: {str(e)}', exc_info=True)
         raise
 
 

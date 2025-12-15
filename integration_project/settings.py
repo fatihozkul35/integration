@@ -180,3 +180,8 @@ ADMINS = [
 
 # Managers email addresses (comma-separated)
 MANAGERS = ADMINS
+
+# Email sending settings
+# Set to False to disable sending confirmation emails to users (useful for test accounts)
+# Şimdilik sadece admin'e mail gönderilecek, kullanıcıya gönderilmeyecek
+SEND_USER_CONFIRMATION_EMAIL = config('SEND_USER_CONFIRMATION_EMAIL', default=False, cast=bool)
