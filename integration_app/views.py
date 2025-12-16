@@ -521,7 +521,7 @@ def send_contact_notification_email(contact_message):
         # PythonAnywhere port hatası kontrolü
         if 'connection' in error_message.lower() or 'refused' in error_message.lower() or 'timeout' in error_message.lower():
             # Port 2525 kullanılıyorsa PythonAnywhere hatası olabilir
-            from django.conf import settings
+            # settings zaten dosyanın başında import edilmiş, tekrar import etmeye gerek yok
             if hasattr(settings, 'EMAIL_PORT') and settings.EMAIL_PORT == 2525:
                 logger.error(
                     'PythonAnywhere port hatası: Port 2525 PythonAnywhere\'de çalışmaz! '
