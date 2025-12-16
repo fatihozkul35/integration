@@ -29,7 +29,16 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 # PythonAnywhere detection - check if we're on PythonAnywhere
 # PythonAnywhere hosts are typically username.pythonanywhere.com
-ON_PYTHONANYWHERE = os.path.exists('/home') and 'pythonanywhere' in os.environ.get('HOME', '').lower()
+# Multiple detection methods for reliability
+ON_PYTHONANYWHERE = (
+    os.path.exists('/home') and 'pythonanywhere' in os.environ.get('HOME', '').lower()
+) or (
+    'pythonanywhere' in os.environ.get('HOSTNAME', '').lower()
+) or (
+    'pythonanywhere.com' in os.environ.get('HTTP_HOST', '').lower()
+) or (
+    config('ON_PYTHONANYWHERE', default=False, cast=bool)
+)
 
 # ALLOWED_HOSTS configuration
 # For PythonAnywhere: Set your domain in environment variable or .env file
@@ -160,9 +169,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST', default='smtp.elasticemail.com')
-EMAIL_PORT = config('EMAIL_PORT', default=2525, cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
-EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+
+# PythonAnywhere port kısıtlamaları: Sadece 587 ve 465 portlarına izin verilir
+# Port 2525 PythonAnywhere'de çalışmaz, bu yüzden otomatik olarak 587'ye geçiyoruz
+if ON_PYTHONANYWHERE:
+    # PythonAnywhere'de port 587 (TLS) kullan
+    EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+    EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+else:
+    # Local'de port 2525 kullanabiliriz
+    EMAIL_PORT = config('EMAIL_PORT', default=2525, cast=int)
+    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+    EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 EMAIL_TIMEOUT = 30

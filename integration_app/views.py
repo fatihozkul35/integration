@@ -212,7 +212,21 @@ def contact(request):
                 except Exception as email_error:
                     # E-posta gönderim hatası olsa bile form kaydı başarılı oldu
                     # Hata detaylarını logla
-                    logger.error(f'E-posta gönderim hatası: {str(email_error)}', exc_info=True)
+                    error_type = type(email_error).__name__
+                    error_message = str(email_error)
+                    logger.error(
+                        f'E-posta gönderim hatası - Tip: {error_type}, Mesaj: {error_message}',
+                        exc_info=True
+                    )
+                    
+                    # Yaygın hatalar için daha detaylı log
+                    if 'authentication' in error_message.lower() or '535' in error_message:
+                        logger.error('SMTP kimlik doğrulama hatası - EMAIL_HOST_USER ve EMAIL_HOST_PASSWORD kontrol edilmeli')
+                    elif 'connection' in error_message.lower() or 'timeout' in error_message.lower():
+                        logger.error('SMTP bağlantı hatası - Port ve TLS/SSL ayarları kontrol edilmeli')
+                    elif '421' in error_message and 'testing' in error_message.lower():
+                        logger.warning('ElasticEmail test hesabı limiti - Production planı gerekli olabilir')
+                    
                     # Kullanıcıya hata göstermiyoruz ama logluyoruz
                 
                 messages.success(request, 'Mesajınız başarıyla gönderildi!')
@@ -501,7 +515,21 @@ def send_contact_notification_email(contact_message):
         except: pass
         # #endregion
         
-        logger.error(f'Admin e-posta gönderim hatası: {str(e)}', exc_info=True)
+        error_message = str(e)
+        error_type = type(e).__name__
+        
+        # PythonAnywhere port hatası kontrolü
+        if 'connection' in error_message.lower() or 'refused' in error_message.lower() or 'timeout' in error_message.lower():
+            # Port 2525 kullanılıyorsa PythonAnywhere hatası olabilir
+            from django.conf import settings
+            if hasattr(settings, 'EMAIL_PORT') and settings.EMAIL_PORT == 2525:
+                logger.error(
+                    'PythonAnywhere port hatası: Port 2525 PythonAnywhere\'de çalışmaz! '
+                    'Lütfen .env dosyasında EMAIL_PORT=587 olarak ayarlayın.',
+                    exc_info=True
+                )
+        
+        logger.error(f'Admin e-posta gönderim hatası - Tip: {error_type}, Mesaj: {error_message}', exc_info=True)
         raise
 
 
