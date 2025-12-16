@@ -9,9 +9,16 @@ from django.urls import get_resolver, reverse
 from django.http import HttpResponseRedirect
 from urllib.parse import urlparse
 import logging
+import json
+import os
+from datetime import datetime
 from .models import ContactMessage
 
 logger = logging.getLogger(__name__)
+
+# #region agent log
+DEBUG_LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.cursor', 'debug.log')
+# #endregion
 
 # Create your views here.
 
@@ -225,6 +232,65 @@ def send_contact_notification_email(contact_message):
     2. Admin'e bildirim e-postası gönderir
     Spam önleme için uygun e-posta başlıkları eklenir
     """
+    # #region agent log
+    try:
+        with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+            f.write(json.dumps({
+                'id': f'log_{int(datetime.now().timestamp() * 1000)}_entry',
+                'timestamp': int(datetime.now().timestamp() * 1000),
+                'location': 'integration_app/views.py:221',
+                'message': 'send_contact_notification_email function entry',
+                'data': {'contact_id': contact_message.id if hasattr(contact_message, 'id') else None},
+                'sessionId': 'debug-session',
+                'runId': 'run1',
+                'hypothesisId': 'A'
+            }, ensure_ascii=False) + '\n')
+    except: pass
+    # #endregion
+    
+    # #region agent log
+    try:
+        smtp_config = {
+            'EMAIL_HOST': getattr(settings, 'EMAIL_HOST', 'NOT_SET'),
+            'EMAIL_PORT': getattr(settings, 'EMAIL_PORT', 'NOT_SET'),
+            'EMAIL_USE_TLS': getattr(settings, 'EMAIL_USE_TLS', 'NOT_SET'),
+            'EMAIL_USE_SSL': getattr(settings, 'EMAIL_USE_SSL', 'NOT_SET'),
+            'EMAIL_HOST_USER': getattr(settings, 'EMAIL_HOST_USER', 'NOT_SET')[:10] + '...' if getattr(settings, 'EMAIL_HOST_USER', '') else 'EMPTY',
+            'EMAIL_HOST_PASSWORD': '***' if getattr(settings, 'EMAIL_HOST_PASSWORD', '') else 'EMPTY',
+            'EMAIL_BACKEND': getattr(settings, 'EMAIL_BACKEND', 'NOT_SET'),
+            'EMAIL_TIMEOUT': getattr(settings, 'EMAIL_TIMEOUT', 'NOT_SET'),
+        }
+        logger.info(f'[DEBUG] SMTP Config: {smtp_config}')
+        try:
+            with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+                f.write(json.dumps({
+                    'id': f'log_{int(datetime.now().timestamp() * 1000)}_smtp_config',
+                    'timestamp': int(datetime.now().timestamp() * 1000),
+                    'location': 'integration_app/views.py:235',
+                    'message': 'SMTP configuration values',
+                    'data': smtp_config,
+                    'sessionId': 'debug-session',
+                    'runId': 'run1',
+                    'hypothesisId': 'A,B,C'
+                }, ensure_ascii=False) + '\n')
+        except: pass
+    except Exception as e:
+        logger.error(f'[DEBUG] Error reading SMTP config: {e}', exc_info=True)
+        try:
+            with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+                f.write(json.dumps({
+                    'id': f'log_{int(datetime.now().timestamp() * 1000)}_config_error',
+                    'timestamp': int(datetime.now().timestamp() * 1000),
+                    'location': 'integration_app/views.py:235',
+                    'message': 'Error reading SMTP config',
+                    'data': {'error': str(e)},
+                    'sessionId': 'debug-session',
+                    'runId': 'run1',
+                    'hypothesisId': 'B'
+                }, ensure_ascii=False) + '\n')
+        except: pass
+    # #endregion
+    
     # E-posta içeriği için context
     context = {
         'contact_name': contact_message.name or '',
@@ -277,9 +343,46 @@ def send_contact_notification_email(contact_message):
     # 2. ADMIN'E BİLDİRİM E-POSTASI GÖNDER
     admin_emails = [admin[1] for admin in settings.ADMINS if admin[1]]
     
+    # #region agent log
+    try:
+        with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+            f.write(json.dumps({
+                'id': f'log_{int(datetime.now().timestamp() * 1000)}_admin_emails',
+                'timestamp': int(datetime.now().timestamp() * 1000),
+                'location': 'integration_app/views.py:278',
+                'message': 'Admin emails check',
+                'data': {'admin_emails': admin_emails, 'count': len(admin_emails)},
+                'sessionId': 'debug-session',
+                'runId': 'run1',
+                'hypothesisId': 'A'
+            }, ensure_ascii=False) + '\n')
+    except: pass
+    # #endregion
+    
     if not admin_emails:
         logger.warning('Admin e-posta adresi bulunamadı. Admin e-postası gönderilemedi.')
         return
+    
+    # #region agent log
+    try:
+        with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+            f.write(json.dumps({
+                'id': f'log_{int(datetime.now().timestamp() * 1000)}_before_send',
+                'timestamp': int(datetime.now().timestamp() * 1000),
+                'location': 'integration_app/views.py:284',
+                'message': 'Before admin email send attempt',
+                'data': {
+                    'from_email': getattr(settings, 'DEFAULT_FROM_EMAIL', 'NOT_SET'),
+                    'to_emails': admin_emails,
+                    'smtp_host': getattr(settings, 'EMAIL_HOST', 'NOT_SET'),
+                    'smtp_port': getattr(settings, 'EMAIL_PORT', 'NOT_SET')
+                },
+                'sessionId': 'debug-session',
+                'runId': 'run1',
+                'hypothesisId': 'A,C,D'
+            }, ensure_ascii=False) + '\n')
+    except: pass
+    # #endregion
     
     try:
         # Admin'e bildirim e-postası
@@ -300,9 +403,104 @@ def send_contact_notification_email(contact_message):
             headers=headers,
         )
         admin_email.attach_alternative(admin_html_content, "text/html")
+        
+        # #region agent log
+        try:
+            from django.core.mail import get_connection
+            import socket
+            conn = get_connection()
+            conn_params = {
+                'host': conn.host if hasattr(conn, 'host') else 'N/A',
+                'port': conn.port if hasattr(conn, 'port') else 'N/A',
+                'use_tls': conn.use_tls if hasattr(conn, 'use_tls') else 'N/A',
+                'use_ssl': conn.use_ssl if hasattr(conn, 'use_ssl') else 'N/A',
+            }
+            # Test network connectivity
+            try:
+                test_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                test_socket.settimeout(5)
+                test_result = test_socket.connect_ex((conn.host, conn.port))
+                test_socket.close()
+                conn_params['socket_test'] = 'SUCCESS' if test_result == 0 else f'FAILED: {test_result}'
+            except Exception as sock_err:
+                conn_params['socket_test'] = f'ERROR: {str(sock_err)}'
+            logger.info(f'[DEBUG] Connection params: {conn_params}')
+            try:
+                with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+                    f.write(json.dumps({
+                        'id': f'log_{int(datetime.now().timestamp() * 1000)}_connection_params',
+                        'timestamp': int(datetime.now().timestamp() * 1000),
+                        'location': 'integration_app/views.py:303',
+                        'message': 'SMTP connection parameters from backend',
+                        'data': conn_params,
+                        'sessionId': 'debug-session',
+                        'runId': 'run1',
+                        'hypothesisId': 'A,C,D'
+                    }, ensure_ascii=False) + '\n')
+            except: pass
+        except Exception as conn_err:
+            logger.error(f'[DEBUG] Error getting connection params: {conn_err}', exc_info=True)
+            try:
+                with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+                    f.write(json.dumps({
+                        'id': f'log_{int(datetime.now().timestamp() * 1000)}_conn_error',
+                        'timestamp': int(datetime.now().timestamp() * 1000),
+                        'location': 'integration_app/views.py:303',
+                        'message': 'Error getting connection params',
+                        'data': {'error': str(conn_err)},
+                        'sessionId': 'debug-session',
+                        'runId': 'run1',
+                        'hypothesisId': 'B'
+                    }, ensure_ascii=False) + '\n')
+            except: pass
+        # #endregion
+        
         admin_result = admin_email.send()
+        
+        # #region agent log
+        try:
+            with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+                f.write(json.dumps({
+                    'id': f'log_{int(datetime.now().timestamp() * 1000)}_send_success',
+                    'timestamp': int(datetime.now().timestamp() * 1000),
+                    'location': 'integration_app/views.py:303',
+                    'message': 'Admin email send successful',
+                    'data': {'result': admin_result},
+                    'sessionId': 'debug-session',
+                    'runId': 'run1',
+                    'hypothesisId': 'A'
+                }, ensure_ascii=False) + '\n')
+        except: pass
+        # #endregion
+        
         logger.info(f'Admin e-postası gönderildi. TO: {admin_emails}, Sonuç: {admin_result}')
     except Exception as e:
+        # #region agent log
+        try:
+            import traceback
+            error_details = {
+                'error_type': type(e).__name__,
+                'error_message': str(e),
+                'error_args': list(e.args) if hasattr(e, 'args') else [],
+                'traceback': traceback.format_exc(),
+            }
+            logger.error(f'[DEBUG] Admin email send error details: {error_details}')
+            try:
+                with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
+                    f.write(json.dumps({
+                        'id': f'log_{int(datetime.now().timestamp() * 1000)}_send_error',
+                        'timestamp': int(datetime.now().timestamp() * 1000),
+                        'location': 'integration_app/views.py:305',
+                        'message': 'Admin email send error details',
+                        'data': error_details,
+                        'sessionId': 'debug-session',
+                        'runId': 'run1',
+                        'hypothesisId': 'A,C,D,E'
+                    }, ensure_ascii=False) + '\n')
+            except: pass
+        except: pass
+        # #endregion
+        
         logger.error(f'Admin e-posta gönderim hatası: {str(e)}', exc_info=True)
         raise
 
