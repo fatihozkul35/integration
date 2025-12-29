@@ -182,3 +182,5 @@ EMAIL_USE_SSL=True
 - [ ] PythonAnywhere Web tab'ında **Reload** yapıldı
 - [ ] Test e-postası gönderildi ve başarılı oldu
 
+
+

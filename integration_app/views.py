@@ -246,6 +246,8 @@ def send_contact_notification_email(contact_message):
     2. Admin'e bildirim e-postası gönderir
     Spam önleme için uygun e-posta başlıkları eklenir
     """
+    # Modül seviyesindeki settings'i kullan (UnboundLocalError'u önlemek için)
+    from django.conf import settings as django_settings
     # #region agent log
     try:
         with open(DEBUG_LOG_PATH, 'a', encoding='utf-8') as f:
@@ -265,14 +267,14 @@ def send_contact_notification_email(contact_message):
     # #region agent log
     try:
         smtp_config = {
-            'EMAIL_HOST': getattr(settings, 'EMAIL_HOST', 'NOT_SET'),
-            'EMAIL_PORT': getattr(settings, 'EMAIL_PORT', 'NOT_SET'),
-            'EMAIL_USE_TLS': getattr(settings, 'EMAIL_USE_TLS', 'NOT_SET'),
-            'EMAIL_USE_SSL': getattr(settings, 'EMAIL_USE_SSL', 'NOT_SET'),
-            'EMAIL_HOST_USER': getattr(settings, 'EMAIL_HOST_USER', 'NOT_SET')[:10] + '...' if getattr(settings, 'EMAIL_HOST_USER', '') else 'EMPTY',
-            'EMAIL_HOST_PASSWORD': '***' if getattr(settings, 'EMAIL_HOST_PASSWORD', '') else 'EMPTY',
-            'EMAIL_BACKEND': getattr(settings, 'EMAIL_BACKEND', 'NOT_SET'),
-            'EMAIL_TIMEOUT': getattr(settings, 'EMAIL_TIMEOUT', 'NOT_SET'),
+            'EMAIL_HOST': getattr(django_settings, 'EMAIL_HOST', 'NOT_SET'),
+            'EMAIL_PORT': getattr(django_settings, 'EMAIL_PORT', 'NOT_SET'),
+            'EMAIL_USE_TLS': getattr(django_settings, 'EMAIL_USE_TLS', 'NOT_SET'),
+            'EMAIL_USE_SSL': getattr(django_settings, 'EMAIL_USE_SSL', 'NOT_SET'),
+            'EMAIL_HOST_USER': getattr(django_settings, 'EMAIL_HOST_USER', 'NOT_SET')[:10] + '...' if getattr(django_settings, 'EMAIL_HOST_USER', '') else 'EMPTY',
+            'EMAIL_HOST_PASSWORD': '***' if getattr(django_settings, 'EMAIL_HOST_PASSWORD', '') else 'EMPTY',
+            'EMAIL_BACKEND': getattr(django_settings, 'EMAIL_BACKEND', 'NOT_SET'),
+            'EMAIL_TIMEOUT': getattr(django_settings, 'EMAIL_TIMEOUT', 'NOT_SET'),
         }
         logger.info(f'[DEBUG] SMTP Config: {smtp_config}')
         try:
@@ -323,7 +325,7 @@ def send_contact_notification_email(contact_message):
     
     # 1. KULLANICIYA TEŞEKKÜR E-POSTASI GÖNDER
     # SEND_USER_CONFIRMATION_EMAIL ayarı False ise kullanıcıya e-posta gönderme
-    if context['contact_email'] and getattr(settings, 'SEND_USER_CONFIRMATION_EMAIL', True):
+    if context['contact_email'] and getattr(django_settings, 'SEND_USER_CONFIRMATION_EMAIL', True):
         try:
             # Kullanıcıya teşekkür e-postası
             user_subject = 'Vielen Dank für Ihre Nachricht'
@@ -333,7 +335,7 @@ def send_contact_notification_email(contact_message):
             user_email = EmailMultiAlternatives(
                 subject=user_subject,
                 body=user_text_content,
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email=django_settings.DEFAULT_FROM_EMAIL,
                 to=[context['contact_email']],
                 headers=headers,
             )
@@ -355,7 +357,7 @@ def send_contact_notification_email(contact_message):
             # Kullanıcıya e-posta gönderilemese bile admin'e göndermeye devam et
     
     # 2. ADMIN'E BİLDİRİM E-POSTASI GÖNDER
-    admin_emails = [admin[1] for admin in settings.ADMINS if admin[1]]
+    admin_emails = [admin[1] for admin in django_settings.ADMINS if admin[1]]
     
     # #region agent log
     try:
@@ -386,10 +388,10 @@ def send_contact_notification_email(contact_message):
                 'location': 'integration_app/views.py:284',
                 'message': 'Before admin email send attempt',
                 'data': {
-                    'from_email': getattr(settings, 'DEFAULT_FROM_EMAIL', 'NOT_SET'),
+                    'from_email': getattr(django_settings, 'DEFAULT_FROM_EMAIL', 'NOT_SET'),
                     'to_emails': admin_emails,
-                    'smtp_host': getattr(settings, 'EMAIL_HOST', 'NOT_SET'),
-                    'smtp_port': getattr(settings, 'EMAIL_PORT', 'NOT_SET')
+                    'smtp_host': getattr(django_settings, 'EMAIL_HOST', 'NOT_SET'),
+                    'smtp_port': getattr(django_settings, 'EMAIL_PORT', 'NOT_SET')
                 },
                 'sessionId': 'debug-session',
                 'runId': 'run1',
@@ -411,7 +413,7 @@ def send_contact_notification_email(contact_message):
         admin_email = EmailMultiAlternatives(
             subject=admin_subject,
             body=admin_text_content,
-            from_email=settings.DEFAULT_FROM_EMAIL,
+            from_email=django_settings.DEFAULT_FROM_EMAIL,
             to=admin_emails,
             reply_to=reply_to,
             headers=headers,
@@ -521,8 +523,7 @@ def send_contact_notification_email(contact_message):
         # PythonAnywhere port hatası kontrolü
         if 'connection' in error_message.lower() or 'refused' in error_message.lower() or 'timeout' in error_message.lower():
             # Port 2525 kullanılıyorsa PythonAnywhere hatası olabilir
-            # settings zaten dosyanın başında import edilmiş, tekrar import etmeye gerek yok
-            if hasattr(settings, 'EMAIL_PORT') and settings.EMAIL_PORT == 2525:
+            if hasattr(django_settings, 'EMAIL_PORT') and django_settings.EMAIL_PORT == 2525:
                 logger.error(
                     'PythonAnywhere port hatası: Port 2525 PythonAnywhere\'de çalışmaz! '
                     'Lütfen .env dosyasında EMAIL_PORT=587 olarak ayarlayın.',
