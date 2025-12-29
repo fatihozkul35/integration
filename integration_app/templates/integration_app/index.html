@@ -182,34 +182,23 @@
                 
                 <!-- Right Side - Slider -->
                 <div class="col-lg-8 col-md-12">
+                    {% if slider_images %}
                     <div id="mainSlider" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            {% for slider in slider_images %}
+                            <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                            {% endfor %}
                         </div>
                         <div class="carousel-inner rounded shadow-lg">
-                            <div class="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=600&fit=crop" class="d-block w-100" alt="Almanya'da Çalışmak" style="height: 500px; object-fit: cover;">
+                            {% for slider in slider_images %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ slider.image.url }}" class="d-block w-100" alt="{{ slider.title }}" style="height: 500px; object-fit: cover;">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Almanya'da Çalışmak</h5>
-                                    <p>Nitelikli Göç Yolları ile Almanya'da yeni bir hayat başlatın</p>
+                                    <h5>{{ slider.title }}</h5>
+                                    <p>{{ slider.description }}</p>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop" class="d-block w-100" alt="Diploma Denkliği" style="height: 500px; object-fit: cover;">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Diploma & Meslek Denkliği</h5>
-                                    <p>Yurt dışında alınan diplomaların Almanya'da tanınması</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=600&fit=crop" class="d-block w-100" alt="Vize Süreçleri" style="height: 500px; object-fit: cover;">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Vize ve Oturum Süreç Desteği</h5>
-                                    <p>Profesyonel vize danışmanlık hizmetleri</p>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -220,6 +209,7 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -918,6 +908,15 @@
         background: rgba(0, 0, 0, 0.5);
         border-radius: 10px;
         padding: 1.5rem;
+        color: white;
+    }
+    
+    .carousel-caption h5 {
+        color: white;
+    }
+    
+    .carousel-caption p {
+        color: white;
     }
     
     .carousel-control-prev,

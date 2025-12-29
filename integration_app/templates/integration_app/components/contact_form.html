@@ -150,6 +150,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+        
+        // Checkbox için change event
+        if (field.type === 'checkbox') {
+            field.addEventListener('change', function() {
+                if (this.checked) {
+                    this.classList.remove('is-invalid');
+                    this.style.borderColor = '';
+                    this.style.borderWidth = '';
+                }
+            });
+        }
     });
     
     contactForm.addEventListener('submit', function(e) {
@@ -158,14 +169,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Tüm required alanları kontrol et
         requiredFields.forEach(function(field) {
-            const value = field.value.trim();
             let isEmpty = false;
             
+            // Checkbox için özel kontrol
+            if (field.type === 'checkbox') {
+                isEmpty = !field.checked;
+            }
             // Select için özel kontrol
-            if (field.tagName === 'SELECT') {
-                isEmpty = value === '';
+            else if (field.tagName === 'SELECT') {
+                isEmpty = field.value.trim() === '';
             } else {
-                isEmpty = value === '';
+                isEmpty = field.value.trim() === '';
             }
             
             if (isEmpty) {
@@ -210,6 +224,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     .is-invalid:focus {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+    }
+    
+    .form-check-input.is-invalid {
+        border-color: #dc3545 !important;
+        border-width: 2px !important;
+    }
+    
+    .form-check-input.is-invalid:focus {
         border-color: #dc3545 !important;
         box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
     }

@@ -12,7 +12,8 @@ import logging
 import json
 import os
 from datetime import datetime
-from .models import ContactMessage
+from .models import ContactMessage, SliderImage
+from .utils import rate_limit_contact
 
 logger = logging.getLogger(__name__)
 
@@ -87,7 +88,15 @@ def index(request):
     # Ana sayfadaki form POST request'i ise contact view'ını çağır
     if request.method == 'POST':
         return contact(request)
-    return render(request, 'integration_app/index.html')
+    
+    # Aktif slider görsellerini sıralı şekilde getir
+    slider_images = SliderImage.objects.filter(is_active=True).order_by('order', 'created_at')
+    
+    context = {
+        'slider_images': slider_images,
+    }
+    
+    return render(request, 'integration_app/index.html', context)
 
 def services(request):
     """Services page view"""
@@ -133,6 +142,7 @@ def life_guide(request):
     """Almanya'da Yaşamın Rehberi page view"""
     return render(request, 'integration_app/life_guide.html')
 
+@rate_limit_contact(max_requests=5, period=86400)
 def contact(request):
     """Contact page view"""
     if request.method == 'POST':
@@ -234,6 +244,7 @@ def contact(request):
                 redirect_url = get_redirect_url_with_anchor(request)
                 return HttpResponseRedirect(redirect_url)
             except Exception as e:
+                print(e)
                 messages.error(request, 'Bir hata oluştu. Lütfen tekrar deneyin.')
     
     return render(request, 'integration_app/contact.html')
