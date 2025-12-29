@@ -239,13 +239,15 @@ def contact(request):
                     
                     # Kullanıcıya hata göstermiyoruz ama logluyoruz
                 
+                # Başarı mesajını göster ve redirect yap
                 messages.success(request, 'Mesajınız başarıyla gönderildi!')
-                # Formu temizlemek için redirect - referer sayfasına geri dön
                 redirect_url = get_redirect_url_with_anchor(request)
                 return HttpResponseRedirect(redirect_url)
             except Exception as e:
                 print(e)
                 messages.error(request, 'Bir hata oluştu. Lütfen tekrar deneyin.')
+                redirect_url = get_redirect_url_with_anchor(request)
+                return HttpResponseRedirect(redirect_url)
     
     return render(request, 'integration_app/contact.html')
 

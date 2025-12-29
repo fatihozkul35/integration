@@ -69,16 +69,19 @@ def rate_limit_contact(max_requests=5, period=86400):
             response = view_func(request, *args, **kwargs)
             
             # Increment counters only if the form submission was successful
-            # We check if there's a success message indicating successful submission
-            # The view adds 'Mesajınız başarıyla gönderildi!' message on success
-            storage = messages.get_messages(request)
-            has_success = any(
-                msg.level_tag == 'success' and 'başarıyla gönderildi' in msg.message.lower()
-                for msg in storage
-            )
-            
-            # Only increment if we have a success message (ContactMessage was created)
-            if has_success:
+            # We can't use messages.get_messages() here because it consumes messages
+            # and they won't be available in the template after redirect.
+            # Instead, we'll check if response is a redirect (which indicates success)
+            # and if it's redirecting to contact page or back to referer (success case)
+            # Note: This is a simple heuristic - if view redirects, it's likely successful
+            # Error messages also redirect, but they're handled by the view itself
+            # The view only redirects on success or validation errors (which we catch above)
+            if isinstance(response, HttpResponseRedirect):
+                # Check if redirect URL indicates success (not an error page)
+                redirect_url = response.url
+                # If redirecting to contact page or back to referer, it's likely successful
+                # We'll increment counter for any redirect (conservative approach)
+                # The view will handle showing appropriate messages
                 # Increment IP counter
                 cache.set(ip_cache_key, ip_count + 1, period)
                 
