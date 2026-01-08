@@ -27,29 +27,13 @@ SECRET_KEY = config('SECRET_KEY', default='')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# PythonAnywhere detection - check if we're on PythonAnywhere
-# PythonAnywhere hosts are typically username.pythonanywhere.com
-# Multiple detection methods for reliability
-ON_PYTHONANYWHERE = (
-    os.path.exists('/home') and 'pythonanywhere' in os.environ.get('HOME', '').lower()
-) or (
-    'pythonanywhere' in os.environ.get('HOSTNAME', '').lower()
-) or (
-    'pythonanywhere.com' in os.environ.get('HTTP_HOST', '').lower()
-) or (
-    config('ON_PYTHONANYWHERE', default=False, cast=bool)
-)
-
 # ALLOWED_HOSTS configuration
-# For PythonAnywhere: Set your domain in environment variable or .env file
-# Example: ALLOWED_HOSTS=yourusername.pythonanywhere.com
 allowed_hosts_from_env = config('ALLOWED_HOSTS', default='').strip()
 if allowed_hosts_from_env:
     # Split by comma and strip whitespace
     ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_from_env.split(',') if host.strip()]
 else:
     # Default to empty list - user must configure ALLOWED_HOSTS
-    # On PythonAnywhere, you'll need to add your domain: username.pythonanywhere.com
     ALLOWED_HOSTS = []
 
 
@@ -146,7 +130,6 @@ STATIC_URL = '/static/'
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# On PythonAnywhere, this will be served from /static/ URL
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
 # Additional locations of static files
@@ -163,45 +146,3 @@ MEDIA_ROOT = str(BASE_DIR / 'media')
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Email Configuration - ElasticEmail
-# https://elasticemail.com/support/smtp-settings/
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST', default='smtp.elasticemail.com')
-
-# PythonAnywhere port kısıtlamaları: Sadece 587 ve 465 portlarına izin verilir
-# Port 2525 PythonAnywhere'de çalışmaz, bu yüzden otomatik olarak 587'ye geçiyoruz
-if ON_PYTHONANYWHERE:
-    # PythonAnywhere'de port 587 (TLS) kullan
-    EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
-    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
-    EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
-else:
-    # Local'de port 2525 kullanabiliriz
-    EMAIL_PORT = config('EMAIL_PORT', default=2525, cast=int)
-    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
-    EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
-
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-EMAIL_TIMEOUT = 30
-
-# Default email address for sending emails
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
-SERVER_EMAIL = config('SERVER_EMAIL', default=EMAIL_HOST_USER)
-
-# Admin email addresses (comma-separated)
-ADMIN_NAME = config('ADMIN_NAME', default='Admin')
-ADMIN_EMAIL = config('ADMIN_EMAIL', default='')
-ADMINS = [
-    (ADMIN_NAME, ADMIN_EMAIL),
-] if ADMIN_EMAIL else []
-
-# Managers email addresses (comma-separated)
-MANAGERS = ADMINS
-
-# Email sending settings
-# Set to False to disable sending confirmation emails to users (useful for test accounts)
-# Şimdilik sadece admin'e mail gönderilecek, kullanıcıya gönderilmeyecek
-SEND_USER_CONFIRMATION_EMAIL = config('SEND_USER_CONFIRMATION_EMAIL', default=False, cast=bool)
