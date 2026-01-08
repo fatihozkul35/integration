@@ -95,6 +95,16 @@ deploy:
 	@echo "****************************************************************"
 	@echo "PythonAnywhere Production Deployment"
 	@echo "****************************************************************"
+	@echo "Installing requirements..."
+	@if [ -f venv/bin/python ]; then \
+		venv/bin/python -m pip install -r requirements.txt; \
+	elif command -v python3.10 >/dev/null 2>&1; then \
+		python3.10 -m pip install -r requirements.txt; \
+	elif command -v python3.9 >/dev/null 2>&1; then \
+		python3.9 -m pip install -r requirements.txt; \
+	else \
+		python -m pip install -r requirements.txt; \
+	fi
 	@echo "Running database migrations..."
 	@if [ -f venv/bin/python ]; then \
 		venv/bin/python manage.py migrate; \
