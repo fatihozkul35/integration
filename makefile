@@ -13,7 +13,7 @@ help:
 	@echo "test             - Run tests"
 	@echo "superuser        - Create superuser"
 	@echo "collectstatic    - Collect static files"
-	@echo "build            - Run post-deployment commands (collectstatic, etc.)"
+	@echo "build            - Prepare for deployment (makemigrations + update requirements.txt)"
 	@echo "deploy           - PythonAnywhere deployment (migrate + collectstatic)"
 	@echo "clean            - Clean __pycache__ and .pyc files"
 	@echo "venv             - Activate virtual environment (PowerShell)"
@@ -58,36 +58,13 @@ superuser:
 collectstatic:
 	python manage.py collectstatic --noinput
 
-# Build - Post-deployment commands
-# This command runs all necessary commands after deployment (e.g., on PythonAnywhere)
-# Detects and uses venv Python if available, otherwise uses system Python
+# Build - Pre-deployment commands (local build preparation)
+# This command prepares the project for deployment:
+# - Creates migration files
+# - Updates requirements.txt with newly installed packages
+# Uses a Python script for cross-platform compatibility
 build:
-	@echo "****************************************************************"
-	@echo "Building for production deployment..."
-	@echo "Activating virtual environment and running deployment tasks..."
-	@if [ -f venv/bin/python ]; then \
-		echo "Using Linux/Mac venv..."; \
-		echo "Migrating migrations files..."; \
-		venv/bin/python manage.py migrate; \
-		echo "Collecting staticfiles..."; \
-		venv/bin/python manage.py collectstatic --noinput; \
-	elif [ -f venv/Scripts/python.exe ]; then \
-		echo "Using Windows venv..."; \
-		echo "Migrating migrations files..."; \
-		venv/Scripts/python.exe manage.py migrate; \
-		echo "Collecting staticfiles..."; \
-		venv/Scripts/python.exe manage.py collectstatic --noinput; \
-	else \
-		echo "No venv found, using system Python..."; \
-		echo "Migrating migrations files..."; \
-		python manage.py migrate; \
-		echo "Collecting staticfiles..."; \
-		python manage.py collectstatic --noinput; \
-	fi
-	@echo "Build completed successfully!"
-	@echo "Next steps:"
-	@echo "  1. Reload your web app"
-	@echo "****************************************************************"
+	@python build_prepare.py || python3 build_prepare.py
 
 # PythonAnywhere deployment - optimized for PythonAnywhere console
 # This target is specifically designed for PythonAnywhere and uses python3.10
