@@ -82,6 +82,16 @@ deploy:
 	else \
 		python -m pip install -r requirements.txt; \
 	fi
+	@echo "Creating migration files..."
+	@if [ -f venv/bin/python ]; then \
+		venv/bin/python manage.py makemigrations; \
+	elif command -v python3.10 >/dev/null 2>&1; then \
+		python3.10 manage.py makemigrations; \
+	elif command -v python3.9 >/dev/null 2>&1; then \
+		python3.9 manage.py makemigrations; \
+	else \
+		python manage.py makemigrations; \
+	fi
 	@echo "Running database migrations..."
 	@if [ -f venv/bin/python ]; then \
 		venv/bin/python manage.py migrate; \
