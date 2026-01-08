@@ -1,4 +1,4 @@
-.PHONY: help install run migrate makemigrations shell test clean superuser collectstatic build
+.PHONY: help install run migrate makemigrations shell test clean superuser collectstatic build deploy-pa
 
 # Default target
 help:
@@ -14,6 +14,7 @@ help:
 	@echo "superuser        - Create superuser"
 	@echo "collectstatic    - Collect static files"
 	@echo "build            - Run post-deployment commands (collectstatic, etc.)"
+	@echo "deploy           - PythonAnywhere deployment (migrate + collectstatic)"
 	@echo "clean            - Clean __pycache__ and .pyc files"
 	@echo "venv             - Activate virtual environment (PowerShell)"
 	@echo "format           - Format code (if black/autopep8 available)"
@@ -87,6 +88,41 @@ build:
 	@echo "Next steps:"
 	@echo "  1. Reload your web app"
 	@echo "****************************************************************"
+
+# PythonAnywhere deployment - optimized for PythonAnywhere console
+# This target is specifically designed for PythonAnywhere and uses python3.10
+deploy:
+	@echo "****************************************************************"
+	@echo "PythonAnywhere Production Deployment"
+	@echo "****************************************************************"
+	@echo "Running database migrations..."
+	@if [ -f venv/bin/python ]; then \
+		venv/bin/python manage.py migrate; \
+	elif command -v python3.10 >/dev/null 2>&1; then \
+		python3.10 manage.py migrate; \
+	elif command -v python3.9 >/dev/null 2>&1; then \
+		python3.9 manage.py migrate; \
+	else \
+		python manage.py migrate; \
+	fi
+	@echo "Collecting static files..."
+	@if [ -f venv/bin/python ]; then \
+		venv/bin/python manage.py collectstatic --noinput; \
+	elif command -v python3.10 >/dev/null 2>&1; then \
+		python3.10 manage.py collectstatic --noinput; \
+	elif command -v python3.9 >/dev/null 2>&1; then \
+		python3.9 manage.py collectstatic --noinput; \
+	else \
+		python manage.py collectstatic --noinput; \
+	fi
+	@echo "****************************************************************"
+	@echo "Deployment completed successfully!"
+	@echo "Next steps:"
+	@echo "  1. Go to PythonAnywhere dashboard"
+	@echo "  2. Navigate to the 'Web' tab"
+	@echo "  3. Click the 'Reload' button"
+	@echo "****************************************************************"
+
 # Clean cache files
 clean:
 	find . -type d -name __pycache__ -exec rm -r {} + 2>/dev/null || true
