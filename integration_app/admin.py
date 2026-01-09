@@ -6,15 +6,21 @@ from .models import ContactMessage, SliderImage
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'created_at', 'is_read')
-    list_filter = ('is_read', 'created_at', 'consent')
-    search_fields = ('name', 'email', 'phone', 'message')
+    list_display = ('name', 'age', 'email', 'phone', 'profession', 'marital_status', 'created_at', 'is_read')
+    list_filter = ('is_read', 'consent', 'marital_status', 'created_at')
+    search_fields = ('name', 'email', 'phone', 'message', 'profession', 'graduation')
     readonly_fields = ('created_at',)
     date_hierarchy = 'created_at'
     
     fieldsets = (
+        ('Kişisel Bilgiler', {
+            'fields': ('name', 'age', 'marital_status', 'children_count')
+        }),
         ('İletişim Bilgileri', {
-            'fields': ('name', 'email', 'phone')
+            'fields': ('email', 'phone')
+        }),
+        ('Mesleki Bilgiler', {
+            'fields': ('profession', 'graduation', 'driving_license')
         }),
         ('Mesaj', {
             'fields': ('message',)
