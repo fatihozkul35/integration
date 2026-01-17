@@ -24,27 +24,35 @@
                     <div class="mb-4">
                         <h3 class="h5 mb-3"><i class="bi bi-building text-primary me-2"></i>Şirket Bilgileri</h3>
                         <p class="mb-1"><strong>Şirket İsmi:</strong></p>
-                        <p class="mb-3">MS International UG (haftungsbeschränkt)</p>
+                        <p class="mb-3">{% if app_config %}{{ app_config.company_name }}{% if app_config.company_type %} ({{ app_config.company_type }}){% endif %}{% else %}MS International UG (haftungsbeschränkt){% endif %}</p>
                     </div>
                     
                     <div class="mb-4">
                         <h3 class="h5 mb-3"><i class="bi bi-telephone text-primary me-2"></i>Telefon</h3>
                         <p class="mb-1"><strong>Telefon / WhatsApp:</strong></p>
                         <p class="mb-0">
-                            <a href="tel:+4915259276039" class="text-decoration-none">+49 1525 9276039</a>
+                            <a href="tel:{% if app_config and app_config.phone %}{{ app_config.phone|slugify }}{% else %}+4915259276039{% endif %}" class="text-decoration-none">{% if app_config and app_config.phone %}{{ app_config.phone }}{% else %}+49 1525 9276039{% endif %}</a>
                         </p>
+                        {% if app_config and app_config.phone %}
+                        <p class="mb-0">
+                            <a href="https://wa.me/{{ app_config.phone|slugify }}" target="_blank" class="btn btn-success btn-sm mt-2">
+                                <i class="bi bi-whatsapp me-1"></i>WhatsApp ile İletişim
+                            </a>
+                        </p>
+                        {% else %}
                         <p class="mb-0">
                             <a href="https://wa.me/4915259276039" target="_blank" class="btn btn-success btn-sm mt-2">
                                 <i class="bi bi-whatsapp me-1"></i>WhatsApp ile İletişim
                             </a>
                         </p>
+                        {% endif %}
                     </div>
                     
                     <div class="mb-4">
                         <h3 class="h5 mb-3"><i class="bi bi-envelope text-primary me-2"></i>E-posta</h3>
                         <p class="mb-1"><strong>E-posta:</strong></p>
                         <p class="mb-0">
-                            <a href="mailto:info@international-ms.de" class="text-decoration-none">info@international-ms.de</a>
+                            <a href="mailto:{% if app_config and app_config.email %}{{ app_config.email }}{% else %}info@international-ms.de{% endif %}" class="text-decoration-none">{% if app_config and app_config.email %}{{ app_config.email }}{% else %}info@international-ms.de{% endif %}</a>
                         </p>
                     </div>
                     
@@ -52,12 +60,17 @@
                         <h3 class="h5 mb-3"><i class="bi bi-geo-alt text-primary me-2"></i>Adres</h3>
                         <p class="mb-1"><strong>Adres:</strong></p>
                         <p class="mb-0">
-                            Furtherhofstraße 43<br>
-                            41462 Neuss – Almanya
+                            {% if app_config and app_config.address %}{{ app_config.address|linebreaks }}{% else %}Furtherhofstraße 43<br>41462 Neuss – Almanya{% endif %}
                         </p>
+                        {% if app_config and app_config.address %}
+                        <a href="https://maps.google.com/?q={{ app_config.address|urlencode }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
+                            <i class="bi bi-map me-1"></i>Haritada Göster
+                        </a>
+                        {% else %}
                         <a href="https://maps.google.com/?q=Furtherhofstraße+43,+41462+Neuss" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
                             <i class="bi bi-map me-1"></i>Haritada Göster
                         </a>
+                        {% endif %}
                     </div>
                     
                     <div class="mb-0">

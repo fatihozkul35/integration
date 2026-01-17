@@ -218,8 +218,8 @@
         <div class="container">
             <a class="navbar-brand navbar-brand-modern" href="{% url 'integration_app:index' %}">
                 <div class="d-flex flex-column align-items-center">
-                    <img src="{% static 'integration_app/images/logo.jpg' %}" alt="MS International UG" class="navbar-logo mb-1">
-                    <span class="text-dark fw-bold text-center" style="font-size: 0.9rem; letter-spacing: 0.5px;">MS INTERNATIONAL UG</span>
+                    <img src="{% static 'integration_app/images/logo.jpg' %}" alt="{% if app_config %}{{ app_config.company_name }}{% else %}MS International UG{% endif %}" class="navbar-logo mb-1">
+                    <span class="text-dark fw-bold text-center" style="font-size: 0.9rem; letter-spacing: 0.5px;">{% if app_config %}{{ app_config.company_name|upper }}{% else %}MS INTERNATIONAL UG{% endif %}</span>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -289,9 +289,9 @@
                 <!-- Şirket Bilgileri -->
                 <div class="col-lg-4 col-md-6">
                     <h5 class="footer-title mb-4 text-center">
-                        <img src="{% static 'integration_app/images/logo.jpg' %}" alt="MS International UG" class="footer-logo mb-2">
+                        <img src="{% static 'integration_app/images/logo.jpg' %}" alt="{% if app_config %}{{ app_config.company_name }}{% else %}MS International UG{% endif %}" class="footer-logo mb-2">
                     </h5>
-                    <p class="mb-3 text-center text-white fw-bold">MS International UG (haftungsbeschränkt)</p>
+                    <p class="mb-3 text-center text-white fw-bold">{% if app_config %}{{ app_config.company_name }}{% if app_config.company_type %} ({{ app_config.company_type }}){% endif %}{% else %}MS International UG (haftungsbeschränkt){% endif %}</p>
                     <p class="mb-0 text-muted small">Almanya'ya nitelikli göç, istihdam ve entegrasyon alanında profesyonel danışmanlık hizmetleri.</p>
                 </div>
                 
@@ -301,15 +301,15 @@
                     <ul class="list-unstyled footer-links">
                         <li>
                             <i class="bi bi-geo-alt-fill me-2"></i>
-                            <span>Furtherhofstraße 43<br>41462 Neuss – Almanya</span>
+                            <span>{% if app_config and app_config.address %}{{ app_config.address|linebreaks }}{% else %}Furtherhofstraße 43<br>41462 Neuss – Almanya{% endif %}</span>
                         </li>
                         <li>
                             <i class="bi bi-telephone-fill me-2"></i>
-                            <a href="tel:+4915259276039" class="text-decoration-none">+49 1525 9276039</a>
+                            <a href="tel:{% if app_config and app_config.phone %}{{ app_config.phone|slugify }}{% else %}+4915259276039{% endif %}" class="text-decoration-none">{% if app_config and app_config.phone %}{{ app_config.phone }}{% else %}+49 1525 9276039{% endif %}</a>
                         </li>
                         <li>
                             <i class="bi bi-envelope-fill me-2"></i>
-                            <a href="mailto:info@international-ms.de" class="text-decoration-none">info@international-ms.de</a>
+                            <a href="mailto:{% if app_config and app_config.email %}{{ app_config.email }}{% else %}info@international-ms.de{% endif %}" class="text-decoration-none">{% if app_config and app_config.email %}{{ app_config.email }}{% else %}info@international-ms.de{% endif %}</a>
                         </li>
                         <li>
                             <i class="bi bi-clock-fill me-2"></i>
@@ -337,7 +337,7 @@
                         <li><a href="{% url 'integration_app:legal_info' %}" class="text-decoration-none">Hukuki Bilgilendirme</a></li>
                         <li><a href="{% url 'integration_app:legal_info' %}#impressum" class="text-decoration-none">İmpressum</a></li>
                         <li><a href="{% url 'integration_app:legal_info' %}#veri-koruma" class="text-decoration-none">Veri Koruma</a></li>
-                        <li><small class="text-muted">Kurucu: Mustafa Sarıkaya</small></li>
+                        <li><small class="text-muted">Kurucu: {% if app_config %}{{ app_config.founder_name }}{% else %}Mustafa Sarıkaya{% endif %}</small></li>
                     </ul>
                 </div>
             </div>
@@ -348,13 +348,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <p class="mb-0 text-muted small">
-                        <strong>Ticaret Sicili:</strong> Amtsgericht Neuss, HRB<br>
-                        <strong>Şirket Türü:</strong> Unternehmergesellschaft (haftungsbeschränkt) – UG
+                        {% if app_config and app_config.trade_register %}<strong>Ticaret Sicili:</strong> {{ app_config.trade_register }}<br>{% endif %}
+                        {% if app_config and app_config.company_type %}<strong>Şirket Türü:</strong> {{ app_config.company_type }}{% else %}<strong>Ticaret Sicili:</strong> Amtsgericht Neuss, HRB<br><strong>Şirket Türü:</strong> Unternehmergesellschaft (haftungsbeschränkt) – UG{% endif %}
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-0 text-muted small">
-                        &copy; 2025 MS International UG. Tüm hakları saklıdır.
+                        &copy; 2025 {% if app_config %}{{ app_config.company_name }}{% else %}MS International UG{% endif %}. Tüm hakları saklıdır.
                     </p>
                 </div>
             </div>

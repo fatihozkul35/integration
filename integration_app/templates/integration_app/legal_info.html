@@ -99,52 +99,60 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <h3 class="h5 mb-3">Şirket Bilgileri</h3>
-                        <p class="mb-2"><strong>MS International UG (haftungsbeschränkt)</strong></p>
-                        <p class="mb-2">Kurucu & Geschäftsführer: <strong>Mustafa Sarıkaya</strong></p>
+                        <p class="mb-2"><strong>{% if app_config %}{{ app_config.company_name }}{% if app_config.company_type %} ({{ app_config.company_type }}){% endif %}{% else %}MS International UG (haftungsbeschränkt){% endif %}</strong></p>
+                        <p class="mb-2">Kurucu & Geschäftsführer: <strong>{% if app_config %}{{ app_config.founder_name }}{% else %}Mustafa Sarıkaya{% endif %}</strong></p>
                         
                         <h3 class="h5 mb-3 mt-4">İletişim</h3>
                         <p class="mb-2">
                             <i class="bi bi-geo-alt text-primary me-2"></i>
                             <strong>Adres:</strong><br>
-                            Furtherhofstraße 43<br>
-                            41462 Neuss – Almanya
+                            {% if app_config and app_config.address %}{{ app_config.address|linebreaks }}{% else %}Furtherhofstraße 43<br>41462 Neuss – Almanya{% endif %}
                         </p>
                         <p class="mb-2">
                             <i class="bi bi-telephone text-primary me-2"></i>
                             <strong>Telefon:</strong> 
-                            <a href="tel:+4915259276039" class="text-decoration-none">+49 1525 9276039</a>
+                            <a href="tel:{% if app_config and app_config.phone %}{{ app_config.phone|slugify }}{% else %}+4915259276039{% endif %}" class="text-decoration-none">{% if app_config and app_config.phone %}{{ app_config.phone }}{% else %}+49 1525 9276039{% endif %}</a>
                         </p>
                         <p class="mb-2">
                             <i class="bi bi-envelope text-primary me-2"></i>
                             <strong>E-posta:</strong> 
-                            <a href="mailto:info@international-ms.de" class="text-decoration-none">info@international-ms.de</a>
+                            <a href="mailto:{% if app_config and app_config.email %}{{ app_config.email }}{% else %}info@international-ms.de{% endif %}" class="text-decoration-none">{% if app_config and app_config.email %}{{ app_config.email }}{% else %}info@international-ms.de{% endif %}</a>
                         </p>
+                        {% if app_config and app_config.website %}
                         <p class="mb-2">
                             <i class="bi bi-globe text-primary me-2"></i>
                             <strong>Web:</strong> 
-                            <a href="https://www.international-ms.de" target="_blank" class="text-decoration-none">www.international-ms.de</a>
+                            <a href="{{ app_config.website }}" target="_blank" class="text-decoration-none">{{ app_config.website }}</a>
                         </p>
+                        {% endif %}
                     </div>
                     <div class="col-lg-6">
                         <h3 class="h5 mb-3">Yasal Bilgiler</h3>
+                        {% if app_config and app_config.trade_register %}
                         <p class="mb-2">
                             <i class="bi bi-building text-primary me-2"></i>
                             <strong>Ticaret Sicili:</strong><br>
-                            Amtsgericht Neuss, HRB
+                            {{ app_config.trade_register }}
                         </p>
+                        {% endif %}
+                        {% if app_config and app_config.company_type %}
                         <p class="mb-2">
                             <i class="bi bi-briefcase text-primary me-2"></i>
                             <strong>Şirket Türü:</strong><br>
-                            Unternehmergesellschaft (haftungsbeschränkt) – UG (mini-GmbH)
+                            {{ app_config.company_type }}
                         </p>
+                        {% endif %}
+                        {% if app_config and app_config.tax_id %}
                         <p class="mb-2">
                             <i class="bi bi-receipt text-primary me-2"></i>
                             <strong>Vergi Numarası / USt-IdNr.:</strong><br>
+                            {{ app_config.tax_id }}
                         </p>
+                        {% endif %}
                         <p class="mb-0">
                             <i class="bi bi-person-badge text-primary me-2"></i>
                             <strong>Sorumlu Kişi (İçerik):</strong><br>
-                            §55 Abs. 2 RStV uyarınca, web sitesindeki içerikten sorumlu kişi: <strong>Mustafa Sarıkaya</strong>
+                            §55 Abs. 2 RStV uyarınca, web sitesindeki içerikten sorumlu kişi: <strong>{% if app_config %}{{ app_config.founder_name }}{% else %}Mustafa Sarıkaya{% endif %}</strong>
                         </p>
                     </div>
                 </div>

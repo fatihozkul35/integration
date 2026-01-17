@@ -10,7 +10,7 @@ import logging
 import json
 import os
 from datetime import datetime
-from .models import ContactMessage, SliderImage
+from .models import ContactMessage, SliderImage, AppConfig
 from .utils import rate_limit_contact
 
 logger = logging.getLogger(__name__)
@@ -102,7 +102,11 @@ def services(request):
 
 def about(request):
     """About us page view"""
-    return render(request, 'integration_app/about.html')
+    app_config = AppConfig.load() if AppConfig.objects.exists() else None
+    context = {
+        'app_config': app_config,
+    }
+    return render(request, 'integration_app/about.html', context)
 
 def process(request):
     """Process / How it works page view"""

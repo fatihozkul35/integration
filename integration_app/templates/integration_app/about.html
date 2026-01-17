@@ -109,10 +109,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="Mustafa Sarıkaya" class="img-fluid rounded shadow-lg">
+                    {% if app_config and app_config.founder_image %}
+                        <img src="{{ app_config.founder_image.url }}" alt="{{ app_config.founder_name }}" class="img-fluid rounded shadow-lg">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" alt="{% if app_config %}{{ app_config.founder_name }}{% else %}Mustafa Sarıkaya{% endif %}" class="img-fluid rounded shadow-lg">
+                    {% endif %}
                 </div>
                 <div class="col-lg-7 ps-lg-5">
-                    <h2 class="display-5 mb-4">Kurucu – Mustafa Sarıkaya</h2>
+                    <h2 class="display-5 mb-4">Kurucu – {% if app_config %}{{ app_config.founder_name }}{% else %}Mustafa Sarıkaya{% endif %}</h2>
                     <p class="lead mb-3">MS International UG'nin kurucusu ve yöneticisi Mustafa Sarıkaya, 1988 Ankara doğumludur. 17 yıla yayılan kariyerinde kamu ve özel sektörde lojistik, insan kaynakları, işletme yönetimi ve müşteri ilişkileri alanlarında çalışmış; bu birikimini Almanya'daki göç ve kariyer danışmanlığı hizmetlerine taşımıştır.</p>
                     <p class="mb-3">Anadolu Üniversitesi İşletme ve Istanbul Ünivesitesi Acil Yardim ve Afet Yönetimi bölümlerinden mezun olan Sarikaya, kariyerine yönetim ve lojistik görevleriyle başlamış, uzun yıllar idari ve tedarik süreçlerinde görev almıştır. Bu dönemde büyük ölçekli operasyonların planlanması, evrak ve süreç yönetimi, kaynakların verimli kullanımı ve yöneticilik, ekip yönetimi konularında güçlü bir deneyim kazanmıştır.</p>
                     <p class="mb-3">2019 sonrasında özel sektörde satış ve müşteri ilişkileri alanlarında çalışarak, doğrudan müşteriyle temas, sorun çözme ve işletme yönetimi konusunda pratik tecrübe edinmiştir. Almanya'ya yerleşmesini takiben Iltica ve Göc Danismanligi ile Almanya Nitelikli Göc Yasasi konularinda yoğun bir eğitim programına katılmış; göç ve iltica danışmanlığı, 81a Ön Onay süreci, nitelikli iş gücü göçü, diploma ve meslek denklik işlemleri ile vize prosedürleri alanlarında uzmanlaşmıştır. Farklı ülkelerden nitelikli adaylar ve Almanya'daki işverenler ile birebir dosyalar yürütmektedir.</p>
