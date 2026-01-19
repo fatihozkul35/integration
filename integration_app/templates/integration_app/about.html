@@ -1,5 +1,7 @@
 {% extends 'integration_app/base.html' %}
 
+{% load static %}
+
 {% block title %}Hakkımızda - MS International{% endblock %}
 
 {% block content %}
@@ -15,7 +17,7 @@
                     <section class="mb-5">
                         <div class="row align-items-center mb-4">
                             <div class="col-lg-6 mb-4 mb-lg-0">
-                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop" alt="Almanya İş Gücü Piyasası" class="img-fluid rounded shadow-lg">
+                                <img src="{% static 'integration_app/images/about.jpeg' %}" alt="Almanya İş Gücü Piyasası" class="img-fluid rounded shadow-lg" style="max-height: 400px; object-fit: contain;">
                             </div>
                             <div class="col-lg-6">
                                 <h2 class="h3 mb-4">MS International UG Kimdir?</h2>
@@ -49,7 +51,7 @@
                             
                             <div class="row mb-4">
                                 <div class="col-lg-6 mb-4 mb-lg-0">
-                                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop" alt="Vizyon" class="img-fluid rounded shadow-lg">
+                                    <img src="{% static 'integration_app/images/vizyon.jpg' %}" alt="Vizyon" class="img-fluid rounded shadow-lg" style="max-height: 400px; object-fit: contain;">
                                 </div>
                                 <div class="col-lg-6">
                                     <h3 class="h4 mb-3">Vizyon:</h3>
@@ -59,7 +61,7 @@
                             
                             <div class="row mb-4">
                                 <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
-                                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" alt="Misyon" class="img-fluid rounded shadow-lg">
+                                    <img src="{% static 'integration_app/images/misyon.jpeg' %}" alt="Misyon" class="img-fluid rounded shadow-lg" style="max-height: 400px; object-fit: contain;">
                                 </div>
                                 <div class="col-lg-6 order-lg-1">
                                     <h3 class="h4 mb-3">Misyon:</h3>

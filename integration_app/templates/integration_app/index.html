@@ -1,5 +1,7 @@
 {% extends 'integration_app/base.html' %}
 
+{% load static %}
+
 {% block title %}Ana Sayfa - MS International{% endblock %}
 
 {% block contact_form_section %}
@@ -248,7 +250,7 @@
 
                     <!-- GÖRSEL -->
                     <img
-                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop"
+                        src="{% static 'integration_app/images/1-ongorusme-analiz.jpeg' %}"
                         alt="Ön Görüşme"
                         class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
                         style="max-width: 420px;"
@@ -338,7 +340,7 @@
 
                     <!-- GÖRSEL -->
                     <img
-                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                        src="{% static 'integration_app/images/2-uygun-vize.jpeg' %}"
                         alt="Vize Seçenekleri"
                         class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
                         style="max-width: 420px;"
@@ -429,7 +431,7 @@
 
                     <!-- GÖRSEL -->
                     <img
-                        src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop"
+                        src="{% static 'integration_app/images/3-evrakhazirligi.jpeg' %}"
                         alt="Evrak Hazırlığı"
                         class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
                         style="max-width: 420px;"
@@ -510,7 +512,7 @@
 
                     <!-- GÖRSEL -->
                     <img
-                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                        src="{% static 'integration_app/images/4-issozlesmesi.jpeg' %}"
                         alt="İş Sözleşmesi"
                         class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
                         style="max-width: 420px;"
@@ -671,7 +673,7 @@
 
                     <!-- GÖRSEL -->
                     <img
-                        src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop"
+                        src="{% static 'integration_app/images/5-vizebasvurusu.jpeg' %}"
                         alt="Vize Başvurusu"
                         class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
                         style="max-width: 420px;"
@@ -737,7 +739,7 @@
 
                     <!-- GÖRSEL -->
                     <img
-                        src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop"
+                        src="{% static 'integration_app/images/6-almanyayagelis.jpeg' %}"
                         alt="Yerleşim"
                         class="img-fluid rounded shadow-lg float-lg-end ms-lg-4 mb-3"
                         style="max-width: 420px;"
