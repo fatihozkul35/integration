@@ -1,5 +1,7 @@
 {% extends 'integration_app/base.html' %}
 
+{% load static %}
+
 {% block title %}Hizmetler - MS International{% endblock %}
 
 {% block content %}
@@ -55,7 +57,7 @@
             <div class="card-body p-5">
                 <div class="row align-items-center mb-4">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop" alt="Göç Danışmanlığı" class="img-fluid rounded shadow-lg">
+                        <img src="{% static 'integration_app/images/2-gocdanismanligi.jpeg' %}" alt="Göç Danışmanlığı" class="img-fluid rounded shadow-lg">
                     </div>
                     <div class="col-lg-6">
                         <h2 class="display-5 mb-4">2. Göç Danışmanlığı</h2>
@@ -159,7 +161,7 @@
             <div class="card-body p-5">
                 <div class="row align-items-center mb-4">
                     <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop" alt="Yerleşim ve Entegrasyon" class="img-fluid rounded shadow-lg">
+                        <img src="{% static 'integration_app/images/5-yerlesimveentegrasyon.jpeg' %}" alt="Yerleşim ve Entegrasyon" class="img-fluid rounded shadow-lg">
                     </div>
                     <div class="col-lg-6 order-lg-1">
                         <h2 class="display-5 mb-4">5. Yerleşim ve Entegrasyon Desteği</h2>
